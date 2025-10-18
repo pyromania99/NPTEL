@@ -1,0 +1,123 @@
+[0.427s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.862s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.634s] -- Found builtin_interfaces: 1.2.2 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[2.480s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.496s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.535s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.596s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.671s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.737s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[2.745s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[2.902s] -- Found px4_msgs: 2.0.1 (/home/pyro/ws_offboard_control/install/px4_msgs/share/px4_msgs/cmake)
+[2.966s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[3.155s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[3.165s] -- Found rmw_fastrtps_cpp: 6.2.8 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[24.210s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[24.338s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[24.400s] -- Found rclpy: 3.3.17 (/opt/ros/humble/share/rclpy/cmake)
+[24.427s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[24.690s] -- Added test 'copyright' to check source files copyright and LICENSE
+[24.773s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[24.776s] -- Configured cppcheck include dirs: /home/pyro/ws_offboard_control/src/px4_ros_com/include;$<BUILD_INTERFACE:/home/pyro/ws_offboard_control/src/px4_ros_com/include/px4_ros_com>
+[24.776s] -- Configured cppcheck exclude dirs and/or files: 
+[24.845s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[24.845s] -- Configured cpplint exclude dirs and/or files: 
+[24.855s] -- Added test 'flake8' to check Python code syntax and style conventions
+[24.872s] -- Added test 'lint_cmake' to check CMake code style
+[24.879s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[24.929s] -- Added test 'uncrustify' to check C / C++ code style
+[24.930s] -- Configured uncrustify additional arguments: 
+[24.938s] -- Added test 'xmllint' to check XML markup files
+[24.948s] -- Configuring done
+[25.129s] -- Generating done
+[25.174s] -- Build files have been written to: /home/pyro/ws_offboard_control/build/px4_ros_com
+[25.264s] [35m[1mConsolidate compiler generated dependencies of target frame_transforms[0m
+[25.264s] [35m[1mConsolidate compiler generated dependencies of target debug_vect_advertiser[0m
+[25.270s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_srv[0m
+[25.270s] [35m[1mConsolidate compiler generated dependencies of target sensor_combined_listener[0m
+[25.270s] [35m[1mConsolidate compiler generated dependencies of target offboard_control[0m
+[25.270s] [35m[1mConsolidate compiler generated dependencies of target vehicle_gps_position_listener[0m
+[25.271s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_tilt_axis[0m
+[25.271s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_spin_tt[0m
+[25.271s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_thrust_torque[0m
+[25.272s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_spin_lsq[0m
+[25.335s] [  0%] Built target ament_cmake_python_copy_px4_ros_com
+[25.347s] [ 10%] Built target frame_transforms
+[25.402s] [ 30%] Built target offboard_control_srv
+[25.402s] [ 30%] Built target debug_vect_advertiser
+[25.403s] [ 40%] Built target sensor_combined_listener
+[25.403s] [ 50%] Built target offboard_control_tilt_axis
+[25.404s] [ 60%] Built target vehicle_gps_position_listener
+[25.404s] [ 70%] Built target offboard_control
+[25.405s] [ 80%] Built target offboard_control_thrust_torque
+[25.407s] [ 90%] Built target offboard_control_spin_lsq
+[25.412s] [ 95%] [32mBuilding CXX object CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o[0m
+[26.240s] running egg_info
+[26.343s] writing px4_ros_com.egg-info/PKG-INFO
+[26.345s] writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+[26.346s] writing top-level names to px4_ros_com.egg-info/top_level.txt
+[26.583s] reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[26.586s] writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[26.709s] [ 95%] Built target ament_cmake_python_build_px4_ros_com_egg
+[101.527s] [100%] [32m[1mLinking CXX executable offboard_control_spin_tt[0m
+[104.578s] [100%] Built target offboard_control_spin_tt
+[104.621s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[104.657s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/pyro/ws_offboard_control/build/px4_ros_com
+[104.677s] -- Install configuration: ""
+[104.679s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener
+[104.681s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener
+[104.685s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser
+[104.686s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control
+[104.689s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control_srv
+[104.692s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control_thrust_torque
+[104.694s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control_spin_tt
+[104.744s] -- Set runtime path of "/home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control_spin_tt" to ""
+[104.747s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control_tilt_axis
+[104.749s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control_spin_lsq
+[104.750s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh
+[104.750s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv
+[104.752s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/include/px4_ros_com
+[104.752s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/include/px4_ros_com/frame_transforms.h
+[104.755s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/libframe_transforms.so
+[104.755s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//launch
+[104.756s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//launch/sensor_combined_listener.launch.py
+[104.756s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//launch/offboard_control_launch.yaml
+[104.757s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//test
+[104.757s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//test/test_output.py
+[104.758s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//test/pipeline_io_test.py
+[104.758s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//test/test_input.py
+[104.758s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com//test/__init__.py
+[104.759s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/pythonpath.sh
+[104.759s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/pythonpath.dsv
+[104.760s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info
+[104.761s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/dependency_links.txt
+[104.761s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/SOURCES.txt
+[104.762s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/PKG-INFO
+[104.762s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com-0.1.0-py3.10.egg-info/top_level.txt
+[104.763s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com
+[104.764s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com/__init__.py
+[104.764s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com/module_to_import.py
+[104.860s] Listing '/home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages/px4_ros_com'...
+[104.871s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/lib/px4_ros_com/offboard_control.py
+[104.871s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com
+[104.872s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com
+[104.873s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh
+[104.873s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.dsv
+[104.874s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/path.sh
+[104.875s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/environment/path.dsv
+[104.875s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/local_setup.bash
+[104.876s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/local_setup.sh
+[104.876s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/local_setup.zsh
+[104.876s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/local_setup.dsv
+[104.877s] -- Installing: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/package.dsv
+[104.879s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/ament_index/resource_index/packages/px4_ros_com
+[104.881s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
+[104.881s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-noconfig.cmake
+[104.881s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_dependencies-extras.cmake
+[104.882s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_targets-extras.cmake
+[104.882s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_include_directories-extras.cmake
+[104.882s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_libraries-extras.cmake
+[104.883s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig.cmake
+[104.883s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig-version.cmake
+[104.883s] -- Up-to-date: /home/pyro/ws_offboard_control/install/px4_ros_com/share/px4_ros_com/package.xml
+[104.888s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/pyro/ws_offboard_control/build/px4_ros_com

@@ -1,0 +1,539 @@
+[0.000000] (-) TimerEvent: {}
+[0.001861] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.003087] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/pyro/ws_offboard_control/install/px4_msgs')])}
+[0.003266] (px4_ros_com) JobStarted: {'identifier': 'px4_ros_com'}
+[0.098752] (-) TimerEvent: {}
+[0.199496] (-) TimerEvent: {}
+[0.273444] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'cmake'}
+[0.276302] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'build'}
+[0.278327] (px4_ros_com) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pyro/ws_offboard_control/build/px4_ros_com', '--', '-j16', '-l16'], 'cwd': '/home/pyro/ws_offboard_control/build/px4_ros_com', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pyro'), ('GIT_ASKPASS', '/home/pyro/.vscode-server/bin/03c265b1adee71ac88f833e065f7bb956b60550a/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/pyro'), ('OLDPWD', '/home/pyro/ws_offboard_control'), ('TERM_PROGRAM_VERSION', '1.105.0'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-bce1387e-98b4-4f44-802f-f8499acbcc7a.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/pyro/.vscode-server/bin/03c265b1adee71ac88f833e065f7bb956b60550a/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/pyro/.vscode-server/bin/03c265b1adee71ac88f833e065f7bb956b60550a/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/pyro/ws_offboard_control/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pyro'), ('NAME', 'Pyro'), ('WSL_INTEROP', '/run/WSL/336_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/pyro/.vscode-server/bin/03c265b1adee71ac88f833e065f7bb956b60550a/bin/remote-cli:/home/pyro/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/libnvvp:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2025.2.1/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/MATLAB/R2024b/bin:/mnt/c/ProgramData/MATLAB/SupportPackages/R2024b/3P.instrset/ev3sourcerylite.instrset/CodeSourcery/bin:/mnt/c/Users/anike/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/anike/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/msys64/ucrt64/bin:/mnt/c/Users/anike/AppData/Local/Programs/Ollama:/mnt/c/Users/anike/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0/LocalCache/local-packages/Python312/Scripts:/snap/bin:/home/pyro/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-90ff0ee116.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/pyro/ws_offboard_control/install/px4_ros_com:/home/pyro/ws_offboard_control/install/px4_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/pyro/ws_offboard_control/build/px4_ros_com'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages:/home/pyro/ws_offboard_control/install/px4_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[0.299816] (-) TimerEvent: {}
+[0.400665] (-) TimerEvent: {}
+[0.501880] (-) TimerEvent: {}
+[0.502494] (px4_ros_com) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target offboard_control_spin_tt\x1b[0m\n'}
+[0.556933] (px4_ros_com) StdoutLine: {'line': b'[ 10%] Built target sensor_combined_listener\n'}
+[0.569128] (px4_ros_com) StdoutLine: {'line': b'[ 20%] Built target frame_transforms\n'}
+[0.569820] (px4_ros_com) StdoutLine: {'line': b'[ 40%] Built target vehicle_gps_position_listener\n'}
+[0.570029] (px4_ros_com) StdoutLine: {'line': b'[ 40%] Built target debug_vect_advertiser\n'}
+[0.586320] (px4_ros_com) StdoutLine: {'line': b'[ 50%] Built target offboard_control\n'}
+[0.587641] (px4_ros_com) StdoutLine: {'line': b'[ 60%] Built target offboard_control_srv\n'}
+[0.589074] (px4_ros_com) StdoutLine: {'line': b'[ 70%] Built target offboard_control_thrust_torque\n'}
+[0.595585] (px4_ros_com) StdoutLine: {'line': b'[ 75%] Built target ament_cmake_python_symlink_px4_ros_com\n'}
+[0.596247] (px4_ros_com) StdoutLine: {'line': b'[ 80%] Built target offboard_control_spin_lsq\n'}
+[0.596475] (px4_ros_com) StdoutLine: {'line': b'[ 90%] Built target offboard_control_tilt_axis\n'}
+[0.602239] (-) TimerEvent: {}
+[0.613997] (px4_ros_com) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding CXX object CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o\x1b[0m\n'}
+[0.702361] (-) TimerEvent: {}
+[0.802921] (-) TimerEvent: {}
+[0.903599] (-) TimerEvent: {}
+[1.004227] (-) TimerEvent: {}
+[1.105591] (-) TimerEvent: {}
+[1.180705] (px4_ros_com) StdoutLine: {'line': b'running egg_info\n'}
+[1.206135] (-) TimerEvent: {}
+[1.238471] (px4_ros_com) StdoutLine: {'line': b'writing px4_ros_com.egg-info/PKG-INFO\n'}
+[1.240596] (px4_ros_com) StdoutLine: {'line': b'writing dependency_links to px4_ros_com.egg-info/dependency_links.txt\n'}
+[1.241657] (px4_ros_com) StdoutLine: {'line': b'writing top-level names to px4_ros_com.egg-info/top_level.txt\n'}
+[1.306102] (-) TimerEvent: {}
+[1.382620] (px4_ros_com) StdoutLine: {'line': b"reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'\n"}
+[1.385890] (px4_ros_com) StdoutLine: {'line': b"writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'\n"}
+[1.406424] (-) TimerEvent: {}
+[1.507456] (px4_ros_com) StdoutLine: {'line': b'[ 95%] Built target ament_cmake_python_build_px4_ros_com_egg\n'}
+[1.508302] (-) TimerEvent: {}
+[1.609548] (-) TimerEvent: {}
+[1.710487] (-) TimerEvent: {}
+[1.811439] (-) TimerEvent: {}
+[1.912271] (-) TimerEvent: {}
+[2.013247] (-) TimerEvent: {}
+[2.114116] (-) TimerEvent: {}
+[2.215001] (-) TimerEvent: {}
+[2.315712] (-) TimerEvent: {}
+[2.416280] (-) TimerEvent: {}
+[2.516918] (-) TimerEvent: {}
+[2.617821] (-) TimerEvent: {}
+[2.718699] (-) TimerEvent: {}
+[2.819671] (-) TimerEvent: {}
+[2.920844] (-) TimerEvent: {}
+[3.021619] (-) TimerEvent: {}
+[3.122684] (-) TimerEvent: {}
+[3.224354] (-) TimerEvent: {}
+[3.324995] (-) TimerEvent: {}
+[3.425613] (-) TimerEvent: {}
+[3.526143] (-) TimerEvent: {}
+[3.626725] (-) TimerEvent: {}
+[3.727464] (-) TimerEvent: {}
+[3.828492] (-) TimerEvent: {}
+[3.929593] (-) TimerEvent: {}
+[4.030630] (-) TimerEvent: {}
+[4.131579] (-) TimerEvent: {}
+[4.232386] (-) TimerEvent: {}
+[4.333492] (-) TimerEvent: {}
+[4.434066] (-) TimerEvent: {}
+[4.534735] (-) TimerEvent: {}
+[4.635533] (-) TimerEvent: {}
+[4.736189] (-) TimerEvent: {}
+[4.836893] (-) TimerEvent: {}
+[4.937856] (-) TimerEvent: {}
+[5.038678] (-) TimerEvent: {}
+[5.139380] (-) TimerEvent: {}
+[5.240072] (-) TimerEvent: {}
+[5.340763] (-) TimerEvent: {}
+[5.441331] (-) TimerEvent: {}
+[5.541929] (-) TimerEvent: {}
+[5.642586] (-) TimerEvent: {}
+[5.743192] (-) TimerEvent: {}
+[5.843781] (-) TimerEvent: {}
+[5.944295] (-) TimerEvent: {}
+[6.044808] (-) TimerEvent: {}
+[6.145369] (-) TimerEvent: {}
+[6.245872] (-) TimerEvent: {}
+[6.346363] (-) TimerEvent: {}
+[6.447012] (-) TimerEvent: {}
+[6.548003] (-) TimerEvent: {}
+[6.649185] (-) TimerEvent: {}
+[6.749974] (-) TimerEvent: {}
+[6.851002] (-) TimerEvent: {}
+[6.952412] (-) TimerEvent: {}
+[7.053089] (-) TimerEvent: {}
+[7.153784] (-) TimerEvent: {}
+[7.254565] (-) TimerEvent: {}
+[7.355203] (-) TimerEvent: {}
+[7.455714] (-) TimerEvent: {}
+[7.556259] (-) TimerEvent: {}
+[7.656947] (-) TimerEvent: {}
+[7.757595] (-) TimerEvent: {}
+[7.858282] (-) TimerEvent: {}
+[7.958813] (-) TimerEvent: {}
+[8.059472] (-) TimerEvent: {}
+[8.160199] (-) TimerEvent: {}
+[8.261054] (-) TimerEvent: {}
+[8.361582] (-) TimerEvent: {}
+[8.462140] (-) TimerEvent: {}
+[8.562697] (-) TimerEvent: {}
+[8.663365] (-) TimerEvent: {}
+[8.768401] (-) TimerEvent: {}
+[8.869281] (-) TimerEvent: {}
+[8.970318] (-) TimerEvent: {}
+[9.071019] (-) TimerEvent: {}
+[9.171659] (-) TimerEvent: {}
+[9.272293] (-) TimerEvent: {}
+[9.372809] (-) TimerEvent: {}
+[9.473401] (-) TimerEvent: {}
+[9.574041] (-) TimerEvent: {}
+[9.674842] (-) TimerEvent: {}
+[9.775407] (-) TimerEvent: {}
+[9.876061] (-) TimerEvent: {}
+[9.977086] (-) TimerEvent: {}
+[10.078504] (-) TimerEvent: {}
+[10.179555] (-) TimerEvent: {}
+[10.280252] (-) TimerEvent: {}
+[10.380921] (-) TimerEvent: {}
+[10.481575] (-) TimerEvent: {}
+[10.582374] (-) TimerEvent: {}
+[10.683425] (-) TimerEvent: {}
+[10.784738] (-) TimerEvent: {}
+[10.885834] (-) TimerEvent: {}
+[10.987867] (-) TimerEvent: {}
+[11.088740] (-) TimerEvent: {}
+[11.189465] (-) TimerEvent: {}
+[11.291297] (-) TimerEvent: {}
+[11.392198] (-) TimerEvent: {}
+[11.492834] (-) TimerEvent: {}
+[11.593599] (-) TimerEvent: {}
+[11.694472] (-) TimerEvent: {}
+[11.795269] (-) TimerEvent: {}
+[11.895869] (-) TimerEvent: {}
+[11.996517] (-) TimerEvent: {}
+[12.097287] (-) TimerEvent: {}
+[12.197874] (-) TimerEvent: {}
+[12.298517] (-) TimerEvent: {}
+[12.399503] (-) TimerEvent: {}
+[12.500283] (-) TimerEvent: {}
+[12.601208] (-) TimerEvent: {}
+[12.701960] (-) TimerEvent: {}
+[12.802636] (-) TimerEvent: {}
+[12.903740] (-) TimerEvent: {}
+[13.004528] (-) TimerEvent: {}
+[13.105443] (-) TimerEvent: {}
+[13.206467] (-) TimerEvent: {}
+[13.307480] (-) TimerEvent: {}
+[13.408234] (-) TimerEvent: {}
+[13.509125] (-) TimerEvent: {}
+[13.609964] (-) TimerEvent: {}
+[13.710692] (-) TimerEvent: {}
+[13.811490] (-) TimerEvent: {}
+[13.912391] (-) TimerEvent: {}
+[14.013379] (-) TimerEvent: {}
+[14.114365] (-) TimerEvent: {}
+[14.215536] (-) TimerEvent: {}
+[14.316192] (-) TimerEvent: {}
+[14.417024] (-) TimerEvent: {}
+[14.517691] (-) TimerEvent: {}
+[14.618592] (-) TimerEvent: {}
+[14.620570] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid OffboardControl::controller_outerloop(double)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[14.622310] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:701:54:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kleft operand of comma operator has no effect [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value\x07-Wunused-value\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[14.622436] (px4_ros_com) StderrLine: {'line': b'  701 |     Eigen::Vector3d a_des_body = R_bw.transpose() * (\x1b[01;35m\x1b[K0\x1b[m\x1b[K , 0 , -2*g_);\n'}
+[14.622518] (px4_ros_com) StderrLine: {'line': b'      |                                                      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[14.622676] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:701:65:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kright operand of comma operator has no effect [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-value\x07-Wunused-value\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[14.622761] (px4_ros_com) StderrLine: {'line': b'  701 |     Eigen::Vector3d a_des_body = R_bw.transpose() * (0 , 0 , -2*\x1b[01;35m\x1b[Kg_\x1b[m\x1b[K);\n'}
+[14.622828] (px4_ros_com) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[14.718971] (-) TimerEvent: {}
+[14.819704] (-) TimerEvent: {}
+[14.920303] (-) TimerEvent: {}
+[15.020815] (-) TimerEvent: {}
+[15.121343] (-) TimerEvent: {}
+[15.221780] (-) TimerEvent: {}
+[15.322270] (-) TimerEvent: {}
+[15.422893] (-) TimerEvent: {}
+[15.523509] (-) TimerEvent: {}
+[15.624281] (-) TimerEvent: {}
+[15.724964] (-) TimerEvent: {}
+[15.825943] (-) TimerEvent: {}
+[15.926452] (-) TimerEvent: {}
+[16.026978] (-) TimerEvent: {}
+[16.127571] (-) TimerEvent: {}
+[16.228031] (-) TimerEvent: {}
+[16.329022] (-) TimerEvent: {}
+[16.429967] (-) TimerEvent: {}
+[16.530947] (-) TimerEvent: {}
+[16.631865] (-) TimerEvent: {}
+[16.732631] (-) TimerEvent: {}
+[16.833339] (-) TimerEvent: {}
+[16.934054] (-) TimerEvent: {}
+[17.034626] (-) TimerEvent: {}
+[17.135221] (-) TimerEvent: {}
+[17.236286] (-) TimerEvent: {}
+[17.337807] (-) TimerEvent: {}
+[17.438658] (-) TimerEvent: {}
+[17.539312] (-) TimerEvent: {}
+[17.639867] (-) TimerEvent: {}
+[17.740478] (-) TimerEvent: {}
+[17.841339] (-) TimerEvent: {}
+[17.942191] (-) TimerEvent: {}
+[18.042958] (-) TimerEvent: {}
+[18.143879] (-) TimerEvent: {}
+[18.244786] (-) TimerEvent: {}
+[18.345760] (-) TimerEvent: {}
+[18.446610] (-) TimerEvent: {}
+[18.547411] (-) TimerEvent: {}
+[18.648282] (-) TimerEvent: {}
+[18.749262] (-) TimerEvent: {}
+[18.849957] (-) TimerEvent: {}
+[18.950585] (-) TimerEvent: {}
+[19.051817] (-) TimerEvent: {}
+[19.152423] (-) TimerEvent: {}
+[19.253028] (-) TimerEvent: {}
+[19.354032] (-) TimerEvent: {}
+[19.455233] (-) TimerEvent: {}
+[19.556049] (-) TimerEvent: {}
+[19.656659] (-) TimerEvent: {}
+[19.757927] (-) TimerEvent: {}
+[19.858800] (-) TimerEvent: {}
+[19.960045] (-) TimerEvent: {}
+[20.061458] (-) TimerEvent: {}
+[20.162486] (-) TimerEvent: {}
+[20.263862] (-) TimerEvent: {}
+[20.364760] (-) TimerEvent: {}
+[20.465601] (-) TimerEvent: {}
+[20.566665] (-) TimerEvent: {}
+[20.668109] (-) TimerEvent: {}
+[20.768839] (-) TimerEvent: {}
+[20.869802] (-) TimerEvent: {}
+[20.970633] (-) TimerEvent: {}
+[21.071206] (-) TimerEvent: {}
+[21.171855] (-) TimerEvent: {}
+[21.272636] (-) TimerEvent: {}
+[21.373199] (-) TimerEvent: {}
+[21.459893] (px4_ros_com) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Core:164\x1b[m\x1b[K,\n'}
+[21.461080] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/eigen3/Eigen/Dense:1\x1b[m\x1b[K,\n'}
+[21.461257] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:61\x1b[m\x1b[K:\n'}
+[21.461411] (px4_ros_com) StderrLine: {'line': b'/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid Eigen::internal::call_assignment_no_alias(Dst&, const Src&, const Func&) [with Dst = Eigen::Matrix<double, 3, 1>; Src = Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >; Func = Eigen::internal::assign_op<double, double>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[21.461692] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h:797:41:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[KDerived& Eigen::PlainObjectBase<Derived>::_set_noalias(const Eigen::DenseBase<OtherDerived>&) [with OtherDerived = Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >; Derived = Eigen::Matrix<double, 3, 1>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.461884] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h:594:19:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[KEigen::PlainObjectBase<Derived>::PlainObjectBase(const Eigen::DenseBase<OtherDerived>&) [with OtherDerived = Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >; Derived = Eigen::Matrix<double, 3, 1>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.462052] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/Matrix.h:423:29:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[KEigen::Matrix<_Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols>::Matrix(const Eigen::EigenBase<OtherDerived>&) [with OtherDerived = Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >; _Scalar = double; int _Rows = 3; int _Cols = 1; int _Options = 0; int _MaxRows = 3; int _MaxCols = 1]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.462206] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:701:67:\x1b[m\x1b[K   required from here\n'}
+[21.462427] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h:177:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kstatic assertion failed: YOU_MIXED_MATRICES_OF_DIFFERENT_SIZES\n'}
+[21.462568] (px4_ros_com) StderrLine: {'line': b'  175 |      \x1b[01;31m\x1b[K( \\\x1b[m\x1b[K\n'}
+[21.462754] (px4_ros_com) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K~~~\x1b[m\x1b[K\n'}
+[21.463018] (px4_ros_com) StderrLine: {'line': b'  176 | \x1b[01;31m\x1b[K        (int(Eigen::internal::size_of_xpr_at_compile_time<TYPE0>::ret)==0 && int(Eigen::internal::size_of_xpr_at_compile_time<TYPE1>::ret)==0) \\\x1b[m\x1b[K\n'}
+[21.463340] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.463536] (px4_ros_com) StderrLine: {'line': b'  177 | \x1b[01;31m\x1b[K    || (\\\x1b[m\x1b[K\n'}
+[21.463644] (px4_ros_com) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[21.463792] (px4_ros_com) StderrLine: {'line': b'  178 | \x1b[01;31m\x1b[K          (int(TYPE0::RowsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.463959] (px4_ros_com) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.464068] (px4_ros_com) StderrLine: {'line': b'  179 | \x1b[01;31m\x1b[K        || int(TYPE1::RowsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.464183] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.464378] (px4_ros_com) StderrLine: {'line': b'  180 | \x1b[01;31m\x1b[K        || int(TYPE0::RowsAtCompileTime)==int(TYPE1::RowsAtCompileTime)) \\\x1b[m\x1b[K\n'}
+[21.464540] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.464655] (px4_ros_com) StderrLine: {'line': b'  181 | \x1b[01;31m\x1b[K      &&  (int(TYPE0::ColsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.464806] (px4_ros_com) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.464960] (px4_ros_com) StderrLine: {'line': b'  182 | \x1b[01;31m\x1b[K        || int(TYPE1::ColsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.465093] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.465228] (px4_ros_com) StderrLine: {'line': b'  183 | \x1b[01;31m\x1b[K        || int(TYPE0::ColsAtCompileTime)==int(TYPE1::ColsAtCompileTime))\\\x1b[m\x1b[K\n'}
+[21.465521] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.465790] (px4_ros_com) StderrLine: {'line': b'  184 | \x1b[01;31m\x1b[K       ) \\\x1b[m\x1b[K\n'}
+[21.465986] (px4_ros_com) StderrLine: {'line': b'      |        \x1b[01;31m\x1b[K~~~\x1b[m\x1b[K\n'}
+[21.466129] (px4_ros_com) StderrLine: {'line': b'  185 | \x1b[01;31m\x1b[K     )\x1b[m\x1b[K\n'}
+[21.466297] (px4_ros_com) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K~\x1b[m\x1b[K\n'}
+[21.466592] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h:33:54:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin definition of macro \xe2\x80\x98\x1b[01m\x1b[KEIGEN_STATIC_ASSERT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.466803] (px4_ros_com) StderrLine: {'line': b'   33 |     #define EIGEN_STATIC_ASSERT(X,MSG) static_assert(\x1b[01;36m\x1b[KX\x1b[m\x1b[K,#MSG);\n'}
+[21.467150] (px4_ros_com) StderrLine: {'line': b'      |                                                      \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[21.467481] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h:194:6:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KEIGEN_PREDICATE_SAME_MATRIX_SIZE\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.467724] (px4_ros_com) StderrLine: {'line': b'  194 |      \x1b[01;36m\x1b[KEIGEN_PREDICATE_SAME_MATRIX_SIZE\x1b[m\x1b[K(TYPE0,TYPE1),\\\n'}
+[21.467932] (px4_ros_com) StderrLine: {'line': b'      |      \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.468035] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:887:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KEIGEN_STATIC_ASSERT_SAME_MATRIX_SIZE\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.468206] (px4_ros_com) StderrLine: {'line': b'  887 |   \x1b[01;36m\x1b[KEIGEN_STATIC_ASSERT_SAME_MATRIX_SIZE\x1b[m\x1b[K(ActualDstTypeCleaned,Src)\n'}
+[21.468626] (px4_ros_com) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.468835] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h:177:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[K(((((int)Eigen::internal::size_of_xpr_at_compile_time<Eigen::Matrix<double, 3, 1> >::ret) == 0) && (((int)Eigen::internal::size_of_xpr_at_compile_time<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > > >::ret) == 0)) || ((((((int)Eigen::Matrix<double, 3, 1>::RowsAtCompileTime) == ((int)Eigen::Dynamic)) || (((int)Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >::RowsAtCompileTime) == ((int)Eigen::Dynamic))) || (((int)Eigen::Matrix<double, 3, 1>::RowsAtCompileTime) == ((int)Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >::RowsAtCompileTime))) && (((((int)Eigen::Matrix<double, 3, 1>::ColsAtCompileTime) == ((int)Eigen::Dynamic)) || (((int)Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >::ColsAtCompileTime) == ((int)Eigen::Dynamic))) || (((int)Eigen::Matrix<double, 3, 1>::ColsAtCompileTime) == ((int)Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double, double>, const Eigen::Transpose<Eigen::Matrix<double, 3, 3> >, const Eigen::CwiseNullaryOp<Eigen::internal::scalar_constant_op<double>, const Eigen::Matrix<double, 3, 3, 1, 3, 3> > >::ColsAtCompileTime)))))\x1b[m\x1b[K\xe2\x80\x99 evaluates to false\n'}
+[21.469190] (px4_ros_com) StderrLine: {'line': b'  175 |      \x1b[01;36m\x1b[K( \\\x1b[m\x1b[K\n'}
+[21.469709] (px4_ros_com) StderrLine: {'line': b'      |      \x1b[01;36m\x1b[K~~~\x1b[m\x1b[K\n'}
+[21.470340] (px4_ros_com) StderrLine: {'line': b'  176 | \x1b[01;36m\x1b[K        (int(Eigen::internal::size_of_xpr_at_compile_time<TYPE0>::ret)==0 && int(Eigen::internal::size_of_xpr_at_compile_time<TYPE1>::ret)==0) \\\x1b[m\x1b[K\n'}
+[21.470858] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.471116] (px4_ros_com) StderrLine: {'line': b'  177 | \x1b[01;36m\x1b[K    || (\\\x1b[m\x1b[K\n'}
+[21.471448] (px4_ros_com) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[21.471664] (px4_ros_com) StderrLine: {'line': b'  178 | \x1b[01;36m\x1b[K          (int(TYPE0::RowsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.471809] (px4_ros_com) StderrLine: {'line': b'      |           \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.471952] (px4_ros_com) StderrLine: {'line': b'  179 | \x1b[01;36m\x1b[K        || int(TYPE1::RowsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.472143] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.472356] (px4_ros_com) StderrLine: {'line': b'  180 | \x1b[01;36m\x1b[K        || int(TYPE0::RowsAtCompileTime)==int(TYPE1::RowsAtCompileTime)) \\\x1b[m\x1b[K\n'}
+[21.472523] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.472769] (px4_ros_com) StderrLine: {'line': b'  181 | \x1b[01;36m\x1b[K      &&  (int(TYPE0::ColsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.472982] (px4_ros_com) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.473214] (-) TimerEvent: {}
+[21.473718] (px4_ros_com) StderrLine: {'line': b'  182 | \x1b[01;36m\x1b[K        || int(TYPE1::ColsAtCompileTime)==Eigen::Dynamic \\\x1b[m\x1b[K\n'}
+[21.474088] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.474401] (px4_ros_com) StderrLine: {'line': b'  183 | \x1b[01;36m\x1b[K        || int(TYPE0::ColsAtCompileTime)==int(TYPE1::ColsAtCompileTime))\\\x1b[m\x1b[K\n'}
+[21.474710] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.474844] (px4_ros_com) StderrLine: {'line': b'  184 | \x1b[01;36m\x1b[K       ) \\\x1b[m\x1b[K\n'}
+[21.474946] (px4_ros_com) StderrLine: {'line': b'      |        \x1b[01;36m\x1b[K~~~\x1b[m\x1b[K\n'}
+[21.475042] (px4_ros_com) StderrLine: {'line': b'  185 | \x1b[01;36m\x1b[K     )\x1b[m\x1b[K\n'}
+[21.475461] (px4_ros_com) StderrLine: {'line': b'      |      \x1b[01;36m\x1b[K~\x1b[m\x1b[K\n'}
+[21.475591] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h:33:54:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin definition of macro \xe2\x80\x98\x1b[01m\x1b[KEIGEN_STATIC_ASSERT\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.475691] (px4_ros_com) StderrLine: {'line': b'   33 |     #define EIGEN_STATIC_ASSERT(X,MSG) static_assert(\x1b[01;36m\x1b[KX\x1b[m\x1b[K,#MSG);\n'}
+[21.475780] (px4_ros_com) StderrLine: {'line': b'      |                                                      \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[21.475855] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h:194:6:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KEIGEN_PREDICATE_SAME_MATRIX_SIZE\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.476072] (px4_ros_com) StderrLine: {'line': b'  194 |      \x1b[01;36m\x1b[KEIGEN_PREDICATE_SAME_MATRIX_SIZE\x1b[m\x1b[K(TYPE0,TYPE1),\\\n'}
+[21.476174] (px4_ros_com) StderrLine: {'line': b'      |      \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.476255] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h:887:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kin expansion of macro \xe2\x80\x98\x1b[01m\x1b[KEIGEN_STATIC_ASSERT_SAME_MATRIX_SIZE\x1b[m\x1b[K\xe2\x80\x99\n'}
+[21.476344] (px4_ros_com) StderrLine: {'line': b'  887 |   \x1b[01;36m\x1b[KEIGEN_STATIC_ASSERT_SAME_MATRIX_SIZE\x1b[m\x1b[K(ActualDstTypeCleaned,Src)\n'}
+[21.476511] (px4_ros_com) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[21.573872] (-) TimerEvent: {}
+[21.674910] (-) TimerEvent: {}
+[21.775823] (-) TimerEvent: {}
+[21.876519] (-) TimerEvent: {}
+[21.977155] (-) TimerEvent: {}
+[22.077747] (-) TimerEvent: {}
+[22.178626] (-) TimerEvent: {}
+[22.279682] (-) TimerEvent: {}
+[22.380418] (-) TimerEvent: {}
+[22.481506] (-) TimerEvent: {}
+[22.582312] (-) TimerEvent: {}
+[22.684025] (-) TimerEvent: {}
+[22.784613] (-) TimerEvent: {}
+[22.885213] (-) TimerEvent: {}
+[22.985735] (-) TimerEvent: {}
+[23.086267] (-) TimerEvent: {}
+[23.186837] (-) TimerEvent: {}
+[23.287480] (-) TimerEvent: {}
+[23.388068] (-) TimerEvent: {}
+[23.488766] (-) TimerEvent: {}
+[23.589496] (-) TimerEvent: {}
+[23.690189] (-) TimerEvent: {}
+[23.790858] (-) TimerEvent: {}
+[23.891450] (-) TimerEvent: {}
+[23.992063] (-) TimerEvent: {}
+[24.092734] (-) TimerEvent: {}
+[24.193781] (-) TimerEvent: {}
+[24.294395] (-) TimerEvent: {}
+[24.395094] (-) TimerEvent: {}
+[24.495864] (-) TimerEvent: {}
+[24.596599] (-) TimerEvent: {}
+[24.697423] (-) TimerEvent: {}
+[24.798064] (-) TimerEvent: {}
+[24.899537] (-) TimerEvent: {}
+[25.000576] (-) TimerEvent: {}
+[25.101618] (-) TimerEvent: {}
+[25.202607] (-) TimerEvent: {}
+[25.303333] (-) TimerEvent: {}
+[25.404126] (-) TimerEvent: {}
+[25.504986] (-) TimerEvent: {}
+[25.606316] (-) TimerEvent: {}
+[25.707403] (-) TimerEvent: {}
+[25.808534] (-) TimerEvent: {}
+[25.909621] (-) TimerEvent: {}
+[26.010572] (-) TimerEvent: {}
+[26.111485] (-) TimerEvent: {}
+[26.212580] (-) TimerEvent: {}
+[26.313248] (-) TimerEvent: {}
+[26.414172] (-) TimerEvent: {}
+[26.515338] (-) TimerEvent: {}
+[26.617426] (-) TimerEvent: {}
+[26.718743] (-) TimerEvent: {}
+[26.819584] (-) TimerEvent: {}
+[26.920486] (-) TimerEvent: {}
+[27.021323] (-) TimerEvent: {}
+[27.122234] (-) TimerEvent: {}
+[27.222877] (-) TimerEvent: {}
+[27.323568] (-) TimerEvent: {}
+[27.424308] (-) TimerEvent: {}
+[27.524975] (-) TimerEvent: {}
+[27.625707] (-) TimerEvent: {}
+[27.726277] (-) TimerEvent: {}
+[27.826869] (-) TimerEvent: {}
+[27.927621] (-) TimerEvent: {}
+[28.028840] (-) TimerEvent: {}
+[28.129693] (-) TimerEvent: {}
+[28.230306] (-) TimerEvent: {}
+[28.331341] (-) TimerEvent: {}
+[28.432352] (-) TimerEvent: {}
+[28.532913] (-) TimerEvent: {}
+[28.633441] (-) TimerEvent: {}
+[28.734183] (-) TimerEvent: {}
+[28.834769] (-) TimerEvent: {}
+[28.935512] (-) TimerEvent: {}
+[29.036583] (-) TimerEvent: {}
+[29.137466] (-) TimerEvent: {}
+[29.238083] (-) TimerEvent: {}
+[29.338758] (-) TimerEvent: {}
+[29.439593] (-) TimerEvent: {}
+[29.540215] (-) TimerEvent: {}
+[29.640856] (-) TimerEvent: {}
+[29.741408] (-) TimerEvent: {}
+[29.841976] (-) TimerEvent: {}
+[29.942484] (-) TimerEvent: {}
+[30.043103] (-) TimerEvent: {}
+[30.143676] (-) TimerEvent: {}
+[30.244326] (-) TimerEvent: {}
+[30.345153] (-) TimerEvent: {}
+[30.446094] (-) TimerEvent: {}
+[30.546784] (-) TimerEvent: {}
+[30.647940] (-) TimerEvent: {}
+[30.748983] (-) TimerEvent: {}
+[30.849925] (-) TimerEvent: {}
+[30.950753] (-) TimerEvent: {}
+[31.051415] (-) TimerEvent: {}
+[31.151960] (-) TimerEvent: {}
+[31.252614] (-) TimerEvent: {}
+[31.353360] (-) TimerEvent: {}
+[31.454312] (-) TimerEvent: {}
+[31.555156] (-) TimerEvent: {}
+[31.656032] (-) TimerEvent: {}
+[31.757332] (-) TimerEvent: {}
+[31.858364] (-) TimerEvent: {}
+[31.959364] (-) TimerEvent: {}
+[32.060282] (-) TimerEvent: {}
+[32.161014] (-) TimerEvent: {}
+[32.261599] (-) TimerEvent: {}
+[32.362298] (-) TimerEvent: {}
+[32.462849] (-) TimerEvent: {}
+[32.563560] (-) TimerEvent: {}
+[32.664236] (-) TimerEvent: {}
+[32.765236] (-) TimerEvent: {}
+[32.865863] (-) TimerEvent: {}
+[32.966475] (-) TimerEvent: {}
+[33.066958] (-) TimerEvent: {}
+[33.167568] (-) TimerEvent: {}
+[33.268343] (-) TimerEvent: {}
+[33.369614] (-) TimerEvent: {}
+[33.470650] (-) TimerEvent: {}
+[33.571425] (-) TimerEvent: {}
+[33.672083] (-) TimerEvent: {}
+[33.772679] (-) TimerEvent: {}
+[33.873364] (-) TimerEvent: {}
+[33.973876] (-) TimerEvent: {}
+[34.074691] (-) TimerEvent: {}
+[34.175276] (-) TimerEvent: {}
+[34.276506] (-) TimerEvent: {}
+[34.377676] (-) TimerEvent: {}
+[34.479214] (-) TimerEvent: {}
+[34.579855] (-) TimerEvent: {}
+[34.680939] (-) TimerEvent: {}
+[34.781835] (-) TimerEvent: {}
+[34.882483] (-) TimerEvent: {}
+[34.983155] (-) TimerEvent: {}
+[35.083885] (-) TimerEvent: {}
+[35.184772] (-) TimerEvent: {}
+[35.285544] (-) TimerEvent: {}
+[35.386332] (-) TimerEvent: {}
+[35.487121] (-) TimerEvent: {}
+[35.587627] (-) TimerEvent: {}
+[35.688207] (-) TimerEvent: {}
+[35.788808] (-) TimerEvent: {}
+[35.889750] (-) TimerEvent: {}
+[35.990596] (-) TimerEvent: {}
+[36.091159] (-) TimerEvent: {}
+[36.191740] (-) TimerEvent: {}
+[36.292776] (-) TimerEvent: {}
+[36.393673] (-) TimerEvent: {}
+[36.494317] (-) TimerEvent: {}
+[36.595122] (-) TimerEvent: {}
+[36.696329] (-) TimerEvent: {}
+[36.796987] (-) TimerEvent: {}
+[36.897612] (-) TimerEvent: {}
+[36.998392] (-) TimerEvent: {}
+[37.099280] (-) TimerEvent: {}
+[37.200179] (-) TimerEvent: {}
+[37.301054] (-) TimerEvent: {}
+[37.402053] (-) TimerEvent: {}
+[37.503414] (-) TimerEvent: {}
+[37.604366] (-) TimerEvent: {}
+[37.705344] (-) TimerEvent: {}
+[37.806379] (-) TimerEvent: {}
+[37.907209] (-) TimerEvent: {}
+[38.007829] (-) TimerEvent: {}
+[38.108508] (-) TimerEvent: {}
+[38.209185] (-) TimerEvent: {}
+[38.310054] (-) TimerEvent: {}
+[38.410590] (-) TimerEvent: {}
+[38.511221] (-) TimerEvent: {}
+[38.611943] (-) TimerEvent: {}
+[38.713125] (-) TimerEvent: {}
+[38.814132] (-) TimerEvent: {}
+[38.914880] (-) TimerEvent: {}
+[39.015931] (-) TimerEvent: {}
+[39.116557] (-) TimerEvent: {}
+[39.217147] (-) TimerEvent: {}
+[39.317916] (-) TimerEvent: {}
+[39.418775] (-) TimerEvent: {}
+[39.519389] (-) TimerEvent: {}
+[39.620172] (-) TimerEvent: {}
+[39.721135] (-) TimerEvent: {}
+[39.821946] (-) TimerEvent: {}
+[39.923412] (-) TimerEvent: {}
+[40.024585] (-) TimerEvent: {}
+[40.125447] (-) TimerEvent: {}
+[40.225964] (-) TimerEvent: {}
+[40.326527] (-) TimerEvent: {}
+[40.427277] (-) TimerEvent: {}
+[40.528011] (-) TimerEvent: {}
+[40.628619] (-) TimerEvent: {}
+[40.729310] (-) TimerEvent: {}
+[40.830213] (-) TimerEvent: {}
+[40.931290] (-) TimerEvent: {}
+[41.031848] (-) TimerEvent: {}
+[41.132771] (-) TimerEvent: {}
+[41.233614] (-) TimerEvent: {}
+[41.334301] (-) TimerEvent: {}
+[41.435169] (-) TimerEvent: {}
+[41.536140] (-) TimerEvent: {}
+[41.636760] (-) TimerEvent: {}
+[41.737411] (-) TimerEvent: {}
+[41.739658] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid OffboardControl::generate_plots()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[41.740316] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:503:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Kint system(const char*)\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[41.740482] (px4_ros_com) StderrLine: {'line': b'  503 |         \x1b[01;35m\x1b[Ksystem("chmod +x /home/pyro/ws_offboard_control/flight_data/scripts/generate_plots.py")\x1b[m\x1b[K;\n'}
+[41.740646] (px4_ros_com) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[41.752724] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid OffboardControl::initializeController()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[41.753189] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1152:11:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Kint system(const char*)\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[41.753406] (px4_ros_com) StderrLine: {'line': b' 1152 |     \x1b[01;35m\x1b[Ksystem("mkdir -p /home/pyro/ws_offboard_control/flight_data/config")\x1b[m\x1b[K;\n'}
+[41.753495] (px4_ros_com) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[41.837631] (-) TimerEvent: {}
+[41.938412] (-) TimerEvent: {}
+[42.039170] (-) TimerEvent: {}
+[42.140089] (-) TimerEvent: {}
+[42.240659] (-) TimerEvent: {}
+[42.341170] (-) TimerEvent: {}
+[42.357980] (px4_ros_com) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1\n'}
+[42.361328] (px4_ros_com) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2\n'}
+[42.362426] (px4_ros_com) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[42.374053] (px4_ros_com) CommandEnded: {'returncode': 2}
+[42.416468] (px4_ros_com) JobEnded: {'identifier': 'px4_ros_com', 'rc': 2}
+[42.428154] (-) EventReactorShutdown: {}

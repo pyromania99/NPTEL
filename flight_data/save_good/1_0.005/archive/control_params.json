@@ -1,0 +1,39 @@
+{
+  "attitude": {
+    "kp": 4.895022075365837,
+    "kd": 1.1638567021515214
+  },
+  "ndi_rate": {
+    "kp": 0.060378091268637094,
+    "kd": 0.026238733012919464
+  },
+  "feedback_rate": {
+    "kp": 0.07997219434305113,
+    "kd": 0.0009333132642723087
+  },
+  "position_xy": {
+    "kp_x": 0.55,
+    "kp_y": 0.55,
+    "kd_x": 1.1,
+    "kd_y": 1.1,
+    "ki_x": 0.03,
+    "ki_y": 0.03
+  },
+  "position_z": {
+    "kp": 20.0,
+    "kd": 20.0,
+    "ki": 1.0
+  },
+  "limits": {
+    "max_horz_acc": 3.0,
+    "max_tilt_angle": 0.7
+  },
+  "_comments": {
+    "attitude": "Attitude loop gains - convert attitude errors to desired body rates",
+    "ndi_rate": "NDI rate controller - main rate control (inverse dynamics)",
+    "feedback_rate": "Feedback correction - residual rate feedback for robustness",
+    "position_xy": "Horizontal position control gains",
+    "position_z": "Vertical position control gains",
+    "limits": "Safety limits for accelerations and tilt angles"
+  }
+}

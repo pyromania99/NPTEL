@@ -1,0 +1,41 @@
+[0.431s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.559s] [35m[1mConsolidate compiler generated dependencies of target offboard_control[0m
+[0.597s] [ 33%] Built target vehicle_gps_position_listener
+[0.597s] [ 33%] Built target frame_transforms
+[0.600s] [ 58%] Built target debug_vect_advertiser
+[0.601s] [ 66%] Built target sensor_combined_listener
+[0.611s] [ 83%] Built target offboard_control_srv
+[0.621s] [ 83%] Built target ament_cmake_python_copy_px4_ros_com
+[0.623s] [100%] Built target offboard_control
+[0.984s] Traceback (most recent call last):
+[0.986s]   File "/home/pyro/ws_offboard_control/build/px4_ros_com/ament_cmake_python/px4_ros_com/setup.py", line 4, in <module>
+[0.986s]     setup(
+[0.987s]   File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 116, in setup
+[0.987s]     _install_setup_requires(attrs)
+[0.987s]   File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 84, in _install_setup_requires
+[0.988s]     dist = MinimalDistribution(attrs)
+[0.988s]   File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 66, in __init__
+[0.989s]     super().__init__(filtered)
+[0.989s]   File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/dist.py", line 317, in __init__
+[0.989s]     for ep in metadata.entry_points(group='distutils.setup_keywords'):
+[0.989s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 1021, in entry_points
+[0.989s]     return SelectableGroups.load(eps).select(**params)
+[0.990s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 459, in load
+[0.990s]     ordered = sorted(eps, key=by_group)
+[0.990s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 1019, in <genexpr>
+[0.990s]     dist.entry_points for dist in unique(distributions())
+[0.990s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 631, in entry_points
+[0.990s]     return EntryPoints._from_text_for(self.read_text('entry_points.txt'), self)
+[0.991s]   File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 927, in read_text
+[0.991s]     return self._path.joinpath(filename).read_text(encoding='utf-8')
+[0.991s]   File "/usr/lib/python3.10/pathlib.py", line 1134, in read_text
+[0.992s]     with self.open(mode='r', encoding=encoding, errors=errors) as f:
+[0.992s]   File "/usr/lib/python3.10/pathlib.py", line 1119, in open
+[0.992s]     return self._accessor.open(self, mode, buffering, encoding, errors,
+[0.993s]   File "/usr/lib/python3.10/codecs.py", line 309, in __init__
+[0.993s]     def __init__(self, errors='strict'):
+[0.993s] KeyboardInterrupt
+[1.058s] gmake[2]: *** [CMakeFiles/ament_cmake_python_build_px4_ros_com_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_px4_ros_com_egg] Interrupt
+[1.058s] gmake[1]: *** [CMakeFiles/Makefile2:332: CMakeFiles/ament_cmake_python_build_px4_ros_com_egg.dir/all] Interrupt
+[1.059s] gmake: *** [Makefile:146: all] Interrupt
+[1.065s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '-2': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16

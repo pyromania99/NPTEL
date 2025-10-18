@@ -1,0 +1,7 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::log_data(double)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:405:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct px4_msgs::msg::ControlAllocatorStatus_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct px4_msgs::msg::ControlAllocatorStatus_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ksaturation_status[m[K’
+  405 |             saturated = control_allocator_status_->[01;31m[Ksaturation_status[m[K > 0;
+      |                                                    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

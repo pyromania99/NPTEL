@@ -1,0 +1,48 @@
+[0.264s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.566s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_spin_tt[0m
+[0.614s] [ 10%] Built target frame_transforms
+[0.615s] [ 10%] Built target ament_cmake_python_copy_px4_ros_com
+[0.638s] [ 20%] Built target vehicle_gps_position_listener
+[0.639s] [ 30%] Built target debug_vect_advertiser
+[0.640s] [ 40%] Built target sensor_combined_listener
+[0.643s] [ 50%] Built target offboard_control
+[0.650s] [ 65%] Built target offboard_control_srv
+[0.651s] [ 65%] [32mBuilding CXX object CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o[0m
+[0.651s] [ 75%] Built target offboard_control_thrust_torque
+[0.661s] [ 95%] Built target offboard_control_spin_lsq
+[0.662s] [ 95%] Built target offboard_control_tilt_axis
+[1.166s] running egg_info
+[1.192s] writing px4_ros_com.egg-info/PKG-INFO
+[1.193s] writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+[1.194s] writing top-level names to px4_ros_com.egg-info/top_level.txt
+[1.307s] reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[1.310s] writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[1.410s] [ 95%] Built target ament_cmake_python_build_px4_ros_com_egg
+[9.560s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::log_data(double)[m[K’:
+[9.560s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:342:31:[m[K [01;31m[Kerror: [m[K‘[01m[Know_s[m[K’ was not declared in this scope; did you mean ‘[01m[Know[m[K’?
+[9.560s]   342 |             log_start_time_ = [01;31m[Know_s[m[K;
+[9.560s]       |                               [01;31m[K^~~~~[m[K
+[9.560s]       |                               [32m[Know[m[K
+[9.576s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:343:13:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_log_ts_[m[K’ was not declared in this scope
+[9.576s]   343 |             [01;31m[Klast_log_ts_[m[K = -1.0; // reset throttle to log immediately
+[9.576s]       |             [01;31m[K^~~~~~~~~~~~[m[K
+[10.196s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[10.196s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+[10.196s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+[10.196s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[10.196s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[10.196s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[10.196s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[10.196s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[10.197s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[10.197s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[10.197s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[10.197s]                  from [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:53[m[K:
+[10.197s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::initializeLogging()[m[K’:
+[10.197s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1452:104:[m[K [01;31m[Kerror: [m[K‘[01m[Klog_rate_hz_[m[K’ was not declared in this scope
+[10.197s]  1452 |         RCLCPP_INFO(this->get_logger(), "Memory-only logging initialized at ~%.0f Hz for performance", [01;31m[Klog_rate_hz_[m[K);
+[10.197s]       |                                                                                                        [01;31m[K^~~~~~~~~~~~[m[K
+[29.300s] gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+[29.301s] gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+[29.301s] gmake: *** [Makefile:146: all] Error 2
+[29.307s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '2': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16

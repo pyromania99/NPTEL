@@ -1,0 +1,12 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_outerloop(double)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:932:24:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_body_xy[m[K’ was not declared in this scope; did you mean ‘[01m[Ka_des_body[m[K’?
+  932 |         double delta = [01;31m[Ka_des_body_xy[m[K(i) - a_des_prev_xy_(i);
+      |                        [01;31m[K^~~~~~~~~~~~~[m[K
+      |                        [32m[Ka_des_body[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:936:22:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_body_xy[m[K’ was not declared in this scope; did you mean ‘[01m[Ka_des_body[m[K’?
+  936 |     a_des_prev_xy_ = [01;31m[Ka_des_body_xy[m[K;
+      |                      [01;31m[K^~~~~~~~~~~~~[m[K
+      |                      [32m[Ka_des_body[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

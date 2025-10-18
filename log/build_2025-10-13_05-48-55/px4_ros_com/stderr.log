@@ -1,0 +1,53 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:281:29:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kbool OffboardControl::indi_enabled_[m[K’
+  281 |     bool indi_enabled_{false[01;31m[K}[m[K;                 // Enable/disable INDI control (overridable via JSON)
+      |                             [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:270:10:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kbool OffboardControl::indi_enabled_[m[K’
+  270 |     bool [01;36m[Kindi_enabled_[m[K{false};                               // Enable/disable INDI control
+      |          [01;36m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:282:33:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kbool OffboardControl::indi_initialized_[m[K’
+  282 |     bool indi_initialized_{false[01;31m[K}[m[K;             // Internal init flag
+      |                                 [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:271:10:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kbool OffboardControl::indi_initialized_[m[K’
+  271 |     bool [01;36m[Kindi_initialized_[m[K{false};
+      |          [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:283:30:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kdouble OffboardControl::K_indi_scale_[m[K’
+  283 |     double K_indi_scale_{0.75[01;31m[K}[m[K;                // INDI gain (0.5-1.0)
+      |                              [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:269:12:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kdouble OffboardControl::K_indi_scale_[m[K’
+  269 |     double [01;36m[KK_indi_scale_[m[K{0.75};                              // INDI gain (0.5-1.0)
+      |            [01;36m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:284:50:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KEigen::Quaterniond OffboardControl::q_prev_[m[K’
+  284 |     Eigen::Quaterniond q_prev_{1.0, 0.0, 0.0, 0.0[01;31m[K}[m[K; // previous attitude quaternion
+      |                                                  [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:265:24:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KEigen::Quaterniond OffboardControl::q_prev_[m[K’
+  265 |     Eigen::Quaterniond [01;36m[Kq_prev_[m[K{1.0, 0.0, 0.0, 0.0};        // previous attitude quaternion
+      |                        [01;36m[K^~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:285:51:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KEigen::Vector3d OffboardControl::omega_filt_prev_[m[K’
+  285 |     Eigen::Vector3d omega_filt_prev_{0.0, 0.0, 0.0[01;31m[K}[m[K; // previous filtered omega
+      |                                                   [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:266:21:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KEigen::Vector3d OffboardControl::omega_filt_prev_[m[K’
+  266 |     Eigen::Vector3d [01;36m[Komega_filt_prev_[m[K{0.0, 0.0, 0.0};        // previous filtered omega
+      |                     [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:286:49:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KEigen::Vector3d OffboardControl::tau_prev_body_[m[K’
+  286 |     Eigen::Vector3d tau_prev_body_{0.0, 0.0, 0.0[01;31m[K}[m[K;   // previous torque command (body frame)
+      |                                                 [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:267:21:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KEigen::Vector3d OffboardControl::tau_prev_body_[m[K’
+  267 |     Eigen::Vector3d [01;36m[Ktau_prev_body_[m[K{0.0, 0.0, 0.0};          // previous torque command (body frame)
+      |                     [01;36m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:287:55:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KEigen::Vector3d OffboardControl::omega_dot_meas_filt_[m[K’
+  287 |     Eigen::Vector3d omega_dot_meas_filt_{0.0, 0.0, 0.0[01;31m[K}[m[K; // filtered measured angular acceleration
+      |                                                       [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:268:21:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[KEigen::Vector3d OffboardControl::omega_dot_meas_filt_[m[K’
+  268 |     Eigen::Vector3d [01;36m[Komega_dot_meas_filt_[m[K{0.0, 0.0, 0.0};    // filtered measured angular acceleration
+      |                     [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::generate_plots()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:521:15:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Kint system(const char*)[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+  521 |         [01;35m[Ksystem("chmod +x /home/pyro/ws_offboard_control/flight_data/scripts/generate_plots.py")[m[K;
+      |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::initializeController()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1260:11:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Kint system(const char*)[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+ 1260 |     [01;35m[Ksystem("mkdir -p /home/pyro/ws_offboard_control/flight_data/config")[m[K;
+      |     [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

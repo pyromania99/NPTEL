@@ -1,0 +1,39 @@
+[35m[1mConsolidate compiler generated dependencies of target offboard_control[0m
+[ 33%] Built target vehicle_gps_position_listener
+[ 33%] Built target frame_transforms
+[ 58%] Built target debug_vect_advertiser
+[ 66%] Built target sensor_combined_listener
+[ 83%] Built target offboard_control_srv
+[ 83%] Built target ament_cmake_python_copy_px4_ros_com
+[100%] Built target offboard_control
+Traceback (most recent call last):
+  File "/home/pyro/ws_offboard_control/build/px4_ros_com/ament_cmake_python/px4_ros_com/setup.py", line 4, in <module>
+    setup(
+  File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 116, in setup
+    _install_setup_requires(attrs)
+  File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 84, in _install_setup_requires
+    dist = MinimalDistribution(attrs)
+  File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 66, in __init__
+    super().__init__(filtered)
+  File "/home/pyro/.local/lib/python3.10/site-packages/setuptools/dist.py", line 317, in __init__
+    for ep in metadata.entry_points(group='distutils.setup_keywords'):
+  File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 1021, in entry_points
+    return SelectableGroups.load(eps).select(**params)
+  File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 459, in load
+    ordered = sorted(eps, key=by_group)
+  File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 1019, in <genexpr>
+    dist.entry_points for dist in unique(distributions())
+  File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 631, in entry_points
+    return EntryPoints._from_text_for(self.read_text('entry_points.txt'), self)
+  File "/usr/lib/python3.10/importlib/metadata/__init__.py", line 927, in read_text
+    return self._path.joinpath(filename).read_text(encoding='utf-8')
+  File "/usr/lib/python3.10/pathlib.py", line 1134, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/usr/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+  File "/usr/lib/python3.10/codecs.py", line 309, in __init__
+    def __init__(self, errors='strict'):
+KeyboardInterrupt
+gmake[2]: *** [CMakeFiles/ament_cmake_python_build_px4_ros_com_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_px4_ros_com_egg] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:332: CMakeFiles/ament_cmake_python_build_px4_ros_com_egg.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

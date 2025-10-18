@@ -1,0 +1,40 @@
+{
+  "attitude": {
+    "kp": 2.0,
+    "kd": 2.0
+  },
+  "ndi_rate": {
+    "kp": 0.15,
+    "kd": 0.01
+  },
+  "feedback_rate": {
+    "kp": 0.05,
+    "kd": 0.005
+  },
+  "position_xy": {
+    "kp_x": 0.55,
+    "kp_y": 0.55,
+    "kd_x": 1.1,
+    "kd_y": 1.1,
+    "ki_x": 0.03,
+    "ki_y": 0.03
+  },
+  "position_z": {
+    "kp": 20.0,
+    "kd": 20.0,
+    "ki": 1.0
+  },
+  "limits": {
+    "max_horz_acc": 3.0,
+    "max_tilt_angle": 0.7
+  },
+  "_comments": {
+    "attitude": "Reduced derivative gain to avoid noise amplification",
+    "ndi_rate": "Reduced proportional gain, added small derivative for stability",
+    "feedback_rate": "Re-enabled with conservative gains for robustness",
+    "position_xy": "Unchanged - working well",
+    "position_z": "Unchanged - working well",
+    "limits": "Safety limits for accelerations and tilt angles",
+    "changes": "Reduced NDI Kp from 1.0 to 0.15, reduced att Kd from 8.0 to 2.0, enabled feedback rate"
+  }
+}

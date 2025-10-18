@@ -1,0 +1,23 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_outerloop(double)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:360:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_xy_filt_[m[K’ was not declared in this scope
+  360 |     [01;31m[Kvel_xy_filt_[m[K = (1.0 - vel_lpf_alpha_) * vel_xy_filt_ + vel_lpf_alpha_ * vel_xy_raw;
+      |     [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:360:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_lpf_alpha_[m[K’ was not declared in this scope
+  360 |     vel_xy_filt_ = (1.0 - [01;31m[Kvel_lpf_alpha_[m[K) * vel_xy_filt_ + vel_lpf_alpha_ * vel_xy_raw;
+      |                           [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:397:43:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_prev_xy_[m[K’ was not declared in this scope
+  397 |         double delta = a_des_body_xy(i) - [01;31m[Ka_des_prev_xy_[m[K(i);
+      |                                           [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:398:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_xy_acc_step_[m[K’ was not declared in this scope
+  398 |         limit(delta, -[01;31m[Kmax_xy_acc_step_[m[K, max_xy_acc_step_);
+      |                       [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:401:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_prev_xy_[m[K’ was not declared in this scope
+  401 |     [01;31m[Ka_des_prev_xy_[m[K = a_des_body_xy;
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::initializeController()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:824:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_prev_xy_[m[K’ was not declared in this scope
+  824 |     [01;31m[Ka_des_prev_xy_[m[K.setZero();
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

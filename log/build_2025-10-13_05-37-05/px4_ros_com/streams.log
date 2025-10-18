@@ -1,0 +1,116 @@
+[0.182s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.331s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_spin_tt[0m
+[0.389s] [ 10%] Built target vehicle_gps_position_listener
+[0.390s] [ 20%] Built target offboard_control
+[0.391s] [ 30%] Built target debug_vect_advertiser
+[0.394s] [ 40%] Built target sensor_combined_listener
+[0.394s] [ 50%] Built target offboard_control_srv
+[0.399s] [ 60%] Built target frame_transforms
+[0.401s] [ 70%] Built target offboard_control_thrust_torque
+[0.403s] [ 75%] [32mBuilding CXX object CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o[0m
+[0.405s] [ 85%] Built target offboard_control_tilt_axis
+[0.409s] [ 85%] Built target ament_cmake_python_symlink_px4_ros_com
+[0.411s] [ 95%] Built target offboard_control_spin_lsq
+[0.792s] running egg_info
+[0.819s] writing px4_ros_com.egg-info/PKG-INFO
+[0.821s] writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+[0.822s] writing top-level names to px4_ros_com.egg-info/top_level.txt
+[0.914s] reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[0.916s] writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[0.976s] [ 95%] Built target ament_cmake_python_build_px4_ros_com_egg
+[9.678s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::publish_torque_setpoint(double)[m[K’:
+[9.678s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:918:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kindi_enabled_[m[K’ was not declared in this scope; did you mean ‘[01m[Klogging_enabled_[m[K’?
+[9.678s]   918 |     if ([01;31m[Kindi_enabled_[m[K && current_attitude_) {
+[9.678s]       |         [01;31m[K^~~~~~~~~~~~~[m[K
+[9.679s]       |         [32m[Klogging_enabled_[m[K
+[9.697s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:922:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kindi_initialized_[m[K’ was not declared in this scope
+[9.697s]   922 |         if (![01;31m[Kindi_initialized_[m[K) {
+[9.697s]       |              [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[9.710s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:923:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kq_prev_[m[K’ was not declared in this scope
+[9.711s]   923 |             [01;31m[Kq_prev_[m[K = q_curr;
+[9.711s]       |             [01;31m[K^~~~~~~[m[K
+[9.726s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:924:13:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_filt_prev_[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_filt_[m[K’?
+[9.726s]   924 |             [01;31m[Komega_filt_prev_[m[K = omega_body;
+[9.726s]       |             [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[9.726s]       |             [32m[Komega_filt_[m[K
+[9.746s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:925:13:[m[K [01;31m[Kerror: [m[K‘[01m[Ktau_prev_body_[m[K’ was not declared in this scope
+[9.746s]   925 |             [01;31m[Ktau_prev_body_[m[K = mu3_cmd_; // Use NDI command as initial guess
+[9.746s]       |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[9.765s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:926:13:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_dot_meas_filt_[m[K’ was not declared in this scope
+[9.765s]   926 |             [01;31m[Komega_dot_meas_filt_[m[K.setZero();
+[9.765s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[9.779s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:933:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kq_prev_[m[K’ was not declared in this scope; did you mean ‘[01m[KR_prev[m[K’?
+[9.780s]   933 |             Eigen::Matrix3d R_prev = [01;31m[Kq_prev_[m[K.toRotationMatrix();
+[9.780s]       |                                      [01;31m[K^~~~~~~[m[K
+[9.780s]       |                                      [32m[KR_prev[m[K
+[9.814s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:936:63:[m[K [01;31m[Kerror: [m[K‘[01m[Ktau_prev_body_[m[K’ was not declared in this scope; did you mean ‘[01m[Ktau_prev_rot[m[K’?
+[9.814s]   936 |             Eigen::Vector3d tau_prev_rot = R_curr_from_prev * [01;31m[Ktau_prev_body_[m[K;
+[9.814s]       |                                                               [01;31m[K^~~~~~~~~~~~~~[m[K
+[9.814s]       |                                                               [32m[Ktau_prev_rot[m[K
+[9.827s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:939:64:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_filt_prev_[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_filt_[m[K’?
+[9.827s]   939 |             Eigen::Vector3d omega_dot_meas_raw = (omega_body - [01;31m[Komega_filt_prev_[m[K) / std::max(dt, 1e-6);
+[9.827s]       |                                                                [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[9.827s]       |                                                                [32m[Komega_filt_[m[K
+[9.844s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:941:13:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_dot_meas_filt_[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_dot_meas_raw[m[K’?
+[9.844s]   941 |             [01;31m[Komega_dot_meas_filt_[m[K = (1.0 - alpha_acc) * omega_dot_meas_filt_ + alpha_acc * omega_dot_meas_raw;
+[9.844s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[9.844s]       |             [32m[Komega_dot_meas_raw[m[K
+[9.927s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:952:38:[m[K [01;31m[Kerror: [m[K‘[01m[KK_indi_scale_[m[K’ was not declared in this scope
+[9.927s]   952 |             tau_cmd = tau_prev_rot + [01;31m[KK_indi_scale_[m[K * delta_tau;
+[9.927s]       |                                      [01;31m[K^~~~~~~~~~~~~[m[K
+[10.113s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1018:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kindi_enabled_[m[K’ was not declared in this scope; did you mean ‘[01m[Klogging_enabled_[m[K’?
+[10.113s]  1018 |         if ([01;31m[Kindi_enabled_[m[K) {
+[10.113s]       |             [01;31m[K^~~~~~~~~~~~~[m[K
+[10.114s]       |             [32m[Klogging_enabled_[m[K
+[10.133s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[10.133s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[10.134s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[10.134s]                  from [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:53[m[K:
+[10.134s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1022:25:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_dot_meas_filt_[m[K’ was not declared in this scope
+[10.134s]  1022 |                         [01;31m[Komega_dot_meas_filt_[m[K(0), omega_dot_meas_filt_(1), omega_dot_meas_filt_(2),
+[10.134s]       |                         [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[10.162s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::initializeController()[m[K’:
+[10.162s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1232:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KK_indi_scale_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[10.162s]  1232 |     double [01;35m[KK_indi_scale_[m[K{0.75};                              // INDI gain (0.5-1.0)
+[10.162s]       |            [01;35m[K^~~~~~~~~~~~~[m[K
+[10.162s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1233:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kindi_enabled_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[10.162s]  1233 |     bool [01;35m[Kindi_enabled_[m[K{false};                               // Enable/disable INDI control
+[10.162s]       |          [01;35m[K^~~~~~~~~~~~~[m[K
+[10.163s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1234:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kindi_initialized_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[10.163s]  1234 |     bool [01;35m[Kindi_initialized_[m[K{false};
+[10.163s]       |          [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[10.428s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::loadParametersFromJson(const string&)[m[K’:
+[10.429s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1304:13:[m[K [01;31m[Kerror: [m[K‘[01m[KK_indi_scale_[m[K’ was not declared in this scope
+[10.429s]  1304 |             [01;31m[KK_indi_scale_[m[K = config["indi"].value("scale", 0.75);
+[10.429s]       |             [01;31m[K^~~~~~~~~~~~~[m[K
+[10.440s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1305:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kindi_enabled_[m[K’ was not declared in this scope; did you mean ‘[01m[Klogging_enabled_[m[K’?
+[10.440s]  1305 |             [01;31m[Kindi_enabled_[m[K = config["indi"].value("enabled", false);
+[10.440s]       |             [01;31m[K^~~~~~~~~~~~~[m[K
+[10.440s]       |             [32m[Klogging_enabled_[m[K
+[10.459s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1331:13:[m[K [01;31m[Kerror: [m[K‘[01m[KK_indi_scale_[m[K’ was not declared in this scope
+[10.459s]  1331 |             [01;31m[KK_indi_scale_[m[K = config["indi"].value("scale", 0.75);
+[10.459s]       |             [01;31m[K^~~~~~~~~~~~~[m[K
+[10.471s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1332:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kindi_enabled_[m[K’ was not declared in this scope; did you mean ‘[01m[Klogging_enabled_[m[K’?
+[10.471s]  1332 |             [01;31m[Kindi_enabled_[m[K = config["indi"].value("enabled", false);
+[10.472s]       |             [01;31m[K^~~~~~~~~~~~~[m[K
+[10.472s]       |             [32m[Klogging_enabled_[m[K
+[33.149s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::generate_plots()[m[K’:
+[33.149s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:503:15:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Kint system(const char*)[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+[33.149s]   503 |         [01;35m[Ksystem("chmod +x /home/pyro/ws_offboard_control/flight_data/scripts/generate_plots.py")[m[K;
+[33.149s]       |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.165s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::initializeController()[m[K’:
+[33.165s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:1243:11:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Kint system(const char*)[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
+[33.165s]  1243 |     [01;35m[Ksystem("mkdir -p /home/pyro/ws_offboard_control/flight_data/config")[m[K;
+[33.165s]       |     [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.815s] gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+[33.816s] gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+[33.819s] gmake: *** [Makefile:146: all] Error 2
+[33.827s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '2': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16

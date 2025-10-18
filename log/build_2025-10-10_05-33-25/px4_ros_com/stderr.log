@@ -1,0 +1,11 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::log_data(double)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:342:31:[m[K [01;31m[Kerror: [m[K‘[01m[Know_s[m[K’ was not declared in this scope; did you mean ‘[01m[Know[m[K’?
+  342 |             log_start_time_ = [01;31m[Know_s[m[K;
+      |                               [01;31m[K^~~~~[m[K
+      |                               [32m[Know[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:343:13:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_log_ts_[m[K’ was not declared in this scope
+  343 |             [01;31m[Klast_log_ts_[m[K = -1.0; // reset throttle to log immediately
+      |             [01;31m[K^~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

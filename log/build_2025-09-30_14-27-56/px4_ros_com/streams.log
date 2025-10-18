@@ -1,0 +1,16 @@
+[0.406s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.549s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_thrust_torque[0m
+[0.582s] [ 14%] Built target sensor_combined_listener
+[0.583s] [ 28%] Built target offboard_control_srv
+[0.586s] gmake[1]: *** [CMakeFiles/Makefile2:256: CMakeFiles/offboard_control.dir/all] Interrupt
+[0.586s] gmake[1]: *** [CMakeFiles/Makefile2:335: CMakeFiles/ament_cmake_python_copy_px4_ros_com.dir/all] Interrupt
+[0.587s] gmake[1]: *** [CMakeFiles/Makefile2:205: CMakeFiles/vehicle_gps_position_listener.dir/all] Interrupt
+[0.587s] gmake[1]: *** [CMakeFiles/Makefile2:153: CMakeFiles/frame_transforms.dir/all] Interrupt
+[0.587s] gmake[1]: *** [CMakeFiles/Makefile2:231: CMakeFiles/debug_vect_advertiser.dir/all] Interrupt
+[0.587s] gmake[1]: *** [CMakeFiles/Makefile2:283: CMakeFiles/offboard_control_srv.dir/all] Interrupt
+[0.589s] gmake[1]: *** [CMakeFiles/Makefile2:179: CMakeFiles/sensor_combined_listener.dir/all] Interrupt
+[0.590s] gmake[1]: *** wait: No child processes.  Stop.
+[0.590s] gmake[1]: *** Waiting for unfinished jobs....
+[0.590s] gmake[1]: *** wait: No child processes.  Stop.
+[0.590s] gmake: *** [Makefile:146: all] Error 2
+[0.596s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '-2': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16

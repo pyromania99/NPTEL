@@ -1,0 +1,8 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_outerloop(double)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:911:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos_err_z[m[K’ was not declared in this scope; did you mean ‘[01m[Kpos_err_xy[m[K’?
+  911 |     integrator([01;31m[Kpos_err_z[m[K, pos_err_int_z_, dt, 2.0);
+      |                [01;31m[K^~~~~~~~~[m[K
+      |                [32m[Kpos_err_xy[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,11 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_innerloop(double)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:445:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kspin_torque_ramp_time_[m[K’ was not declared in this scope; did you mean ‘[01m[Kspin_torque_cmd_[m[K’?
+  445 |     if ([01;31m[Kspin_torque_ramp_time_[m[K > 1e-3) {
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+      |         [32m[Kspin_torque_cmd_[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:446:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kspin_time_accum_[m[K’ was not declared in this scope
+  446 |         [01;31m[Kspin_time_accum_[m[K += dt;
+      |         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_tilt_axis.dir/build.make:76: CMakeFiles/offboard_control_tilt_axis.dir/src/examples/offboard/offboard_control_tilt_axis.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:366: CMakeFiles/offboard_control_tilt_axis.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

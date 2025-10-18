@@ -1,0 +1,10 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::calculate_control_commands()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:399:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kduration_outer[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  399 |     auto [01;35m[Kduration_outer[m[K = std::chrono::duration_cast<std::chrono::microseconds>(end_outer - start_outer).count();
+      |          [01;35m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:406:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kduration_inner[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  406 |     auto [01;35m[Kduration_inner[m[K = std::chrono::duration_cast<std::chrono::microseconds>(end_inner - start_inner).count();
+      |          [01;35m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:414:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kduration_publish[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  414 |     auto [01;35m[Kduration_publish[m[K = std::chrono::duration_cast<std::chrono::microseconds>(end_publish - start_publish).count();
+      |          [01;35m[K^~~~~~~~~~~~~~~~[m[K

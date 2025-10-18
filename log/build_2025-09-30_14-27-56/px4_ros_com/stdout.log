@@ -1,0 +1,3 @@
+[35m[1mConsolidate compiler generated dependencies of target offboard_control_thrust_torque[0m
+[ 14%] Built target sensor_combined_listener
+[ 28%] Built target offboard_control_srv

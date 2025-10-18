@@ -1,0 +1,279 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:26:[m[K [01;31m[Kerror: [m[K‘[01m[KVehicleAttitude[m[K’ was not declared in this scope
+  120 |     rclcpp::Subscription<[01;31m[KVehicleAttitude[m[K>::SharedPtr vehicle_attitude_subscriber_;
+      |                          [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:41:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  120 |     rclcpp::Subscription<VehicleAttitude[01;31m[K>[m[K::SharedPtr vehicle_attitude_subscriber_;
+      |                                         [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:41:[m[K [01;31m[Kerror: [m[Ktemplate argument 3 is invalid
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:41:[m[K [01;31m[Kerror: [m[Ktemplate argument 4 is invalid
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:41:[m[K [01;31m[Kerror: [m[Ktemplate argument 5 is invalid
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:44:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+  120 |     rclcpp::Subscription<VehicleAttitude>::[01;31m[KSharedPtr[m[K vehicle_attitude_subscriber_;
+      |                                            [01;31m[K^~~~~~~~~[m[K
+      |                                                     [32m[K;[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kvehicle_attitude_subscriber_[m[K’ does not name a type
+  120 |     rclcpp::Subscription<VehicleAttitude>::SharedPtr [01;31m[Kvehicle_attitude_subscriber_[m[K;
+      |                                                      [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:26:[m[K [01;31m[Kerror: [m[K‘[01m[KSensorCombined[m[K’ was not declared in this scope
+  121 |     rclcpp::Subscription<[01;31m[KSensorCombined[m[K>::SharedPtr sensor_combined_subscriber_;
+      |                          [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:40:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  121 |     rclcpp::Subscription<SensorCombined[01;31m[K>[m[K::SharedPtr sensor_combined_subscriber_;
+      |                                        [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:40:[m[K [01;31m[Kerror: [m[Ktemplate argument 3 is invalid
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:40:[m[K [01;31m[Kerror: [m[Ktemplate argument 4 is invalid
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:40:[m[K [01;31m[Kerror: [m[Ktemplate argument 5 is invalid
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:43:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+  121 |     rclcpp::Subscription<SensorCombined>::[01;31m[KSharedPtr[m[K sensor_combined_subscriber_;
+      |                                           [01;31m[K^~~~~~~~~[m[K
+      |                                                    [32m[K;[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:43:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kint OffboardControl::SharedPtr[m[K’
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:120:44:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kint OffboardControl::SharedPtr[m[K’
+  120 |     rclcpp::Subscription<VehicleAttitude>::[01;36m[KSharedPtr[m[K vehicle_attitude_subscriber_;
+      |                                            [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:121:53:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_combined_subscriber_[m[K’ does not name a type
+  121 |     rclcpp::Subscription<SensorCombined>::SharedPtr [01;31m[Ksensor_combined_subscriber_[m[K;
+      |                                                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:125:5:[m[K [01;31m[Kerror: [m[K‘[01m[KVehicleAttitude[m[K’ does not name a type
+  125 |     [01;31m[KVehicleAttitude[m[K::SharedPtr current_attitude_;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:126:5:[m[K [01;31m[Kerror: [m[K‘[01m[KSensorCombined[m[K’ does not name a type
+  126 |     [01;31m[KSensorCombined[m[K::SharedPtr current_sensor_data_;
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:132:10:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kbool OffboardControl::service_done_[m[K’
+  132 |     bool [01;31m[Kservice_done_[m[K;
+      |          [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:110:14:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kbool OffboardControl::service_done_[m[K’
+  110 |         bool [01;36m[Kservice_done_[m[K;
+      |              [01;36m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:133:13:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kuint8_t OffboardControl::service_result_[m[K’
+  133 |     uint8_t [01;31m[Kservice_result_[m[K;
+      |             [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:109:17:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kuint8_t OffboardControl::service_result_[m[K’
+  109 |         uint8_t [01;36m[Kservice_result_[m[K;
+      |                 [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:142:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  142 |     [01;31m[KEigen[m[K::Vector2d Kp_pos_xy_{0.10, 0.10};      // XY Position proportional gains
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:142:43:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  142 |     Eigen::Vector2d Kp_pos_xy_{0.10, 0.10}[01;35m[K;[m[K      // XY Position proportional gains
+      |                                           [01;35m[K^[m[K
+      |                                           [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:143:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  143 |     [01;31m[KEigen[m[K::Vector2d Kd_pos_xy_{1.0, 1.0};        // XY Position derivative gains
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:143:41:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  143 |     Eigen::Vector2d Kd_pos_xy_{1.0, 1.0}[01;35m[K;[m[K        // XY Position derivative gains
+      |                                         [01;35m[K^[m[K
+      |                                         [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:144:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  144 |     [01;31m[KEigen[m[K::Vector2d Ki_pos_xy_{0.0, 0.0};        // XY Position integral gains
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:144:41:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  144 |     Eigen::Vector2d Ki_pos_xy_{0.0, 0.0}[01;35m[K;[m[K        // XY Position integral gains
+      |                                         [01;35m[K^[m[K
+      |                                         [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:152:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  152 |     [01;31m[KEigen[m[K::Vector2d K_yaw_{5.0, 2.0};
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:152:37:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  152 |     Eigen::Vector2d K_yaw_{5.0, 2.0}[01;35m[K;[m[K
+      |                                     [01;35m[K^[m[K
+      |                                     [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:155:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  155 |     [01;31m[KEigen[m[K::Matrix3d Inertia_;
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:164:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  164 |     [01;31m[KEigen[m[K::Vector3d pos_design_{0.0, 0.0, -2.0};  // NED target
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:164:48:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  164 |     Eigen::Vector3d pos_design_{0.0, 0.0, -2.0}[01;35m[K;[m[K  // NED target
+      |                                                [01;35m[K^[m[K
+      |                                                [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:165:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  165 |     [01;31m[KEigen[m[K::Vector3d a_des_;                        // Desired acceleration (NED)
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:166:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  166 |     [01;31m[KEigen[m[K::Vector2d pos_err_int_xy_{0.0, 0.0};   // XY integral
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:166:46:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  166 |     Eigen::Vector2d pos_err_int_xy_{0.0, 0.0}[01;35m[K;[m[K   // XY integral
+      |                                              [01;35m[K^[m[K
+      |                                              [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:168:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  168 |     [01;31m[KEigen[m[K::Vector3d desired_body_rates_{0.0, 0.0, 0.0}; // desired p,q,r
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:168:55:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  168 |     Eigen::Vector3d desired_body_rates_{0.0, 0.0, 0.0}[01;35m[K;[m[K // desired p,q,r
+      |                                                       [01;35m[K^[m[K
+      |                                                       [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:173:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  173 |     [01;31m[KEigen[m[K::Vector3d n_b_{0.0, 0.0, 1.0};
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:173:40:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  173 |     Eigen::Vector3d n_b_{0.0, 0.0, 1.0}[01;35m[K;[m[K
+      |                                        [01;35m[K^[m[K
+      |                                        [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:174:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  174 |     [01;31m[KEigen[m[K::Vector3d nb_err_int_{0.0, 0.0, 0.0};
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:174:47:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  174 |     Eigen::Vector3d nb_err_int_{0.0, 0.0, 0.0}[01;35m[K;[m[K
+      |                                               [01;35m[K^[m[K
+      |                                               [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:176:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ does not name a type
+  176 |     [01;31m[KEigen[m[K::Vector3d g_vect_{0.0, 0.0, 9.81};
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:176:44:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wpedantic-Wpedantic]8;;[m[K]
+  176 |     Eigen::Vector3d g_vect_{0.0, 0.0, 9.81}[01;35m[K;[m[K
+      |                                            [01;35m[K^[m[K
+      |                                            [31m[K-[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In constructor ‘[01m[KOffboardControl::OffboardControl(std::string)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:79:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kactuator_outputs_subscriber_[m[K’ was not declared in this scope; did you mean ‘[01m[Kactuator_outputs_callback[m[K’?
+   79 |                 [01;31m[Kactuator_outputs_subscriber_[m[K = this->create_subscription<ActuatorOutputs>(
+      |                 [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                 [32m[Kactuator_outputs_callback[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::calculate_control_commands()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:245:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_attitude_[m[K’ was not declared in this scope
+  245 |     if (!current_position_ || ![01;31m[Kcurrent_attitude_[m[K || !current_sensor_data_) {
+      |                                [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:245:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_sensor_data_[m[K’ was not declared in this scope
+  245 |     if (!current_position_ || !current_attitude_ || ![01;31m[Kcurrent_sensor_data_[m[K) {
+      |                                                      [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:256:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kvehicle_thrust_publisher[m[K’ was not declared in this scope
+  256 |         [01;31m[Kvehicle_thrust_publisher[m[K->publish(thrust_msg);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:261:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kvehicle_torque_publisher[m[K’ was not declared in this scope
+  261 |         [01;31m[Kvehicle_torque_publisher[m[K->publish(torque_msg);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_outerloop()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:281:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  281 |     [01;31m[KEigen[m[K::Vector3d position(current_position_->x, current_position_->y, current_position_->z);
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:282:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  282 |     [01;31m[KEigen[m[K::Vector3d velocity(current_position_->vx, current_position_->vy, current_position_->vz);
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:285:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  285 |     [01;31m[KEigen[m[K::Vector2d pos_xy(position(0), position(1));
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:286:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  286 |     [01;31m[KEigen[m[K::Vector2d vel_xy(velocity(0), velocity(1));
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:287:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  287 |     [01;31m[KEigen[m[K::Vector2d pos_des_xy(pos_design_(0), pos_design_(1));
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:289:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  289 |     [01;31m[KEigen[m[K::Vector2d pos_err_xy = pos_des_xy - pos_xy;
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:290:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos_err_xy[m[K’ was not declared in this scope
+  290 |     integrator2([01;31m[Kpos_err_xy[m[K, pos_err_int_xy_, 5.0);
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:290:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos_err_int_xy_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpos_err_int_z_[m[K’?
+  290 |     integrator2(pos_err_xy, [01;31m[Kpos_err_int_xy_[m[K, 5.0);
+      |                             [01;31m[K^~~~~~~~~~~~~~~[m[K
+      |                             [32m[Kpos_err_int_z_[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:290:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kintegrator2[m[K’ was not declared in this scope
+  290 |     [01;31m[Kintegrator2[m[K(pos_err_xy, pos_err_int_xy_, 5.0);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:292:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  292 |     [01;31m[KEigen[m[K::Vector2d a_des_xy = Kp_pos_xy_.cwiseProduct(pos_err_xy) -
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:296:11:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_xy[m[K’ was not declared in this scope
+  296 |     limit([01;31m[Ka_des_xy[m[K(0), -max_horz_acc_, max_horz_acc_);
+      |           [01;31m[K^~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:296:5:[m[K [01;31m[Kerror: [m[K‘[01m[Klimit[m[K’ was not declared in this scope
+  296 |     [01;31m[Klimit[m[K(a_des_xy(0), -max_horz_acc_, max_horz_acc_);
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:300:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kposition[m[K’ was not declared in this scope
+  300 |     double pos_z = [01;31m[Kposition[m[K(2);
+      |                    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:301:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelocity[m[K’ was not declared in this scope
+  301 |     double vel_z = [01;31m[Kvelocity[m[K(2);
+      |                    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:302:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos_design_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpos_des_z[m[K’?
+  302 |     double pos_des_z = [01;31m[Kpos_design_[m[K(2);
+      |                        [01;31m[K^~~~~~~~~~~[m[K
+      |                        [32m[Kpos_des_z[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:305:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kintegrator[m[K’ was not declared in this scope
+  305 |     [01;31m[Kintegrator[m[K(pos_err_z, pos_err_int_z_, 5.0);
+      |     [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:312:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_[m[K’ was not declared in this scope; did you mean ‘[01m[Ka_des_z[m[K’?
+  312 |     [01;31m[Ka_des_[m[K(0) = a_des_xy(0);
+      |     [01;31m[K^~~~~~[m[K
+      |     [32m[Ka_des_z[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_innerloop()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:330:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_attitude_[m[K’ was not declared in this scope
+  330 |     if (![01;31m[Kcurrent_attitude_[m[K || !current_sensor_data_) return;
+      |          [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:330:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_sensor_data_[m[K’ was not declared in this scope
+  330 |     if (!current_attitude_ || ![01;31m[Kcurrent_sensor_data_[m[K) return;
+      |                                [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:332:5:[m[K [01;31m[Kerror: [m[K‘[01m[KEigen[m[K’ has not been declared
+  332 |     [01;31m[KEigen[m[K::Quaterniond q(current_attitude_->q[0], current_attitude_->q[1],
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:336:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kq[m[K’ was not declared in this scope
+  336 |     quaternion_to_euler([01;31m[Kq[m[K.w(), q.x(), q.y(), q.z(), roll, pitch, yaw);
+      |                         [01;31m[K^[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:338:31:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_[m[K’ was not declared in this scope
+  338 |     double pitch_des = -atan2([01;31m[Ka_des_[m[K(0), sqrt(a_des_(2)*a_des_(2) + a_des_(1)*a_des_(1)));
+      |                               [01;31m[K^~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:341:5:[m[K [01;31m[Kerror: [m[K‘[01m[Klimit[m[K’ was not declared in this scope
+  341 |     [01;31m[Klimit[m[K(pitch_des, -max_tilt_angle_, max_tilt_angle_);
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:345:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kdesired_body_rates_[m[K’ was not declared in this scope
+  345 |     [01;31m[Kdesired_body_rates_[m[K(0) = Kp_att * (roll_des - roll);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:347:30:[m[K [01;31m[Kerror: [m[K‘[01m[KgetDesignedYawRate[m[K’ was not declared in this scope
+  347 |     desired_body_rates_(2) = [01;31m[KgetDesignedYawRate[m[K();
+      |                              [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::timer_callback()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:469:21:[m[K [01;31m[Kerror: [m[K‘[01m[Klatest_local_position_[m[K’ was not declared in this scope
+  469 |                 if ([01;31m[Klatest_local_position_[m[K) {
+      |                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:476:21:[m[K [01;31m[Kerror: [m[K‘[01m[Klatest_actuator_outputs_[m[K’ was not declared in this scope
+  476 |                 if ([01;31m[Klatest_actuator_outputs_[m[K) {
+      |                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::local_position_callback(px4_msgs::msg::VehicleLocalPosition_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:531:9:[m[K [01;31m[Kerror: [m[K‘[01m[Klatest_local_position_[m[K’ was not declared in this scope
+  531 |         [01;31m[Klatest_local_position_[m[K = msg;
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::actuator_outputs_callback(px4_msgs::msg::ActuatorOutputs_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:539:9:[m[K [01;31m[Kerror: [m[K‘[01m[Klatest_actuator_outputs_[m[K’ was not declared in this scope
+  539 |         [01;31m[Klatest_actuator_outputs_[m[K = msg;
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::initializeController()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:545:5:[m[K [01;31m[Kerror: [m[K‘[01m[KInertia_[m[K’ was not declared in this scope
+  545 |     [01;31m[KInertia_[m[K << Ix_, 0.0, 0.0,
+      |     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:548:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_[m[K’ was not declared in this scope
+  548 |     [01;31m[Ka_des_[m[K << 0.0, 0.0, g_;
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:549:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kdesired_body_rates_[m[K’ was not declared in this scope
+  549 |     [01;31m[Kdesired_body_rates_[m[K << 0.0, 0.0, 0.0;
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:50[m[K:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:553:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos_design_[m[K’ was not declared in this scope
+  553 |                 [01;31m[Kpos_design_[m[K(0), pos_design_(1), pos_design_(2));
+      |                 [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K At global scope:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:575:8:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kdouble OffboardControl::getDesignedYawRate()[m[K’
+  575 | double [01;31m[KOffboardControl[m[K::getDesignedYawRate()
+      |        [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:575:8:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kdouble OffboardControl::getDesignedYawRate()[m[K’
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:61:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass OffboardControl[m[K’ defined here
+   61 | class [01;36m[KOffboardControl[m[K : public rclcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_thrust_torque.dir/build.make:76: CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:308: CMakeFiles/offboard_control_thrust_torque.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

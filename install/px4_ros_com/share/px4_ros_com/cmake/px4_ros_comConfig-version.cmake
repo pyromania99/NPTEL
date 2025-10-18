@@ -1,0 +1,1 @@
+/home/pyro/ws_offboard_control/build/px4_ros_com/ament_cmake_core/px4_ros_comConfig-version.cmake

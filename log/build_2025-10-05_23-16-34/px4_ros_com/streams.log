@@ -1,0 +1,32 @@
+[0.361s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.595s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_tilt_axis[0m
+[0.611s] [ 10%] Built target offboard_control
+[0.629s] [ 20%] Built target offboard_control_thrust_torque
+[0.653s] [ 40%] Built target debug_vect_advertiser
+[0.653s] [ 40%] Built target sensor_combined_listener
+[0.653s] [ 50%] Built target vehicle_gps_position_listener
+[0.653s] [ 60%] Built target frame_transforms
+[0.654s] [ 60%] Built target ament_cmake_python_copy_px4_ros_com
+[0.656s] [ 70%] Built target offboard_control_spin_tt
+[0.669s] [ 75%] [32mBuilding CXX object CMakeFiles/offboard_control_tilt_axis.dir/src/examples/offboard/offboard_control_tilt_axis.cpp.o[0m
+[0.673s] [ 85%] Built target offboard_control_srv
+[0.698s] [ 95%] Built target offboard_control_spin_lsq
+[1.694s] running egg_info
+[1.751s] writing px4_ros_com.egg-info/PKG-INFO
+[1.754s] writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+[1.757s] writing top-level names to px4_ros_com.egg-info/top_level.txt
+[1.984s] reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[1.987s] writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[2.113s] [ 95%] Built target ament_cmake_python_build_px4_ros_com_egg
+[13.151s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_innerloop(double)[m[K’:
+[13.151s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:445:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kspin_torque_ramp_time_[m[K’ was not declared in this scope; did you mean ‘[01m[Kspin_torque_cmd_[m[K’?
+[13.151s]   445 |     if ([01;31m[Kspin_torque_ramp_time_[m[K > 1e-3) {
+[13.151s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+[13.152s]       |         [32m[Kspin_torque_cmd_[m[K
+[13.176s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:446:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kspin_time_accum_[m[K’ was not declared in this scope
+[13.176s]   446 |         [01;31m[Kspin_time_accum_[m[K += dt;
+[13.176s]       |         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[30.708s] gmake[2]: *** [CMakeFiles/offboard_control_tilt_axis.dir/build.make:76: CMakeFiles/offboard_control_tilt_axis.dir/src/examples/offboard/offboard_control_tilt_axis.cpp.o] Error 1
+[30.709s] gmake[1]: *** [CMakeFiles/Makefile2:366: CMakeFiles/offboard_control_tilt_axis.dir/all] Error 2
+[30.710s] gmake: *** [Makefile:146: all] Error 2
+[30.715s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '2': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16

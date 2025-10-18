@@ -1,0 +1,24 @@
+[0.410s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.573s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_spin_tt[0m
+[0.625s] [ 10%] Built target sensor_combined_listener
+[0.631s] [ 30%] Built target debug_vect_advertiser
+[0.632s] [ 35%] Built target vehicle_gps_position_listener
+[0.632s] [ 40%] Built target frame_transforms
+[0.647s] [ 60%] Built target offboard_control_srv
+[0.647s] [ 60%] Built target offboard_control
+[0.649s] [ 70%] Built target offboard_control_thrust_torque
+[0.651s] [ 80%] [32mBuilding CXX object CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o[0m
+[0.653s] [ 85%] Built target offboard_control_spin_lsq
+[0.655s] [ 85%] Built target ament_cmake_python_copy_px4_ros_com
+[0.655s] [ 95%] Built target offboard_control_tilt_axis
+[1.354s] running egg_info
+[1.414s] writing px4_ros_com.egg-info/PKG-INFO
+[1.416s] writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+[1.421s] writing top-level names to px4_ros_com.egg-info/top_level.txt
+[1.569s] reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[1.572s] writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[1.692s] [ 95%] Built target ament_cmake_python_build_px4_ros_com_egg
+[25.038s] gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Interrupt
+[25.038s] gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Interrupt
+[25.039s] gmake: *** [Makefile:146: all] Interrupt
+[25.273s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '-2': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16

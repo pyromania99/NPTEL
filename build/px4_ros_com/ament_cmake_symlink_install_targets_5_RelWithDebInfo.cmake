@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/pyro/ws_offboard_control/build/px4_ros_com/offboard_control_thrust_torque" "TARGETS" "offboard_control_thrust_torque" "DESTINATION" "lib/px4_ros_com")

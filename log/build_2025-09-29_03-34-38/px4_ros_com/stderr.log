@@ -1,0 +1,22 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In constructor ‘[01m[KOffboardControl::OffboardControl(std::string)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:81:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kvehicle_local_position_subscriber_[m[K’ was not declared in this scope; did you mean ‘[01m[Klocal_position_subscriber_[m[K’?
+   81 |                 [01;31m[Kvehicle_local_position_subscriber_[m[K = this->create_subscription<VehicleLocalPosition>(
+      |                 [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                 [32m[Klocal_position_subscriber_[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:83:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kqos_profile[m[K’ was not declared in this scope
+   83 |                         [01;31m[Kqos_profile[m[K,
+      |                         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:84:53:[m[K [01;31m[Kerror: [m[K‘[01m[Kvehicle_local_position_callback[m[K’ is not a member of ‘[01m[KOffboardControl[m[K’
+   84 |                         std::bind(&OffboardControl::[01;31m[Kvehicle_local_position_callback[m[K, this, std::placeholders::_1));
+      |                                                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_outerloop()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:330:15:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KOffboardControl::integrator(double&, double&, double)[m[K’
+  330 |     [01;31m[Kintegrator(pos_err_z, pos_err_int_z_, 5.0)[m[K;
+      |     [01;31m[K~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:214:10:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid OffboardControl::integrator(const double&, double&, double, double)[m[K’
+  214 |     void [01;36m[Kintegrator[m[K(const double &input, double& output, const double dt, const double max);
+      |          [01;36m[K^~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:214:10:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 3 provided
+gmake[2]: *** [CMakeFiles/offboard_control_thrust_torque.dir/build.make:76: CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:308: CMakeFiles/offboard_control_thrust_torque.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

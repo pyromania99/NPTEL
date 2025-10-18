@@ -1,0 +1,463 @@
+[0.000000] (-) TimerEvent: {}
+[0.003634] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.003904] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/pyro/ws_offboard_control/install/px4_msgs')])}
+[0.005451] (px4_ros_com) JobStarted: {'identifier': 'px4_ros_com'}
+[0.099045] (-) TimerEvent: {}
+[0.199946] (-) TimerEvent: {}
+[0.300577] (-) TimerEvent: {}
+[0.363072] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'cmake'}
+[0.368134] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'build'}
+[0.370207] (px4_ros_com) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pyro/ws_offboard_control/build/px4_ros_com', '--', '-j16', '-l16'], 'cwd': '/home/pyro/ws_offboard_control/build/px4_ros_com', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pyro'), ('GIT_ASKPASS', '/home/pyro/.vscode-server/bin/e3a5acfb517a443235981655413d566533107e92/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/pyro'), ('OLDPWD', '/home/pyro'), ('TERM_PROGRAM_VERSION', '1.104.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ffd139ea-0a0a-436f-9257-5c400190c619.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/pyro/.vscode-server/bin/e3a5acfb517a443235981655413d566533107e92/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/pyro/.vscode-server/bin/e3a5acfb517a443235981655413d566533107e92/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu-22.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/pyro/ws_offboard_control/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pyro'), ('NAME', 'Pyro'), ('WSL_INTEROP', '/run/WSL/340_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/pyro/.vscode-server/bin/e3a5acfb517a443235981655413d566533107e92/bin/remote-cli:/home/pyro/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/libnvvp:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/Windows Kits/8.1/Windows Performance Toolkit/:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2025.2.1/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/MATLAB/R2024b/bin:/mnt/c/ProgramData/MATLAB/SupportPackages/R2024b/3P.instrset/ev3sourcerylite.instrset/CodeSourcery/bin:/mnt/c/Users/anike/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/anike/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/msys64/ucrt64/bin:/mnt/c/Users/anike/AppData/Local/Programs/Ollama:/mnt/c/Users/anike/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0/LocalCache/local-packages/Python312/Scripts:/snap/bin:/home/pyro/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-1e8ae5e716.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/pyro/ws_offboard_control/install/px4_ros_com:/home/pyro/ws_offboard_control/install/px4_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/pyro/ws_offboard_control/build/px4_ros_com'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/pyro/ws_offboard_control/install/px4_ros_com/local/lib/python3.10/dist-packages:/home/pyro/ws_offboard_control/install/px4_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up')]), 'shell': False}
+[0.401068] (-) TimerEvent: {}
+[0.501920] (-) TimerEvent: {}
+[0.602929] (-) TimerEvent: {}
+[0.703822] (-) TimerEvent: {}
+[0.804925] (-) TimerEvent: {}
+[0.809763] (px4_ros_com) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target offboard_control_srv\x1b[0m\n'}
+[0.871337] (px4_ros_com) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_copy_px4_ros_com\n'}
+[0.892013] (px4_ros_com) StdoutLine: {'line': b'[ 16%] Built target frame_transforms\n'}
+[0.906630] (-) TimerEvent: {}
+[0.918752] (px4_ros_com) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o\x1b[0m\n'}
+[0.919104] (px4_ros_com) StdoutLine: {'line': b'[ 41%] Built target vehicle_gps_position_listener\n'}
+[0.919325] (px4_ros_com) StdoutLine: {'line': b'[ 75%] Built target sensor_combined_listener\n'}
+[0.919594] (px4_ros_com) StdoutLine: {'line': b'[ 75%] Built target offboard_control_srv\n'}
+[0.919913] (px4_ros_com) StdoutLine: {'line': b'[ 91%] Built target debug_vect_advertiser\n'}
+[1.006816] (-) TimerEvent: {}
+[1.113457] (-) TimerEvent: {}
+[1.214542] (-) TimerEvent: {}
+[1.315067] (-) TimerEvent: {}
+[1.416288] (-) TimerEvent: {}
+[1.517164] (-) TimerEvent: {}
+[1.617894] (-) TimerEvent: {}
+[1.719442] (-) TimerEvent: {}
+[1.772241] (px4_ros_com) StdoutLine: {'line': b'running egg_info\n'}
+[1.819749] (-) TimerEvent: {}
+[1.833171] (px4_ros_com) StdoutLine: {'line': b'writing px4_ros_com.egg-info/PKG-INFO\n'}
+[1.835009] (px4_ros_com) StdoutLine: {'line': b'writing dependency_links to px4_ros_com.egg-info/dependency_links.txt\n'}
+[1.837036] (px4_ros_com) StdoutLine: {'line': b'writing top-level names to px4_ros_com.egg-info/top_level.txt\n'}
+[1.920057] (-) TimerEvent: {}
+[2.001052] (px4_ros_com) StdoutLine: {'line': b"reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'\n"}
+[2.005157] (px4_ros_com) StdoutLine: {'line': b"writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'\n"}
+[2.020316] (-) TimerEvent: {}
+[2.121281] (-) TimerEvent: {}
+[2.152932] (px4_ros_com) StdoutLine: {'line': b'[ 91%] Built target ament_cmake_python_build_px4_ros_com_egg\n'}
+[2.221429] (-) TimerEvent: {}
+[2.322054] (-) TimerEvent: {}
+[2.422941] (-) TimerEvent: {}
+[2.524387] (-) TimerEvent: {}
+[2.625696] (-) TimerEvent: {}
+[2.726516] (-) TimerEvent: {}
+[2.827795] (-) TimerEvent: {}
+[2.928672] (-) TimerEvent: {}
+[3.029490] (-) TimerEvent: {}
+[3.130786] (-) TimerEvent: {}
+[3.231911] (-) TimerEvent: {}
+[3.333187] (-) TimerEvent: {}
+[3.434856] (-) TimerEvent: {}
+[3.535652] (-) TimerEvent: {}
+[3.636398] (-) TimerEvent: {}
+[3.737264] (-) TimerEvent: {}
+[3.838241] (-) TimerEvent: {}
+[3.940034] (-) TimerEvent: {}
+[4.040849] (-) TimerEvent: {}
+[4.142600] (-) TimerEvent: {}
+[4.243318] (-) TimerEvent: {}
+[4.344238] (-) TimerEvent: {}
+[4.445518] (-) TimerEvent: {}
+[4.546345] (-) TimerEvent: {}
+[4.648173] (-) TimerEvent: {}
+[4.750229] (-) TimerEvent: {}
+[4.851923] (-) TimerEvent: {}
+[4.952616] (-) TimerEvent: {}
+[5.053475] (-) TimerEvent: {}
+[5.154445] (-) TimerEvent: {}
+[5.255202] (-) TimerEvent: {}
+[5.356140] (-) TimerEvent: {}
+[5.457044] (-) TimerEvent: {}
+[5.557589] (-) TimerEvent: {}
+[5.658801] (-) TimerEvent: {}
+[5.760137] (-) TimerEvent: {}
+[5.860940] (-) TimerEvent: {}
+[5.962082] (-) TimerEvent: {}
+[6.062819] (-) TimerEvent: {}
+[6.163646] (-) TimerEvent: {}
+[6.265574] (-) TimerEvent: {}
+[6.366295] (-) TimerEvent: {}
+[6.467046] (-) TimerEvent: {}
+[6.568989] (-) TimerEvent: {}
+[6.669740] (-) TimerEvent: {}
+[6.770546] (-) TimerEvent: {}
+[6.871409] (-) TimerEvent: {}
+[6.972523] (-) TimerEvent: {}
+[7.073562] (-) TimerEvent: {}
+[7.175108] (-) TimerEvent: {}
+[7.275933] (-) TimerEvent: {}
+[7.376668] (-) TimerEvent: {}
+[7.477774] (-) TimerEvent: {}
+[7.578628] (-) TimerEvent: {}
+[7.679776] (-) TimerEvent: {}
+[7.780593] (-) TimerEvent: {}
+[7.881368] (-) TimerEvent: {}
+[7.982126] (-) TimerEvent: {}
+[8.082687] (-) TimerEvent: {}
+[8.183359] (-) TimerEvent: {}
+[8.283975] (-) TimerEvent: {}
+[8.384532] (-) TimerEvent: {}
+[8.485136] (-) TimerEvent: {}
+[8.586402] (-) TimerEvent: {}
+[8.687269] (-) TimerEvent: {}
+[8.787951] (-) TimerEvent: {}
+[8.888583] (-) TimerEvent: {}
+[8.989261] (-) TimerEvent: {}
+[9.089927] (-) TimerEvent: {}
+[9.190595] (-) TimerEvent: {}
+[9.291285] (-) TimerEvent: {}
+[9.391981] (-) TimerEvent: {}
+[9.493091] (-) TimerEvent: {}
+[9.594270] (-) TimerEvent: {}
+[9.695310] (-) TimerEvent: {}
+[9.796316] (-) TimerEvent: {}
+[9.897141] (-) TimerEvent: {}
+[9.997846] (-) TimerEvent: {}
+[10.098481] (-) TimerEvent: {}
+[10.199150] (-) TimerEvent: {}
+[10.299923] (-) TimerEvent: {}
+[10.401005] (-) TimerEvent: {}
+[10.501994] (-) TimerEvent: {}
+[10.602955] (-) TimerEvent: {}
+[10.704142] (-) TimerEvent: {}
+[10.804990] (-) TimerEvent: {}
+[10.905547] (-) TimerEvent: {}
+[11.006163] (-) TimerEvent: {}
+[11.106802] (-) TimerEvent: {}
+[11.207647] (-) TimerEvent: {}
+[11.308376] (-) TimerEvent: {}
+[11.409044] (-) TimerEvent: {}
+[11.509714] (-) TimerEvent: {}
+[11.610480] (-) TimerEvent: {}
+[11.711352] (-) TimerEvent: {}
+[11.812049] (-) TimerEvent: {}
+[11.912775] (-) TimerEvent: {}
+[12.013587] (-) TimerEvent: {}
+[12.114293] (-) TimerEvent: {}
+[12.215054] (-) TimerEvent: {}
+[12.316044] (-) TimerEvent: {}
+[12.416788] (-) TimerEvent: {}
+[12.517818] (-) TimerEvent: {}
+[12.619561] (-) TimerEvent: {}
+[12.720640] (-) TimerEvent: {}
+[12.821530] (-) TimerEvent: {}
+[12.884021] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:130:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KVehicleThrustSetpoint\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[12.884685] (px4_ros_com) StderrLine: {'line': b'  130 |         rclcpp::Publisher<\x1b[01;31m\x1b[KVehicleThrustSetpoint\x1b[m\x1b[K>::SharedPtr vehicle_thrust_publisher;\n'}
+[12.884903] (px4_ros_com) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.885152] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:130:48:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[12.885604] (px4_ros_com) StderrLine: {'line': b'  130 |         rclcpp::Publisher<VehicleThrustSetpoint\x1b[01;31m\x1b[K>\x1b[m\x1b[K::SharedPtr vehicle_thrust_publisher;\n'}
+[12.886135] (px4_ros_com) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[12.886255] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:130:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 at end of member declaration\n'}
+[12.886351] (px4_ros_com) StderrLine: {'line': b'  130 |         rclcpp::Publisher<VehicleThrustSetpoint>::\x1b[01;31m\x1b[KSharedPtr\x1b[m\x1b[K vehicle_thrust_publisher;\n'}
+[12.886453] (px4_ros_com) StderrLine: {'line': b'      |                                                   \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[12.886539] (px4_ros_com) StderrLine: {'line': b'      |                                                            \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[12.896717] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:130:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvehicle_thrust_publisher\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[12.897115] (px4_ros_com) StderrLine: {'line': b'  130 |         rclcpp::Publisher<VehicleThrustSetpoint>::SharedPtr \x1b[01;31m\x1b[Kvehicle_thrust_publisher\x1b[m\x1b[K;\n'}
+[12.897226] (px4_ros_com) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.922148] (-) TimerEvent: {}
+[12.923591] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:131:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KVehicleTorqueSetpoint\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[12.924354] (px4_ros_com) StderrLine: {'line': b'  131 |         rclcpp::Publisher<\x1b[01;31m\x1b[KVehicleTorqueSetpoint\x1b[m\x1b[K>::SharedPtr vehicle_torque_publisher;\n'}
+[12.924526] (px4_ros_com) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.924703] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:131:48:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[12.924811] (px4_ros_com) StderrLine: {'line': b'  131 |         rclcpp::Publisher<VehicleTorqueSetpoint\x1b[01;31m\x1b[K>\x1b[m\x1b[K::SharedPtr vehicle_torque_publisher;\n'}
+[12.924899] (px4_ros_com) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[12.925011] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:131:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 at end of member declaration\n'}
+[12.925154] (px4_ros_com) StderrLine: {'line': b'  131 |         rclcpp::Publisher<VehicleTorqueSetpoint>::\x1b[01;31m\x1b[KSharedPtr\x1b[m\x1b[K vehicle_torque_publisher;\n'}
+[12.925268] (px4_ros_com) StderrLine: {'line': b'      |                                                   \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[12.925396] (px4_ros_com) StderrLine: {'line': b'      |                                                            \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[12.925546] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:131:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kredeclaration of \xe2\x80\x98\x1b[01m\x1b[Kint OffboardControl::SharedPtr\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.925669] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:130:51:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kprevious declaration \xe2\x80\x98\x1b[01m\x1b[Kint OffboardControl::SharedPtr\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.925997] (px4_ros_com) StderrLine: {'line': b'  130 |         rclcpp::Publisher<VehicleThrustSetpoint>::\x1b[01;36m\x1b[KSharedPtr\x1b[m\x1b[K vehicle_thrust_publisher;\n'}
+[12.926140] (px4_ros_com) StderrLine: {'line': b'      |                                                   \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[12.935151] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:131:61:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvehicle_torque_publisher\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[12.935645] (px4_ros_com) StderrLine: {'line': b'  131 |         rclcpp::Publisher<VehicleTorqueSetpoint>::SharedPtr \x1b[01;31m\x1b[Kvehicle_torque_publisher\x1b[m\x1b[K;\n'}
+[12.935795] (px4_ros_com) StderrLine: {'line': b'      |                                                             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.022286] (-) TimerEvent: {}
+[13.123198] (-) TimerEvent: {}
+[13.223905] (-) TimerEvent: {}
+[13.324689] (-) TimerEvent: {}
+[13.425786] (-) TimerEvent: {}
+[13.526523] (-) TimerEvent: {}
+[13.627241] (-) TimerEvent: {}
+[13.713698] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KOffboardControl::OffboardControl()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[13.714298] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:70:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvehicle_thrust_publisher\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kvehicle_command_publisher_\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[13.714780] (px4_ros_com) StderrLine: {'line': b'   70 |                 \x1b[01;31m\x1b[Kvehicle_thrust_publisher\x1b[m\x1b[K = this->create_publisher<VehicleThrustSetpoint>("/fmu/in/vehicle_thrust_setpoint", 10);\n'}
+[13.715068] (px4_ros_com) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.715256] (px4_ros_com) StderrLine: {'line': b'      |                 \x1b[32m\x1b[Kvehicle_command_publisher_\x1b[m\x1b[K\n'}
+[13.727483] (-) TimerEvent: {}
+[13.745499] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:70:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KVehicleThrustSetpoint\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[13.746084] (px4_ros_com) StderrLine: {'line': b'   70 |                 vehicle_thrust_publisher = this->create_publisher<\x1b[01;31m\x1b[KVehicleThrustSetpoint\x1b[m\x1b[K>("/fmu/in/vehicle_thrust_setpoint", 10);\n'}
+[13.746261] (px4_ros_com) StderrLine: {'line': b'      |                                                                   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.746453] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:70:89:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KOffboardControl::create_publisher<<expression error> >(const char [32], int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.746707] (px4_ros_com) StderrLine: {'line': b'   70 |                 vehicle_thrust_publisher = \x1b[01;31m\x1b[Kthis->create_publisher<VehicleThrustSetpoint>("/fmu/in/vehicle_thrust_setpoint", 10)\x1b[m\x1b[K;\n'}
+[13.746839] (px4_ros_com) StderrLine: {'line': b'      |                                            \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.749904] (px4_ros_com) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321\x1b[m\x1b[K,\n'}
+[13.750240] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[13.750356] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[13.750431] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[13.750494] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:49\x1b[m\x1b[K:\n'}
+[13.750556] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.750634] (px4_ros_com) StderrLine: {'line': b'   73 | \x1b[01;36m\x1b[KNode\x1b[m\x1b[K::create_publisher(\n'}
+[13.750761] (px4_ros_com) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[13.750841] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[13.750906] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:70:89:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[13.750972] (px4_ros_com) StderrLine: {'line': b'   70 |                 vehicle_thrust_publisher = \x1b[01;31m\x1b[Kthis->create_publisher<VehicleThrustSetpoint>("/fmu/in/vehicle_thrust_setpoint", 10)\x1b[m\x1b[K;\n'}
+[13.751033] (px4_ros_com) StderrLine: {'line': b'      |                                            \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.770381] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:71:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvehicle_torque_publisher\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kvehicle_command_publisher_\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[13.770972] (px4_ros_com) StderrLine: {'line': b'   71 |                 \x1b[01;31m\x1b[Kvehicle_torque_publisher\x1b[m\x1b[K = this->create_publisher<VehicleTorqueSetpoint>("/fmu/in/vehicle_torque_setpoint", 10);\n'}
+[13.771065] (px4_ros_com) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.771152] (px4_ros_com) StderrLine: {'line': b'      |                 \x1b[32m\x1b[Kvehicle_command_publisher_\x1b[m\x1b[K\n'}
+[13.795554] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:71:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KVehicleTorqueSetpoint\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[13.796428] (px4_ros_com) StderrLine: {'line': b'   71 |                 vehicle_torque_publisher = this->create_publisher<\x1b[01;31m\x1b[KVehicleTorqueSetpoint\x1b[m\x1b[K>("/fmu/in/vehicle_torque_setpoint", 10);\n'}
+[13.796574] (px4_ros_com) StderrLine: {'line': b'      |                                                                   \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.796675] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:71:89:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KOffboardControl::create_publisher<<expression error> >(const char [32], int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.796764] (px4_ros_com) StderrLine: {'line': b'   71 |                 vehicle_torque_publisher = \x1b[01;31m\x1b[Kthis->create_publisher<VehicleTorqueSetpoint>("/fmu/in/vehicle_torque_setpoint", 10)\x1b[m\x1b[K;\n'}
+[13.796841] (px4_ros_com) StderrLine: {'line': b'      |                                            \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.796922] (px4_ros_com) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:1321\x1b[m\x1b[K,\n'}
+[13.797075] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[13.797233] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[13.797365] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[13.797458] (px4_ros_com) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:49\x1b[m\x1b[K:\n'}
+[13.797612] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.797724] (px4_ros_com) StderrLine: {'line': b'   73 | \x1b[01;36m\x1b[KNode\x1b[m\x1b[K::create_publisher(\n'}
+[13.797817] (px4_ros_com) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[13.797908] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node_impl.hpp:73:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[13.797991] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:71:89:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[13.798088] (px4_ros_com) StderrLine: {'line': b'   71 |                 vehicle_torque_publisher = \x1b[01;31m\x1b[Kthis->create_publisher<VehicleTorqueSetpoint>("/fmu/in/vehicle_torque_setpoint", 10)\x1b[m\x1b[K;\n'}
+[13.798253] (px4_ros_com) StderrLine: {'line': b'      |                                            \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.827650] (-) TimerEvent: {}
+[13.850579] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:\x1b[m\x1b[K In lambda function:\n'}
+[13.850990] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:115:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpublish_vehicle_torque_setpoints\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpublish_vehicle_thrust_setpoints\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[13.851225] (px4_ros_com) StderrLine: {'line': b'  115 |                         \x1b[01;31m\x1b[Kpublish_vehicle_torque_setpoints\x1b[m\x1b[K();\n'}
+[13.851384] (px4_ros_com) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.851520] (px4_ros_com) StderrLine: {'line': b'      |                         \x1b[32m\x1b[Kpublish_vehicle_thrust_setpoints\x1b[m\x1b[K\n'}
+[13.872185] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:\x1b[m\x1b[K At global scope:\n'}
+[13.872471] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:266:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno declaration matches \xe2\x80\x98\x1b[01m\x1b[Kvoid OffboardControl::publish_vehicle_rates_setpoint()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.872557] (px4_ros_com) StderrLine: {'line': b'  266 | void \x1b[01;31m\x1b[KOffboardControl\x1b[m\x1b[K::publish_vehicle_rates_setpoint()\n'}
+[13.872650] (px4_ros_com) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.872737] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:266:6:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kno functions named \xe2\x80\x98\x1b[01m\x1b[Kvoid OffboardControl::publish_vehicle_rates_setpoint()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[13.872812] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control.cpp:63:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclass OffboardControl\x1b[m\x1b[K\xe2\x80\x99 defined here\n'}
+[13.872880] (px4_ros_com) StderrLine: {'line': b'   63 | class \x1b[01;36m\x1b[KOffboardControl\x1b[m\x1b[K : public rclcpp::Node\n'}
+[13.872937] (px4_ros_com) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[13.927870] (-) TimerEvent: {}
+[14.028528] (-) TimerEvent: {}
+[14.129136] (-) TimerEvent: {}
+[14.229998] (-) TimerEvent: {}
+[14.330691] (-) TimerEvent: {}
+[14.431707] (-) TimerEvent: {}
+[14.532370] (-) TimerEvent: {}
+[14.633315] (-) TimerEvent: {}
+[14.734271] (-) TimerEvent: {}
+[14.835386] (-) TimerEvent: {}
+[14.936175] (-) TimerEvent: {}
+[15.036938] (-) TimerEvent: {}
+[15.138044] (-) TimerEvent: {}
+[15.238795] (-) TimerEvent: {}
+[15.339645] (-) TimerEvent: {}
+[15.440513] (-) TimerEvent: {}
+[15.541211] (-) TimerEvent: {}
+[15.642116] (-) TimerEvent: {}
+[15.743111] (-) TimerEvent: {}
+[15.843653] (-) TimerEvent: {}
+[15.944223] (-) TimerEvent: {}
+[16.044913] (-) TimerEvent: {}
+[16.145985] (-) TimerEvent: {}
+[16.246564] (-) TimerEvent: {}
+[16.347294] (-) TimerEvent: {}
+[16.448619] (-) TimerEvent: {}
+[16.549253] (-) TimerEvent: {}
+[16.649820] (-) TimerEvent: {}
+[16.750408] (-) TimerEvent: {}
+[16.851192] (-) TimerEvent: {}
+[16.952167] (-) TimerEvent: {}
+[17.053005] (-) TimerEvent: {}
+[17.153679] (-) TimerEvent: {}
+[17.254289] (-) TimerEvent: {}
+[17.354976] (-) TimerEvent: {}
+[17.455617] (-) TimerEvent: {}
+[17.556408] (-) TimerEvent: {}
+[17.657220] (-) TimerEvent: {}
+[17.758011] (-) TimerEvent: {}
+[17.859241] (-) TimerEvent: {}
+[17.959918] (-) TimerEvent: {}
+[18.060515] (-) TimerEvent: {}
+[18.161106] (-) TimerEvent: {}
+[18.261751] (-) TimerEvent: {}
+[18.362434] (-) TimerEvent: {}
+[18.463040] (-) TimerEvent: {}
+[18.563870] (-) TimerEvent: {}
+[18.664952] (-) TimerEvent: {}
+[18.765624] (-) TimerEvent: {}
+[18.866613] (-) TimerEvent: {}
+[18.967406] (-) TimerEvent: {}
+[19.068468] (-) TimerEvent: {}
+[19.169254] (-) TimerEvent: {}
+[19.269938] (-) TimerEvent: {}
+[19.370615] (-) TimerEvent: {}
+[19.471404] (-) TimerEvent: {}
+[19.572250] (-) TimerEvent: {}
+[19.673082] (-) TimerEvent: {}
+[19.773836] (-) TimerEvent: {}
+[19.874434] (-) TimerEvent: {}
+[19.983311] (-) TimerEvent: {}
+[20.084270] (-) TimerEvent: {}
+[20.185001] (-) TimerEvent: {}
+[20.285934] (-) TimerEvent: {}
+[20.386724] (-) TimerEvent: {}
+[20.488893] (-) TimerEvent: {}
+[20.590354] (-) TimerEvent: {}
+[20.691474] (-) TimerEvent: {}
+[20.792340] (-) TimerEvent: {}
+[20.893371] (-) TimerEvent: {}
+[20.994292] (-) TimerEvent: {}
+[21.095971] (-) TimerEvent: {}
+[21.196671] (-) TimerEvent: {}
+[21.297467] (-) TimerEvent: {}
+[21.398128] (-) TimerEvent: {}
+[21.498991] (-) TimerEvent: {}
+[21.600046] (-) TimerEvent: {}
+[21.700912] (-) TimerEvent: {}
+[21.801501] (-) TimerEvent: {}
+[21.902316] (-) TimerEvent: {}
+[22.002998] (-) TimerEvent: {}
+[22.103643] (-) TimerEvent: {}
+[22.204301] (-) TimerEvent: {}
+[22.305084] (-) TimerEvent: {}
+[22.405953] (-) TimerEvent: {}
+[22.506735] (-) TimerEvent: {}
+[22.607417] (-) TimerEvent: {}
+[22.708199] (-) TimerEvent: {}
+[22.809188] (-) TimerEvent: {}
+[22.914450] (-) TimerEvent: {}
+[23.015113] (-) TimerEvent: {}
+[23.115628] (-) TimerEvent: {}
+[23.216282] (-) TimerEvent: {}
+[23.316924] (-) TimerEvent: {}
+[23.419021] (-) TimerEvent: {}
+[23.519908] (-) TimerEvent: {}
+[23.621013] (-) TimerEvent: {}
+[23.721959] (-) TimerEvent: {}
+[23.822590] (-) TimerEvent: {}
+[23.928976] (-) TimerEvent: {}
+[24.030020] (-) TimerEvent: {}
+[24.130828] (-) TimerEvent: {}
+[24.232284] (-) TimerEvent: {}
+[24.334591] (-) TimerEvent: {}
+[24.435446] (-) TimerEvent: {}
+[24.536189] (-) TimerEvent: {}
+[24.636709] (-) TimerEvent: {}
+[24.737292] (-) TimerEvent: {}
+[24.837865] (-) TimerEvent: {}
+[24.938499] (-) TimerEvent: {}
+[25.039418] (-) TimerEvent: {}
+[25.140702] (-) TimerEvent: {}
+[25.241441] (-) TimerEvent: {}
+[25.342365] (-) TimerEvent: {}
+[25.443290] (-) TimerEvent: {}
+[25.543852] (-) TimerEvent: {}
+[25.644555] (-) TimerEvent: {}
+[25.745416] (-) TimerEvent: {}
+[25.846045] (-) TimerEvent: {}
+[25.946620] (-) TimerEvent: {}
+[26.047433] (-) TimerEvent: {}
+[26.148358] (-) TimerEvent: {}
+[26.249243] (-) TimerEvent: {}
+[26.350320] (-) TimerEvent: {}
+[26.452488] (-) TimerEvent: {}
+[26.553381] (-) TimerEvent: {}
+[26.654176] (-) TimerEvent: {}
+[26.755423] (-) TimerEvent: {}
+[26.856128] (-) TimerEvent: {}
+[26.956710] (-) TimerEvent: {}
+[27.057382] (-) TimerEvent: {}
+[27.158199] (-) TimerEvent: {}
+[27.258836] (-) TimerEvent: {}
+[27.359740] (-) TimerEvent: {}
+[27.460870] (-) TimerEvent: {}
+[27.561781] (-) TimerEvent: {}
+[27.664815] (-) TimerEvent: {}
+[27.765507] (-) TimerEvent: {}
+[27.866065] (-) TimerEvent: {}
+[27.967229] (-) TimerEvent: {}
+[28.068170] (-) TimerEvent: {}
+[28.168872] (-) TimerEvent: {}
+[28.269721] (-) TimerEvent: {}
+[28.370387] (-) TimerEvent: {}
+[28.472327] (-) TimerEvent: {}
+[28.573236] (-) TimerEvent: {}
+[28.674108] (-) TimerEvent: {}
+[28.775103] (-) TimerEvent: {}
+[28.876518] (-) TimerEvent: {}
+[28.977552] (-) TimerEvent: {}
+[29.078287] (-) TimerEvent: {}
+[29.179135] (-) TimerEvent: {}
+[29.279681] (-) TimerEvent: {}
+[29.380270] (-) TimerEvent: {}
+[29.480826] (-) TimerEvent: {}
+[29.581384] (-) TimerEvent: {}
+[29.682190] (-) TimerEvent: {}
+[29.783156] (-) TimerEvent: {}
+[29.884018] (-) TimerEvent: {}
+[29.984725] (-) TimerEvent: {}
+[30.085661] (-) TimerEvent: {}
+[30.187117] (-) TimerEvent: {}
+[30.287868] (-) TimerEvent: {}
+[30.388416] (-) TimerEvent: {}
+[30.489146] (-) TimerEvent: {}
+[30.590297] (-) TimerEvent: {}
+[30.690968] (-) TimerEvent: {}
+[30.791603] (-) TimerEvent: {}
+[30.892283] (-) TimerEvent: {}
+[30.992845] (-) TimerEvent: {}
+[31.093812] (-) TimerEvent: {}
+[31.194402] (-) TimerEvent: {}
+[31.295208] (-) TimerEvent: {}
+[31.396029] (-) TimerEvent: {}
+[31.496682] (-) TimerEvent: {}
+[31.597959] (-) TimerEvent: {}
+[31.698581] (-) TimerEvent: {}
+[31.799287] (-) TimerEvent: {}
+[31.900400] (-) TimerEvent: {}
+[32.001028] (-) TimerEvent: {}
+[32.101668] (-) TimerEvent: {}
+[32.202258] (-) TimerEvent: {}
+[32.303206] (-) TimerEvent: {}
+[32.404586] (-) TimerEvent: {}
+[32.505468] (-) TimerEvent: {}
+[32.606403] (-) TimerEvent: {}
+[32.707259] (-) TimerEvent: {}
+[32.807870] (-) TimerEvent: {}
+[32.908483] (-) TimerEvent: {}
+[33.009125] (-) TimerEvent: {}
+[33.110343] (-) TimerEvent: {}
+[33.211121] (-) TimerEvent: {}
+[33.311952] (-) TimerEvent: {}
+[33.412958] (-) TimerEvent: {}
+[33.513835] (-) TimerEvent: {}
+[33.614716] (-) TimerEvent: {}
+[33.715938] (-) TimerEvent: {}
+[33.816916] (-) TimerEvent: {}
+[33.918241] (-) TimerEvent: {}
+[34.018922] (-) TimerEvent: {}
+[34.121477] (-) TimerEvent: {}
+[34.222674] (-) TimerEvent: {}
+[34.323422] (-) TimerEvent: {}
+[34.424327] (-) TimerEvent: {}
+[34.524968] (-) TimerEvent: {}
+[34.625678] (-) TimerEvent: {}
+[34.726367] (-) TimerEvent: {}
+[34.827285] (-) TimerEvent: {}
+[34.925936] (px4_ros_com) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/offboard_control.dir/build.make:76: CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o] Error 1\n'}
+[34.926611] (px4_ros_com) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:254: CMakeFiles/offboard_control.dir/all] Error 2\n'}
+[34.927270] (px4_ros_com) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[34.927483] (-) TimerEvent: {}
+[34.940928] (px4_ros_com) CommandEnded: {'returncode': 2}
+[35.021383] (px4_ros_com) JobEnded: {'identifier': 'px4_ros_com', 'rc': 2}
+[35.028098] (-) TimerEvent: {}
+[35.033432] (-) EventReactorShutdown: {}

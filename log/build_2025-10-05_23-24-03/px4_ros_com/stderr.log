@@ -1,0 +1,61 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_innerloop(double)[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:434:38:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_dot_x[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_dot_z[m[K’?
+  434 |     Eigen::Vector3d omega_dot_design([01;31m[Komega_dot_x[m[K, omega_dot_y, omega_dot_z);
+      |                                      [01;31m[K^~~~~~~~~~~[m[K
+      |                                      [32m[Komega_dot_z[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:434:51:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_dot_y[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_dot_z[m[K’?
+  434 |     Eigen::Vector3d omega_dot_design(omega_dot_x, [01;31m[Komega_dot_y[m[K, omega_dot_z);
+      |                                                   [01;31m[K^~~~~~~~~~~[m[K
+      |                                                   [32m[Komega_dot_z[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:445:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kspin_torque_ramp_time_[m[K’ was not declared in this scope; did you mean ‘[01m[Kspin_torque_cmd_[m[K’?
+  445 |     if ([01;31m[Kspin_torque_ramp_time_[m[K > 1e-3) {
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
+      |         [32m[Kspin_torque_cmd_[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:446:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kspin_time_accum_[m[K’ was not declared in this scope
+  446 |         [01;31m[Kspin_time_accum_[m[K += dt;
+      |         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:52[m[K:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:487:21:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_x[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_b[m[K’?
+  487 |                     [01;31m[Komega_x[m[K, omega_y, omega_z,
+      |                     [01;31m[K^~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:487:30:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_y[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_b[m[K’?
+  487 |                     omega_x, [01;31m[Komega_y[m[K, omega_z,
+      |                              [01;31m[K^~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:487:39:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_z[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_b[m[K’?
+  487 |                     omega_x, omega_y, [01;31m[Komega_z[m[K,
+      |                                       [01;31m[K^~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:491:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kkph[m[K’ was not declared in this scope
+  491 |         double term1_x = [01;31m[Kkph[m[K * (n_b(1) - n_des_b(1));
+      |                          [01;31m[K^~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:492:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kkdh[m[K’ was not declared in this scope
+  492 |         double term2_x = [01;31m[Kkdh[m[K * (n_des_b(0) * omega_z - n_des_b(2) * omega_x);
+      |                          [01;31m[K^~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:492:46:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_z[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_b[m[K’?
+  492 |         double term2_x = kdh * (n_des_b(0) * [01;31m[Komega_z[m[K - n_des_b(2) * omega_x);
+      |                                              [01;31m[K^~~~~~~[m[K
+      |                                              [32m[Komega_b[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:492:69:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_x[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_b[m[K’?
+  492 |         double term2_x = kdh * (n_des_b(0) * omega_z - n_des_b(2) * [01;31m[Komega_x[m[K);
+      |                                                                     [01;31m[K^~~~~~~[m[K
+      |                                                                     [32m[Komega_b[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:493:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kkih[m[K’ was not declared in this scope
+  493 |         double term3_x = [01;31m[Kkih[m[K * nb_err_int_(1);
+      |                          [01;31m[K^~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_tilt_axis.cpp:494:41:[m[K [01;31m[Kerror: [m[K‘[01m[Komega_y[m[K’ was not declared in this scope; did you mean ‘[01m[Komega_b[m[K’?
+  494 |         double term4_x = -(n_des_b(2) * [01;31m[Komega_y[m[K - n_des_b(1) * omega_z) * omega_z;
+      |                                         [01;31m[K^~~~~~~[m[K
+      |                                         [32m[Komega_b[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_tilt_axis.dir/build.make:76: CMakeFiles/offboard_control_tilt_axis.dir/src/examples/offboard/offboard_control_tilt_axis.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:366: CMakeFiles/offboard_control_tilt_axis.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

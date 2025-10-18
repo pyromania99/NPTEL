@@ -1,0 +1,11 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::publish_vehicle_rates_setpoint()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:308:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kvehicle_rates_setpoint_publisher_[m[K’ was not declared in this scope
+  308 |     [01;31m[Kvehicle_rates_setpoint_publisher_[m[K->publish(msg);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::publish_vehicle_torque_setpoints()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:589:22:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_dt_[m[K’ was not declared in this scope
+  589 |         double dt = ([01;31m[Klast_dt_[m[K > 0.0) ? last_dt_ : (1.0/ctrl_rate_);
+      |                      [01;31m[K^~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_thrust_torque.dir/build.make:76: CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:308: CMakeFiles/offboard_control_thrust_torque.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

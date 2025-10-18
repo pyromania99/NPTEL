@@ -1,0 +1,27 @@
+[35m[1mConsolidate compiler generated dependencies of target offboard_control_thrust_torque[0m
+[  0%] Built target ament_cmake_python_copy_px4_ros_com
+[ 14%] Built target frame_transforms
+[ 42%] Built target offboard_control_srv
+[ 42%] Built target vehicle_gps_position_listener
+[ 57%] Built target sensor_combined_listener
+[ 64%] [32mBuilding CXX object CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o[0m
+[ 78%] Built target offboard_control
+[ 92%] Built target debug_vect_advertiser
+running egg_info
+writing px4_ros_com.egg-info/PKG-INFO
+writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+writing top-level names to px4_ros_com.egg-info/top_level.txt
+reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[ 92%] Built target ament_cmake_python_build_px4_ros_com_egg
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_outerloop()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:333:15:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KOffboardControl::integrator(double&, double&, double)[m[K’
+  333 |     [01;31m[Kintegrator(pos_err_z, pos_err_int_z_, 5.0)[m[K;
+      |     [01;31m[K~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:217:10:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid OffboardControl::integrator(const double&, double&, double, double)[m[K’
+  217 |     void [01;36m[Kintegrator[m[K(const double &input, double& output, const double dt, const double max);
+      |          [01;36m[K^~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:217:10:[m[K [01;36m[Knote: [m[K  candidate expects 4 arguments, 3 provided
+gmake[2]: *** [CMakeFiles/offboard_control_thrust_torque.dir/build.make:76: CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:308: CMakeFiles/offboard_control_thrust_torque.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

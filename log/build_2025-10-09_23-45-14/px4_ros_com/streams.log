@@ -1,0 +1,33 @@
+[0.277s] Invoking command in '/home/pyro/ws_offboard_control/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16
+[0.665s] [35m[1mConsolidate compiler generated dependencies of target offboard_control_spin_tt[0m
+[0.702s] [ 10%] Built target sensor_combined_listener
+[0.702s] [ 20%] Built target offboard_control_srv
+[0.704s] [ 30%] Built target vehicle_gps_position_listener
+[0.706s] [ 40%] Built target ament_cmake_python_copy_px4_ros_com
+[0.707s] [ 50%] Built target debug_vect_advertiser
+[0.707s] [ 60%] Built target frame_transforms
+[0.708s] [ 60%] Built target offboard_control_spin_lsq
+[0.708s] [ 80%] Built target offboard_control_tilt_axis
+[0.708s] [ 80%] Built target offboard_control_thrust_torque
+[0.719s] [ 90%] Built target offboard_control
+[0.736s] [ 95%] [32mBuilding CXX object CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o[0m
+[1.376s] running egg_info
+[1.419s] writing px4_ros_com.egg-info/PKG-INFO
+[1.422s] writing dependency_links to px4_ros_com.egg-info/dependency_links.txt
+[1.423s] writing top-level names to px4_ros_com.egg-info/top_level.txt
+[1.564s] reading manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[1.568s] writing manifest file 'px4_ros_com.egg-info/SOURCES.txt'
+[1.667s] [ 95%] Built target ament_cmake_python_build_px4_ros_com_egg
+[13.730s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::controller_outerloop(double)[m[K’:
+[13.730s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:932:24:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_body_xy[m[K’ was not declared in this scope; did you mean ‘[01m[Ka_des_body[m[K’?
+[13.731s]   932 |         double delta = [01;31m[Ka_des_body_xy[m[K(i) - a_des_prev_xy_(i);
+[13.731s]       |                        [01;31m[K^~~~~~~~~~~~~[m[K
+[13.731s]       |                        [32m[Ka_des_body[m[K
+[13.744s] [01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_spin_tt.cpp:936:22:[m[K [01;31m[Kerror: [m[K‘[01m[Ka_des_body_xy[m[K’ was not declared in this scope; did you mean ‘[01m[Ka_des_body[m[K’?
+[13.744s]   936 |     a_des_prev_xy_ = [01;31m[Ka_des_body_xy[m[K;
+[13.744s]       |                      [01;31m[K^~~~~~~~~~~~~[m[K
+[13.744s]       |                      [32m[Ka_des_body[m[K
+[44.588s] gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Error 1
+[44.589s] gmake[1]: *** [CMakeFiles/Makefile2:340: CMakeFiles/offboard_control_spin_tt.dir/all] Error 2
+[44.590s] gmake: *** [Makefile:146: all] Error 2
+[44.600s] Invoked command in '/home/pyro/ws_offboard_control/build/px4_ros_com' returned '2': CMAKE_PREFIX_PATH=/home/pyro/ws_offboard_control/install/px4_msgs:/home/pyro/ws_offboard_control/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/pyro/ws_offboard_control/install/px4_msgs/lib:/home/pyro/ws_offboard_control/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/pyro/ws_offboard_control/build/px4_ros_com -- -j16 -l16

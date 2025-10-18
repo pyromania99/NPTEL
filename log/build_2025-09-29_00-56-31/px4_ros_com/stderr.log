@@ -1,0 +1,32 @@
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In lambda function:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:110:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublish_vehicle_thrust_setpoints[m[K’ was not declared in this scope; did you mean ‘[01m[Kpublish_vehicle_rates_setpoint[m[K’?
+  110 |                         [01;31m[Kpublish_vehicle_thrust_setpoints[m[K();
+      |                         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [32m[Kpublish_vehicle_rates_setpoint[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:111:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublish_vehicle_torque_setpoints[m[K’ was not declared in this scope; did you mean ‘[01m[Kpublish_vehicle_rates_setpoint[m[K’?
+  111 |                         [01;31m[Kpublish_vehicle_torque_setpoints[m[K();
+      |                         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                         [32m[Kpublish_vehicle_rates_setpoint[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::publish_vehicle_rates_setpoint()[m[K’:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:306:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kvehicle_rates_setpoint_publisher_[m[K’ was not declared in this scope
+  306 |     [01;31m[Kvehicle_rates_setpoint_publisher_[m[K->publish(msg);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:[m[K At global scope:
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:497:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid OffboardControl::publish_vehicle_thrust_setpoints()[m[K’
+  497 | void [01;31m[KOffboardControl[m[K::publish_vehicle_thrust_setpoints()
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:497:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid OffboardControl::publish_vehicle_thrust_setpoints()[m[K’
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:66:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass OffboardControl[m[K’ defined here
+   66 | class [01;36m[KOffboardControl[m[K : public rclcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:549:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid OffboardControl::publish_vehicle_torque_setpoints()[m[K’
+  549 | void [01;31m[KOffboardControl[m[K::publish_vehicle_torque_setpoints()
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:549:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid OffboardControl::publish_vehicle_torque_setpoints()[m[K’
+[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:66:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass OffboardControl[m[K’ defined here
+   66 | class [01;36m[KOffboardControl[m[K : public rclcpp::Node
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/offboard_control_thrust_torque.dir/build.make:76: CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:308: CMakeFiles/offboard_control_thrust_torque.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2
