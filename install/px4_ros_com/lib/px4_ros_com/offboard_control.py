@@ -1,1 +1,0 @@
-/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard_py/offboard_control.py

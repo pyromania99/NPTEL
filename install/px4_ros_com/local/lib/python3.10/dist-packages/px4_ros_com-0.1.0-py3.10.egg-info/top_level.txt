@@ -1,1 +1,0 @@
-/home/pyro/ws_offboard_control/build/px4_ros_com/ament_cmake_python/px4_ros_com/px4_ros_com.egg-info/top_level.txt
