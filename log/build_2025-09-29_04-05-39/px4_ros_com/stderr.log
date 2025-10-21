@@ -1,9 +1,0 @@
-[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:150:37:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kpx4_msgs::msg::VehicleLocalPosition_<std::allocator<void> >::SharedPtr OffboardControl::current_position_[m[K’
-  150 |     VehicleLocalPosition::SharedPtr [01;31m[Kcurrent_position_[m[K;
-      |                                     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
-[01m[K/home/pyro/ws_offboard_control/src/px4_ros_com/src/examples/offboard/offboard_control_thrust_torque.cpp:147:41:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kpx4_msgs::msg::VehicleLocalPosition_<std::allocator<void> >::SharedPtr OffboardControl::current_position_[m[K’
-  147 |         VehicleLocalPosition::SharedPtr [01;36m[Kcurrent_position_[m[K;
-      |                                         [01;36m[K^~~~~~~~~~~~~~~~~[m[K
-gmake[2]: *** [CMakeFiles/offboard_control_thrust_torque.dir/build.make:76: CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:308: CMakeFiles/offboard_control_thrust_torque.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

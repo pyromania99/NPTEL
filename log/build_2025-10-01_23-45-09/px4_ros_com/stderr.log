@@ -1,9 +1,0 @@
-gmake[2]: *** [CMakeFiles/offboard_control_thrust_torque.dir/build.make:76: CMakeFiles/offboard_control_thrust_torque.dir/src/examples/offboard/offboard_control_thrust_torque.cpp.o] Interrupt
-gmake[2]: *** [CMakeFiles/offboard_control.dir/build.make:76: CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o] Interrupt
-gmake[2]: *** [CMakeFiles/offboard_control_tilt_axis.dir/build.make:76: CMakeFiles/offboard_control_tilt_axis.dir/src/examples/offboard/offboard_control_tilt_axis.cpp.o] Interrupt
-gmake[2]: *** [CMakeFiles/offboard_control_spin_tt.dir/build.make:76: CMakeFiles/offboard_control_spin_tt.dir/src/examples/offboard/offboard_control_spin_tt.cpp.o] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:364: CMakeFiles/offboard_control_tilt_axis.dir/all] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:260: CMakeFiles/offboard_control.dir/all] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:338: CMakeFiles/offboard_control_spin_tt.dir/all] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:312: CMakeFiles/offboard_control_thrust_torque.dir/all] Interrupt
-gmake: *** [Makefile:146: all] Interrupt

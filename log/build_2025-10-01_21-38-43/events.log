@@ -1,6 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.001606] (-) JobUnselected: {'identifier': 'px4_msgs'}
-[0.003211] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/pyro/ws_offboard_control/install/px4_msgs')])}
-[0.003320] (px4_ros_com) JobStarted: {'identifier': 'px4_ros_com'}
-[0.004546] (px4_ros_com) JobEnded: {'identifier': 'px4_ros_com', 'rc': 0}
-[0.015513] (-) EventReactorShutdown: {}
