@@ -5,22 +5,36 @@ Optimizes NDI controller gains based on flight performance metrics
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
+import sys
 from skopt import gp_minimize
 from skopt.space import Real
-from skopt.utils import use_named_args
 import json
 import os
 import subprocess
 import time
-import asyncio
 from typing import Dict, List, Tuple, Optional
 import signal
-import sys
 import argparse
 
 class ControllerAutoTuner:
+    """
+    ControllerAutoTuner now supports selecting which parameters to tune via boolean flags.
+
+    How to choose parameters to tune (any of the following):
+    - Edit flight_data/config/tune_flags.json and set each parameter to true/false
+      Example:
+      {
+        "ndi_kp": true,
+        "ndi_kd": false,
+        "fb_kp": true,
+        "fb_kd": false,
+        "att_kp": true,
+        "att_kd": false
+      }
+    - Use CLI: --tune-only att_kp,att_kd (only these will be tuned; others disabled)
+    - Use CLI: --tune-except fb_kd,ndi_kd (all enabled except these)
+    - Print available names: --list-params
+    """
     # Helper: canonicalize parameter vectors for stable dictionary keys
     @staticmethod
     def _canon_key(params: List[float]) -> Tuple[float, ...]:
@@ -28,14 +42,18 @@ class ControllerAutoTuner:
         return tuple(round(float(x), 6) for x in params)
 
     def _names(self) -> List[str]:
-        return [d.name for d in self.search_space]
+        # Active dimension names only
+        return [d.name for d in self.active_space]
 
     def _dict_to_vector(self, params_dict: Dict[str, float]) -> List[float]:
         names = self._names()
         return [float(params_dict[name]) for name in names if name in params_dict]
 
     def _vector_to_dict(self, params_vec: List[float]) -> Dict[str, float]:
-        return dict(zip(self._names(), params_vec))
+        # Ensure native Python floats for JSON serialization
+        names = self._names()
+        return {name: float(val) for name, val in zip(names, params_vec)}
+
     def install_signal_handlers(self):
         """Install handlers to defer termination until after the current trial.
         - SIGINT/SIGTERM set a stop flag; we exit after printing the current trial's cost.
@@ -254,8 +272,8 @@ class ControllerAutoTuner:
         self.launch_px4_sitl_gazebo()
         print("Complete drone reset finished (via restart).")
 
-    # Define parameter search space as a class attribute for decorator access
-    search_space = [
+    # Define full parameter search space as a class attribute
+    base_search_space = [
         Real(0.05, 0.8, name='ndi_kp'),      # NDI proportional gain
         Real(0.0, 0.1, name='ndi_kd'),      # NDI derivative gain  
         Real(0.0, 0.2, name='fb_kp'),        # Feedback proportional
@@ -264,10 +282,21 @@ class ControllerAutoTuner:
         Real(0.0, 5.0, name='att_kd'),       # Attitude derivative
     ]
 
+    # Map parameter names to control_params.json paths (section, key)
+    PARAM_TO_CONFIG = {
+        'ndi_kp': ('ndi_rate', 'kp'),
+        'ndi_kd': ('ndi_rate', 'kd'),
+        'fb_kp':  ('feedback_rate', 'kp'),
+        'fb_kd':  ('feedback_rate', 'kd'),
+        'att_kp': ('attitude', 'kp'),
+        'att_kd': ('attitude', 'kd'),
+    }
+
     def __init__(self, config_file: str, flight_data_dir: str,
                  reset_history: Optional[bool] = None,
                  max_seed_cost: Optional[float] = None,
-                 results_file: Optional[str] = None):
+                 results_file: Optional[str] = None,
+                 tune_flags: Optional[Dict[str, bool]] = None):
         self.config_file = config_file
         self.flight_data_dir = flight_data_dir
         self.base_config = self.load_config()
@@ -298,6 +327,11 @@ class ControllerAutoTuner:
             if max_seed_cost is not None
             else float(os.environ.get('AUTOTUNE_MAX_SEED_COST', '60'))
         )
+        # Tune flags and active search space
+        self.tune_flags = self._resolve_tune_flags(tune_flags)
+        self.active_space = [d for d in self.base_search_space if self.tune_flags.get(d.name, True)]
+        if not self.active_space:
+            raise ValueError("No parameters selected for tuning. Enable at least one in tune_flags.json or via CLI.")
         # Load any existing database to seed optimization
         self._load_previous_results()
 
@@ -308,6 +342,42 @@ class ControllerAutoTuner:
                 print(f"Warm-starting from historical best (cost={self.best_cost:.4f}). Applied to config.")
             except Exception as e:
                 print(f"Warning: Could not apply historical best params to config: {e}")
+        else:
+            # Ensure config contains current values (no-op, but validates mapping)
+            try:
+                self.update_config([])  # Update with nothing to validate
+            except Exception:
+                pass
+
+    def _resolve_tune_flags(self, provided: Optional[Dict[str, bool]]) -> Dict[str, bool]:
+        """Resolve tune flags priority: provided > file > default(all True)."""
+        names = [d.name for d in self.base_search_space]
+        if provided:
+            # Fill missing with True by default
+            return {n: bool(provided.get(n, True)) for n in names}
+        # Default tune_flags.json path
+        default_flags_path = os.path.join(self.flight_data_dir, 'config', 'tune_flags.json')
+        flags = None
+        try:
+            if os.path.isfile(default_flags_path):
+                with open(default_flags_path, 'r') as f:
+                    data = json.load(f)
+                if isinstance(data, dict):
+                    flags = {n: bool(data.get(n, True)) for n in names}
+        except Exception as e:
+            print(f"Warning: Could not read tune flags file: {e}")
+        if flags is None:
+            # Default to all True and write a template for the user
+            flags = {n: True for n in names}
+            try:
+                os.makedirs(os.path.dirname(default_flags_path), exist_ok=True)
+                with open(default_flags_path, 'w') as f:
+                    json.dump(flags, f, indent=2)
+                print(f"Wrote default tune flags to {default_flags_path}")
+            except Exception as e:
+                print(f"Warning: Could not write default tune_flags.json: {e}")
+        print("Active tune flags:", flags)
+        return flags
         
     def load_config(self) -> Dict:
         """Load current configuration"""
@@ -315,17 +385,32 @@ class ControllerAutoTuner:
             return json.load(f)
     
     def update_config(self, params: List[float]) -> None:
-        """Update configuration with new parameters"""
-        config = self.base_config.copy()
-        
-        # Map optimization parameters to config structure
-        config['ndi_rate']['kp'] = params[0]  # ndi_kp
-        config['ndi_rate']['kd'] = params[1]  # ndi_kd
-        config['feedback_rate']['kp'] = params[2]  # fb_kp
-        config['feedback_rate']['kd'] = params[3]  # fb_kd
-        config['attitude']['kp'] = params[4]  # att_kp
-        config['attitude']['kd'] = params[5]  # att_kd
-        
+        """Update configuration with new parameters.
+        Applies only active parameters; inactive ones remain unchanged.
+        """
+        # Start from current file on disk to preserve updates between trials
+        try:
+            with open(self.config_file, 'r') as f:
+                config = json.load(f)
+        except Exception:
+            config = self.base_config.copy()
+
+        # Build dict of current param values (for debug) and apply updates
+        names = self._names()
+        if params and len(params) != len(names):
+            raise ValueError(f"Expected {len(names)} parameters, got {len(params)}")
+        updates = dict(zip(names, params)) if params else {}
+
+        for pname, (section, key) in self.PARAM_TO_CONFIG.items():
+            if pname in updates:
+                # Ensure section exists
+                if section not in config:
+                    config[section] = {}
+                try:
+                    config[section][key] = float(updates[pname])
+                except Exception:
+                    pass  # Skip invalid value silently
+
         # Write updated config
         with open(self.config_file, 'w') as f:
             json.dump(config, f, indent=2)
@@ -487,14 +572,15 @@ class ControllerAutoTuner:
 
         if log_path is None:
             raise RuntimeError("No log file generated (timeout waiting for CSV)")
-        return log_path
 
-        # 6) Truncate PX4 SITL log so next trial starts with a clean log
+        # Truncate PX4 SITL log so next trial starts with a clean log
         try:
             with open("/tmp/px4_sitl_gz.log", "w"):
                 pass  # Truncate file
         except Exception as e:
             print(f"Warning: Could not truncate PX4 SITL log: {e}")
+
+        return log_path
 
     
     def analyze_performance(self, log_file: str) -> float:
@@ -591,7 +677,7 @@ class ControllerAutoTuner:
 
         trial_idx = len(self.trial_results) + 1
         print(f"\nTrial {trial_idx}")
-        print(f"Testing parameters: {dict(zip([d.name for d in self.search_space], param_values))}")
+        print(f"Testing parameters: {dict(zip([d.name for d in self.active_space], param_values))}")
         sys.stdout.flush()
         # Skip evaluation if we've already seen these parameters
         key = self._canon_key(param_values)
@@ -608,7 +694,8 @@ class ControllerAutoTuner:
             # Update best if applicable
             if cached_cost < self.best_cost:
                 self.best_cost = cached_cost
-                self.best_params = list(param_values)
+                # Store as list of native floats
+                self.best_params = [float(v) for v in param_values]
                 print(f"New best cost (from cache): {cached_cost:.4f}")
             return cached_cost
         # Update configuration
@@ -634,7 +721,8 @@ class ControllerAutoTuner:
             # Update best parameters
             if cost < self.best_cost:
                 self.best_cost = cost
-                self.best_params = param_values.copy()
+                # Store as list of native floats
+                self.best_params = [float(v) for v in param_values]
                 print(f"New best cost: {cost:.4f}")
             print(f"Cost: {cost:.4f}")
             sys.stdout.flush()
@@ -691,7 +779,7 @@ class ControllerAutoTuner:
 
             result = gp_minimize(
                 func=self.objective_function,
-                dimensions=self.search_space,
+                dimensions=self.active_space,
                 x0=x0 if x0 else None,
                 y0=y0 if x0 else None,
                 n_calls=n_calls,
@@ -706,7 +794,7 @@ class ControllerAutoTuner:
                 self.update_config(self.best_params)
                 print(f"\nOptimization complete!")
                 print(f"Best cost: {self.best_cost:.4f}")
-                print(f"Best parameters: {dict(zip([d.name for d in self.search_space], self.best_params))}")
+                print(f"Best parameters: {dict(zip([d.name for d in self.active_space], self.best_params))}")
                 
             return {
                 'best_params': self.best_params,
@@ -813,7 +901,7 @@ class ControllerAutoTuner:
         output = {
             'best_cost': best_cost if best_cost is not None else results.get('best_cost'),
             'best_params': best_params_dict if best_params_dict is not None else (
-                dict(zip(names, results.get('best_params'))) if results.get('best_params') else existing.get('best_params')
+                dict(zip(names, [float(x) for x in results.get('best_params')])) if results.get('best_params') else existing.get('best_params')
             ),
             'trial_history': merged_trials
         }
@@ -833,17 +921,52 @@ def main():
     parser.add_argument("--max-seed-cost", type=float, default=None, help="Max cost from history to seed the optimizer")
     parser.add_argument("--results-file", type=str, default=None, help="Path to results DB JSON (defaults to flight_data/outputs/tuning_results.json)")
     parser.add_argument("--trials", type=int, default=60, help="Number of optimization calls")
+    parser.add_argument("--tune-flags", type=str, default=None, help="Path to tune_flags.json; overrides defaults if provided")
+    parser.add_argument("--tune-only", type=str, default=None, help="Comma-separated list of parameter names to tune (others disabled)")
+    parser.add_argument("--tune-except", type=str, default=None, help="Comma-separated list of parameter names to disable (others enabled)")
+    parser.add_argument("--list-params", action="store_true", help="List available parameter names and exit")
     args = parser.parse_args()
 
     config_file = "/home/pyro/ws_offboard_control/flight_data/config/control_params.json"
     flight_data_dir = "/home/pyro/ws_offboard_control/flight_data"
+
+    # Generate tune flags based on CLI, if any
+    cli_flags: Optional[Dict[str, bool]] = None
+    names = [d.name for d in ControllerAutoTuner.base_search_space]
+    if args.list_params:
+        print("Available parameters:")
+        for n in names:
+            print(f" - {n}")
+        return
+    if args.tune_only:
+        only = [s.strip() for s in args.tune_only.split(',') if s.strip()]
+        invalid = [x for x in only if x not in names]
+        if invalid:
+            raise SystemExit(f"Invalid names in --tune-only: {invalid}")
+        cli_flags = {n: (n in only) for n in names}
+    elif args.tune_except:
+        exc = [s.strip() for s in args.tune_except.split(',') if s.strip()]
+        invalid = [x for x in exc if x not in names]
+        if invalid:
+            raise SystemExit(f"Invalid names in --tune-except: {invalid}")
+        cli_flags = {n: (n not in exc) for n in names}
+    elif args.tune_flags:
+        try:
+            with open(args.tune_flags, 'r') as f:
+                data = json.load(f)
+            if not isinstance(data, dict):
+                raise ValueError("tune_flags file must contain a JSON object of {name: bool}")
+            cli_flags = {n: bool(data.get(n, True)) for n in names}
+        except Exception as e:
+            raise SystemExit(f"Failed to read --tune-flags file: {e}")
     
     tuner = ControllerAutoTuner(
         config_file,
         flight_data_dir,
         reset_history=(not args.use_history),
         max_seed_cost=args.max_seed_cost,
-        results_file=args.results_file
+        results_file=args.results_file,
+        tune_flags=cli_flags
     )
     # Ensure we survive until each trial prints the cost
     tuner.install_signal_handlers()

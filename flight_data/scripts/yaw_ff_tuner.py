@@ -28,7 +28,7 @@ class YawFFAutoTuner:
         Real(0.000, 0.060, name='yaw_ff_dt_base'),    # Base prediction horizon (20-60ms)
         Real(0.000, 0.020, name='yaw_ff_dt_gain'),    # Additional dt per rad/s (0-20ms)
         Real(0.050, 0.150, name='yaw_ff_dt_max'),     # Maximum prediction horizon (50-150ms)
-        Real(0.05, 0.40, name='yaw_rate_lpf_alpha'),  # LPF alpha for gyro yaw rate
+        Real(0.05, 1.00, name='yaw_rate_lpf_alpha'),  # LPF alpha for gyro yaw rate
     ]
 
     @staticmethod
@@ -809,6 +809,172 @@ class YawFFAutoTuner:
         except Exception as e:
             print(f"Error saving results: {e}")
 
+    # ---------------------------
+    # Plotting and Trend Analysis
+    # ---------------------------
+    def _prepare_trials_for_plot(self, trials: List[Dict]) -> Tuple[np.ndarray, np.ndarray, np.ndarray, List[str]]:
+        """Convert trial history into arrays for plotting.
+
+        Returns:
+        - X: shape (N, D) array of parameter values in search_space order
+        - y: shape (N,) array of costs (float)
+        - yerr: shape (N,) array of cost std dev (float)
+        - names: list of parameter names, in order
+        """
+        names = self._names()
+        X_list: List[List[float]] = []
+        y_list: List[float] = []
+        yerr_list: List[float] = []
+
+        for tr in trials or []:
+            if tr is None or tr.get('failed'):
+                continue
+            pdict = tr.get('params') or {}
+            cost = tr.get('cost')
+            if cost is None:
+                continue
+            # ensure all params present
+            if not all(n in pdict for n in names):
+                continue
+            try:
+                xrow = [float(pdict[n]) for n in names]
+                c = float(cost)
+                cs = float(tr.get('cost_std', 0.0) or 0.0)
+            except Exception:
+                continue
+            # Exclude placeholder penalty-only entries from trend plots
+            if not np.isfinite(c):
+                continue
+            X_list.append(xrow)
+            y_list.append(c)
+            yerr_list.append(cs)
+
+        if not X_list:
+            return np.empty((0, len(names))), np.empty((0,)), np.empty((0,)), names
+
+        X = np.asarray(X_list, dtype=float)
+        y = np.asarray(y_list, dtype=float)
+        yerr = np.asarray(yerr_list, dtype=float)
+        return X, y, yerr, names
+
+    def _ensure_plots_dir(self) -> str:
+        ts = time.strftime('%Y-%m-%d_%H-%M-%S')
+        plots_dir = os.path.join(self.flight_data_dir, 'outputs', 'plots', f'yaw_ff_{ts}')
+        os.makedirs(plots_dir, exist_ok=True)
+        return plots_dir
+
+    def plot_trends(self, trials: Optional[List[Dict]] = None, out_dir: Optional[str] = None) -> List[str]:
+        """Create trend plots from trial history and save to disk.
+
+        If trials is None, uses self.trial_results. Returns list of saved file paths.
+        """
+        trials = trials if trials is not None else self.trial_results
+        saved: List[str] = []
+        X, y, yerr, names = self._prepare_trials_for_plot(trials)
+
+        if X.shape[0] == 0:
+            print('No valid trials to plot yet. Skipping plots.')
+            return saved
+
+        out_dir = out_dir or self._ensure_plots_dir()
+        plt.ioff()
+
+        # Cost over trials
+        try:
+            fig, ax = plt.subplots(figsize=(7, 4.2))
+            ax.plot(np.arange(1, len(y) + 1), y, '-o', alpha=0.8, label='avg cost')
+            running_min = np.minimum.accumulate(y)
+            ax.plot(np.arange(1, len(y) + 1), running_min, '--', color='tab:green', label='best so far')
+            ax.set_xlabel('trial # (in order)')
+            ax.set_ylabel('cost (lower is better)')
+            ax.set_title('Yaw FF tuning: cost over trials')
+            ax.grid(True, alpha=0.3)
+            ax.legend()
+            fpath = os.path.join(out_dir, 'cost_over_trials.png')
+            fig.tight_layout()
+            fig.savefig(fpath, dpi=150)
+            plt.close(fig)
+            saved.append(fpath)
+        except Exception as e:
+            print(f'Plot error (cost over trials): {e}')
+
+        # Per-parameter cost trends
+        for i, pname in enumerate(names):
+            try:
+                xi = X[:, i]
+                fig, ax = plt.subplots(figsize=(6.4, 4.6))
+                if np.any(yerr > 0):
+                    ax.errorbar(xi, y, yerr=yerr, fmt='o', alpha=0.75, ecolor='0.6', elinewidth=1, capsize=2)
+                else:
+                    ax.plot(xi, y, 'o', alpha=0.8)
+                ax.set_xlabel(pname)
+                ax.set_ylabel('cost')
+                ax.set_title(f'Cost vs {pname}')
+                ax.grid(True, alpha=0.3)
+
+                # Highlight best point
+                best_idx = int(np.argmin(y))
+                ax.plot([xi[best_idx]], [y[best_idx]], marker='*', markersize=12, color='tab:orange', label='best')
+                ax.legend()
+
+                fpath = os.path.join(out_dir, f'cost_vs_{pname}.png')
+                fig.tight_layout()
+                fig.savefig(fpath, dpi=150)
+                plt.close(fig)
+                saved.append(fpath)
+            except Exception as e:
+                print(f'Plot error (cost vs {pname}): {e}')
+
+        # Pairwise scatter colored by cost
+        try:
+            from itertools import combinations
+            for (i, j) in combinations(range(len(names)), 2):
+                fig, ax = plt.subplots(figsize=(6.0, 5.2))
+                sc = ax.scatter(X[:, i], X[:, j], c=y, cmap='viridis_r', s=36, alpha=0.9)
+                ax.set_xlabel(names[i])
+                ax.set_ylabel(names[j])
+                ax.set_title(f'Cost landscape: {names[i]} vs {names[j]}')
+                cb = fig.colorbar(sc, ax=ax, shrink=0.9)
+                cb.set_label('cost (lower is better)')
+                ax.grid(True, alpha=0.25)
+                fpath = os.path.join(out_dir, f'cost_vs_{names[i]}_and_{names[j]}.png')
+                fig.tight_layout()
+                fig.savefig(fpath, dpi=150)
+                plt.close(fig)
+                saved.append(fpath)
+        except Exception as e:
+            print(f'Plot error (pairwise): {e}')
+
+        # Export CSV summary to assist manual analysis
+        try:
+            import csv
+            csv_path = os.path.join(out_dir, 'trials_summary.csv')
+            with open(csv_path, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow([*names, 'cost', 'cost_std'])
+                for row, cost, cs in zip(X.tolist(), y.tolist(), yerr.tolist()):
+                    writer.writerow([*row, cost, cs])
+            saved.append(csv_path)
+        except Exception as e:
+            print(f'CSV export error: {e}')
+
+        print('Saved analysis artifacts:')
+        for p in saved:
+            print(f'  - {p}')
+        return saved
+
+    def plot_trends_from_results_file(self, results_file: Optional[str] = None, out_dir: Optional[str] = None) -> List[str]:
+        """Load trial history from a results DB JSON and plot trends."""
+        results_file = results_file or self.results_file
+        try:
+            with open(results_file, 'r') as f:
+                db = json.load(f)
+            trials = db.get('trial_history') or []
+        except Exception as e:
+            print(f"Couldn't load results DB for plotting ({results_file}): {e}")
+            trials = self.trial_results
+        return self.plot_trends(trials=trials, out_dir=out_dir)
+
 def main():
     """Run yaw feedforward automated tuning"""
     parser = argparse.ArgumentParser(description="Yaw Feedforward Auto-Tuner")
@@ -865,6 +1031,14 @@ def main():
     # Save results
     out_file = args.results_file or f"{flight_data_dir}/outputs/yaw_ff_tuning_results.json"
     tuner.save_results(results, out_file)
+
+    # Generate trend plots at the end for manual analysis
+    try:
+        plots = tuner.plot_trends_from_results_file(out_file)
+        if plots:
+            print("\nTrend plots saved. Review the images and CSV for insights into parameter-cost relationships.")
+    except Exception as e:
+        print(f"Plotting failed: {e}")
 
 if __name__ == "__main__":
     main()

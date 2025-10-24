@@ -1,129 +1,177 @@
 {
-  "best_cost": 40.202825071078294,
+  "best_cost": 42.08231541465344,
   "best_params": {
-    "indi_scale": 0.8168886881742098,
-    "indi_blend": 0.18343478986616382
+    "indi_scale": 1.2151601816043263,
+    "indi_blend": 0.18343478986616382,
+    "indi_alpha_omega": 0.390065809136112,
+    "indi_alpha_acc": 0.4976376184598653
   },
   "trial_history": [
     {
       "params": {
-        "indi_scale": 0.8168886881742098,
-        "indi_blend": 0.18343478986616382
+        "indi_scale": 1.2151601816043263,
+        "indi_blend": 0.18343478986616382,
+        "indi_alpha_omega": 0.390065809136112,
+        "indi_alpha_acc": 0.4976376184598653
       },
-      "cost": 40.202825071078294,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_010831_analysis.pdf"
+      "cost": 42.08231541465344,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_090808_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.8017219002454925,
-        "indi_blend": 0.5968501579464871
+        "indi_scale": 0.7241658539950276,
+        "indi_blend": 0.09997491581800291,
+        "indi_alpha_omega": 0.23016519709096778,
+        "indi_alpha_acc": 0.3002814583542664
       },
-      "cost": 301.28759936049755,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_010924_analysis.pdf"
+      "cost": 139.62753491487746,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_090920_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.5012494775682321,
-        "indi_blend": 0.09997491581800291
+        "indi_scale": 0.3000135450907171,
+        "indi_blend": 0.650888472948853,
+        "indi_alpha_omega": 0.029149377934523036,
+        "indi_alpha_acc": 0.5914990792001187
       },
-      "cost": 40.44257535251776,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011016_analysis.pdf"
+      "cost": 193.11201437485934,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091032_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.5133240027692806,
-        "indi_blend": 0.3337086111390219
+        "indi_scale": 1.4139737926220506,
+        "indi_blend": 0.0007787658410143285,
+        "indi_alpha_omega": 0.4961135680863176,
+        "indi_alpha_acc": 0.5131111322207875
       },
-      "cost": 151.88696059056423,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011109_analysis.pdf"
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
     },
     {
       "params": {
-        "indi_scale": 0.22858013612974673,
-        "indi_blend": 0.650888472948853
+        "indi_scale": 0.9563144246835933,
+        "indi_blend": 0.007066305219717408,
+        "indi_alpha_omega": 0.012508150095666463,
+        "indi_alpha_acc": 0.44358099519379196
       },
-      "cost": 763.9352808514432,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011159_analysis.pdf"
+      "cost": 57.144110749671356,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091433_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.15077042112439026,
-        "indi_blend": 0.7219987722668249
+        "indi_scale": 0.6598053604013577,
+        "indi_blend": 0.046665663213615434,
+        "indi_alpha_omega": 0.48690400390188826,
+        "indi_alpha_acc": 0.22457850532272822
       },
-      "cost": 415.1234658735165,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011250_analysis.pdf"
+      "cost": 42.672590449459285,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091545_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.9446974381141754,
-        "indi_blend": 0.0007787658410143285
+        "indi_scale": 0.22684900834594915,
+        "indi_blend": 0.6183860093330874,
+        "indi_alpha_omega": 0.19184853364231427,
+        "indi_alpha_acc": 0.7874231643550913
       },
-      "cost": 45.90609212077264,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011340_analysis.pdf"
+      "cost": 170.23745668993217,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091733_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.992990403362096,
-        "indi_blend": 0.6174815096277166
+        "indi_scale": 0.753468050547172,
+        "indi_blend": 0.8599404067363208,
+        "indi_alpha_omega": 0.34047346175530213,
+        "indi_alpha_acc": 0.3878744389771573
       },
-      "cost": 3.4644575730246796e+25,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011431_analysis.pdf"
+      "cost": 304.5720105159263,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091931_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.6504878444394528,
-        "indi_blend": 0.007066305219717408
+        "indi_scale": 0.11857094562381315,
+        "indi_blend": 0.942201755684853,
+        "indi_alpha_omega": 0.2820808207049242,
+        "indi_alpha_acc": 0.3390623769049372
       },
-      "cost": 40.26959635334976,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011521_analysis.pdf"
+      "cost": 193.12239995700057,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092047_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.12075618253727419,
-        "indi_blend": 0.5247746602583893
+        "indi_scale": 0.12235275310829988,
+        "indi_blend": 0.23089382562214905,
+        "indi_alpha_omega": 0.12127170754697987,
+        "indi_alpha_acc": 0.5624476391190938
       },
-      "cost": 46.012614830756085,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011612_analysis.pdf"
+      "cost": 54.39477439901708,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092234_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.6933953151856014,
-        "indi_blend": 0.6304345290007343
+        "indi_scale": 1.2093470855023394,
+        "indi_blend": 0.18271307356328384,
+        "indi_alpha_omega": 0.30118539071318307,
+        "indi_alpha_acc": 0.5838022312990812
       },
-      "cost": 185.6717194767026,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011702_analysis.pdf"
+      "cost": 45.02256253002239,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092343_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.7874719823027247,
-        "indi_blend": 0.5967680315235901
+        "indi_scale": 1.2379826357660058,
+        "indi_blend": 0.19394878840191226,
+        "indi_alpha_omega": 0.22527246549995758,
+        "indi_alpha_acc": 0.714483061803955
       },
-      "cost": 406.10480668013986,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011753_analysis.pdf"
+      "cost": 51.644977293824034,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092534_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.8475796652153081,
-        "indi_blend": 0.6305718681894141
+        "indi_scale": 1.2303800154048097,
+        "indi_blend": 0.18533818442708552,
+        "indi_alpha_omega": 0.12850433920069168,
+        "indi_alpha_acc": 0.7749476782285976
       },
-      "cost": 267.1410342294534,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011847_analysis.pdf"
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
     },
     {
       "params": {
-        "indi_scale": 0.7183498336649811,
-        "indi_blend": 0.6306182374246663
+        "indi_scale": 1.3261193868465682,
+        "indi_blend": 0.17568484033909096,
+        "indi_alpha_omega": 0.26247503718486226,
+        "indi_alpha_acc": 0.697657372152211
       },
-      "cost": 669.715965774107,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_011940_analysis.pdf"
+      "cost": 56.24085718343825,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_093032_analysis.pdf"
     },
     {
       "params": {
-        "indi_scale": 0.7130457140468818,
-        "indi_blend": 0.5966393213321841
+        "indi_scale": 0.9293355006960979,
+        "indi_blend": 0.23448040383039098,
+        "indi_alpha_omega": 0.2657195121735626,
+        "indi_alpha_acc": 0.5966662132930622
       },
-      "cost": 504.7758239066498,
-      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251014_012031_analysis.pdf"
+      "cost": 42.761706167718344,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_093143_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.12691835651117167,
+        "indi_blend": 0.24927710933205188,
+        "indi_alpha_omega": 0.49063282744675796,
+        "indi_alpha_acc": 0.7912165471875612
+      },
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
     }
   ]
 }

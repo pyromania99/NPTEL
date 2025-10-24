@@ -6,15 +6,14 @@ Optimizes NDI controller gains based on flight performance metrics
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.optimize import minimize
 from skopt import gp_minimize
 from skopt.space import Real
-from skopt.utils import use_named_args
+ 
 import json
 import os
 import subprocess
 import time
-import asyncio
+ 
 from typing import Dict, List, Tuple, Optional
 import signal
 import sys
@@ -254,17 +253,12 @@ class ControllerAutoTuner:
         self.launch_px4_sitl_gazebo()
         print("Complete drone reset finished (via restart).")
 
-    # Define parameter search space as a class attribute for decorator access
-    # Focused on INDI scale and blend ratio tuning
+    # Define parameter search space: tune all four INDI parameters
     search_space = [
-        # Real(0.05, 0.8, name='ndi_kp'),      # NDI proportional gain
-        # Real(0.0, 0.1, name='ndi_kd'),      # NDI derivative gain  
-        # Real(0.0, 0.2, name='fb_kp'),        # Feedback proportional
-        # Real(0.0, 0.02, name='fb_kd'),       # Feedback derivative
-        # Real(0.1, 7.0, name='att_kp'),       # Attitude proportional
-        # Real(0.0, 5.0, name='att_kd'),       # Attitude derivative
-        Real(0.1, 1.0, name='indi_scale'),     # INDI scale factor (K_indi_scale)
-        Real(0.0, 1.0, name='indi_blend'),     # INDI blend ratio (0=pure NDI, 1=pure INDI)
+        Real(0.1, 1.5, name='indi_scale'),          # INDI scale factor
+        Real(0.0, 1.0, name='indi_blend'),          # INDI blend ratio (0=pure NDI, 1=pure INDI)
+        Real(0.001, 0.5, name='indi_alpha_omega'),  # LPF alpha for omega
+        Real(0.05, 0.8, name='indi_alpha_acc'),     # LPF alpha for acc
     ]
 
     def __init__(self, config_file: str, flight_data_dir: str,
@@ -321,18 +315,13 @@ class ControllerAutoTuner:
         """Update configuration with new parameters"""
         config = self.base_config.copy()
         
-        # Map optimization parameters to config structure
-        # config['ndi_rate']['kp'] = params[0]  # ndi_kp
-        # config['ndi_rate']['kd'] = params[1]  # ndi_kd
-        # config['feedback_rate']['kp'] = params[2]  # fb_kp
-        # config['feedback_rate']['kd'] = params[3]  # fb_kd
-        # config['attitude']['kp'] = params[4]  # att_kp
-        # config['attitude']['kd'] = params[5]  # att_kd
-        
+
         # Map optimization parameters to config structure - INDI focused
-        config['indi']['scale'] = params[0]        # indi_scale
-        config['indi']['blend_ratio'] = params[1]  # indi_blend
-        
+        config['indi']['scale'] = float(params[0])             # indi_scale
+        config['indi']['blend_ratio'] = float(params[1])       # indi_blend
+        config['indi']['alpha_omega_lp'] = float(params[2])    # indi_alpha_omega
+        config['indi']['alpha_acc_lp'] = float(params[3])      # indi_alpha_acc
+
         # Ensure INDI is enabled for these tests
         config['indi']['enabled'] = True
         
@@ -497,14 +486,15 @@ class ControllerAutoTuner:
 
         if log_path is None:
             raise RuntimeError("No log file generated (timeout waiting for CSV)")
-        return log_path
 
-        # 6) Truncate PX4 SITL log so next trial starts with a clean log
+        # Truncate PX4 SITL log so next trial starts with a clean log
         try:
             with open("/tmp/px4_sitl_gz.log", "w"):
                 pass  # Truncate file
         except Exception as e:
             print(f"Warning: Could not truncate PX4 SITL log: {e}")
+
+        return log_path
 
     
     def analyze_performance(self, log_file: str) -> float:
@@ -601,7 +591,7 @@ class ControllerAutoTuner:
 
         trial_idx = len(self.trial_results) + 1
         print(f"\nTrial {trial_idx}")
-        print(f"Testing parameters: {dict(zip([d.name for d in self.search_space], param_values))}")
+        print(f"Testing parameters: {dict(zip([d.name for d in self.search_space], [float(v) for v in param_values]))}")
         sys.stdout.flush()
         # Skip evaluation if we've already seen these parameters
         key = self._canon_key(param_values)

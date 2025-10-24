@@ -23,5 +23,3 @@ log/
 # Flight data runtime outputs
 flight_data/logs/
 flight_data/outputs/
-flight_data/save_good/
-flight_data/scripts/tuner_env/

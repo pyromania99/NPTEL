@@ -29,7 +29,7 @@ def compute_scheduled_gains(yaw_rate, kp_base, kd_base, kp_min, kd_max, rate_thr
     """
     # Compute scheduling factor using tanh (matching C++ implementation)
     abs_rate = np.abs(yaw_rate)
-    schedule_factor = (np.tanh((abs_rate - rate_threshold) / 3 * 4) + 1) / 2
+    schedule_factor = (np.tanh((abs_rate - rate_threshold) / 3) + 1) / 2
     # (std::tanh((yaw_rate_mag - rate_threshold) / 3 * 4) + 1) / 2;
     # Interpolate gains
     # Decrease P gain with increasing yaw rate
