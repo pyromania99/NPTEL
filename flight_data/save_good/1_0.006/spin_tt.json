@@ -2,10 +2,10 @@
   "attitude": {
     "kp": 1.5790702610965226,
     "kd": 3.4540515897307804,
-    "kp_rate": 1.5790702610965226,
-    "kd_rate": 3.4540515897307804,
-    "kp_acc":  0.0,
-    "kd_acc": 0.0
+    "kp_rate":5.0,
+    "kd_rate":2.0,
+    "kp_acc":3.0,
+    "kd_acc":1.0
   },
   "gain_scheduling": {
     "enabled": false,
@@ -65,3 +65,4 @@
     "rotation_clamp_rate_gain": 0.02
   }
 }
+   
