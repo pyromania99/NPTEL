@@ -5,16 +5,38 @@ import numpy as np
 from matplotlib.gridspec import GridSpec
 import json
 import textwrap
+import argparse
 
-# Read data - find the most recent flight log
 import glob
 import os
-log_files = glob.glob('/home/pyro/ws_offboard_control/flight_data/logs/flight_log_*.csv')
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Generate flight data analysis plots')
+parser.add_argument('--source', type=str, default=None,
+                    help='Source executable name (e.g., offboard_control_pd). Used to organize logs and outputs.')
+parser.add_argument('--output-dir', type=str, default=None,
+                    help='Override output directory for plots')
+args = parser.parse_args()
+
+# Determine log directory based on source
+base_logs_dir = '/home/pyro/ws_offboard_control/flight_data/logs'
+if args.source:
+    logs_dir = os.path.join(base_logs_dir, args.source)
+else:
+    logs_dir = base_logs_dir
+
+# Read data - find the most recent flight log
+log_files = glob.glob(os.path.join(logs_dir, 'flight_log_*.csv'))
 if not log_files:
-    print('No flight log files found!')
+    # Fallback: try base logs directory
+    log_files = glob.glob(os.path.join(base_logs_dir, 'flight_log_*.csv'))
+if not log_files:
+    print(f'No flight log files found in {logs_dir}!')
     exit(1)
 latest_log = max(log_files, key=os.path.getctime)
 print(f'Reading log file: {latest_log}')
+if args.source:
+    print(f'Source executable: {args.source}')
 df = pd.read_csv(latest_log)
 t = df['timestamp']
 
@@ -96,8 +118,8 @@ print(config_summary)
 
 # Create comprehensive figure with subplots
 plt.style.use('seaborn-v0_8')
-fig = plt.figure(figsize=(40, 40))  # Increased height for more rows
-gs = GridSpec(14, 3, figure=fig, hspace=0.3, wspace=0.3)  # 14 rows: angular accel + coupling plots
+fig = plt.figure(figsize=(40, 65))  # Increased height to accommodate all plots including new torque allocation plots
+gs = GridSpec(21, 3, figure=fig, hspace=0.3, wspace=0.3)  # Added 2 more rows for torque allocation plots
 
 # Create mask for data after 10 seconds (for better y-limit calculation)
 steady_state_mask = t >= 10.0
@@ -144,19 +166,30 @@ ax3.set_title('Vertical Velocity')
 ax3.legend()
 ax3.grid(True)
 
-# 3. Attitude tracking
-ax4 = fig.add_subplot(gs[1, 2])
+# 3. Attitude tracking - Yaw (full row)
+ax4b = fig.add_subplot(gs[2, :])
+ax4b.plot(t, np.degrees(df['yaw']), 'g-', label='Yaw', linewidth=2)
+ax4b.plot(t, np.degrees(df['yaw_des']), 'g--', label='Yaw Desired', linewidth=2)
+ax4b.set_xlabel('Time (s)')
+ax4b.set_ylabel('Yaw (deg)')
+ax4b.set_title('Yaw Tracking')
+ax4b.legend()
+ax4b.grid(True)
+
+# 3b. Attitude tracking - Roll & Pitch
+ax4 = fig.add_subplot(gs[3, 0:3])
 ax4.plot(t, np.degrees(df['roll']), 'b-', label='Roll', linewidth=2)
+ax4.plot(t, np.degrees(df['roll_des']), 'b--', label='Roll Desired', linewidth=2)
 ax4.plot(t, np.degrees(df['pitch']), 'r-', label='Pitch', linewidth=2)
-ax4.plot(t, np.degrees(df['yaw']), 'g-', label='Yaw', linewidth=2)
+ax4.plot(t, np.degrees(df['pitch_des']), 'r--', label='Pitch Desired', linewidth=2)
 ax4.set_xlabel('Time (s)')
 ax4.set_ylabel('Attitude (deg)')
-ax4.set_title('Attitude Angles')
+ax4.set_title('Roll & Pitch Tracking')
 ax4.legend()
 ax4.grid(True)
 
 # 4. Angular rates
-ax5 = fig.add_subplot(gs[2, 0])
+ax5 = fig.add_subplot(gs[4, 0])
 ax5.plot(t, np.degrees(df['p']), 'b-', label='Actual p', linewidth=2)
 ax5.plot(t, np.degrees(df['p_des']), 'b--', label='Desired p', linewidth=2)
 # Calculate y-limits from steady-state data
@@ -172,7 +205,7 @@ ax5.set_title('Roll Rate Tracking')
 ax5.legend()
 ax5.grid(True)
 
-ax6 = fig.add_subplot(gs[2, 1])
+ax6 = fig.add_subplot(gs[4, 1])
 ax6.plot(t, np.degrees(df['q']), 'r-', label='Actual q', linewidth=2)
 ax6.plot(t, np.degrees(df['q_des']), 'r--', label='Desired q', linewidth=2)
 # Calculate y-limits from steady-state data
@@ -188,7 +221,7 @@ ax6.set_title('Pitch Rate Tracking')
 ax6.legend()
 ax6.grid(True)
 
-ax7 = fig.add_subplot(gs[2, 2])
+ax7 = fig.add_subplot(gs[4, 2])
 ax7.plot(t, np.degrees(df['r']), 'g-', label='Actual r', linewidth=2)
 ax7.plot(t, np.degrees(df['r_des']), 'g--', label='Desired r', linewidth=2)
 ax7.set_xlabel('Time (s)')
@@ -197,8 +230,68 @@ ax7.set_title('Yaw Rate Tracking')
 ax7.legend()
 ax7.grid(True)
 
+# 4b. Euler rates (phi_dot, theta_dot, psi_dot) - compute from body rates using T matrix
+# T(phi, theta) transforms body rates to Euler rates
+def compute_euler_rates(roll, pitch, p, q, r):
+    """Convert body rates to Euler rates using T matrix"""
+    phi_dot = p + np.sin(roll) * np.tan(pitch) * q + np.cos(roll) * np.tan(pitch) * r
+    theta_dot = np.cos(roll) * q - np.sin(roll) * r
+    psi_dot = (np.sin(roll) / np.cos(pitch)) * q + (np.cos(roll) / np.cos(pitch)) * r
+    return phi_dot, theta_dot, psi_dot
+
+# Compute Euler rates from logged body rates and attitudes
+phi_dot, theta_dot, psi_dot = compute_euler_rates(
+    df['roll'].values, df['pitch'].values,
+    df['p'].values, df['q'].values, df['r'].values
+)
+
+# Desired Euler rates (from p_des, q_des, r_des if they represent Euler rates, or compute from body)
+phi_dot_des, theta_dot_des, psi_dot_des = compute_euler_rates(
+    df['roll_des'].values, df['pitch_des'].values,
+    df['p_des'].values, df['q_des'].values, df['r_des'].values
+)
+
+ax8 = fig.add_subplot(gs[5, 0])
+ax8.plot(t, np.degrees(phi_dot), 'b-', label='Actual φ̇', linewidth=2)
+ax8.plot(t, np.degrees(phi_dot_des), 'b--', label='Desired φ̇', linewidth=2)
+if steady_state_mask.any():
+    phi_dot_ss = np.concatenate([np.degrees(phi_dot[steady_state_mask]), 
+                                  np.degrees(phi_dot_des[steady_state_mask])])
+    phi_dot_min, phi_dot_max = phi_dot_ss.min(), phi_dot_ss.max()
+    phi_dot_margin = (phi_dot_max - phi_dot_min) * 0.1
+    ax8.set_ylim(phi_dot_min - phi_dot_margin, phi_dot_max + phi_dot_margin)
+ax8.set_xlabel('Time (s)')
+ax8.set_ylabel('Roll Euler Rate (deg/s)')
+ax8.set_title('Roll Euler Rate (φ̇)')
+ax8.legend()
+ax8.grid(True)
+
+ax9 = fig.add_subplot(gs[5, 1])
+ax9.plot(t, np.degrees(theta_dot), 'r-', label='Actual θ̇', linewidth=2)
+ax9.plot(t, np.degrees(theta_dot_des), 'r--', label='Desired θ̇', linewidth=2)
+if steady_state_mask.any():
+    theta_dot_ss = np.concatenate([np.degrees(theta_dot[steady_state_mask]), 
+                                    np.degrees(theta_dot_des[steady_state_mask])])
+    theta_dot_min, theta_dot_max = theta_dot_ss.min(), theta_dot_ss.max()
+    theta_dot_margin = (theta_dot_max - theta_dot_min) * 0.1
+    ax9.set_ylim(theta_dot_min - theta_dot_margin, theta_dot_max + theta_dot_margin)
+ax9.set_xlabel('Time (s)')
+ax9.set_ylabel('Pitch Euler Rate (deg/s)')
+ax9.set_title('Pitch Euler Rate (θ̇)')
+ax9.legend()
+ax9.grid(True)
+
+ax9b = fig.add_subplot(gs[5, 2])
+ax9b.plot(t, np.degrees(psi_dot), 'g-', label='Actual ψ̇', linewidth=2)
+ax9b.plot(t, np.degrees(psi_dot_des), 'g--', label='Desired ψ̇', linewidth=2)
+ax9b.set_xlabel('Time (s)')
+ax9b.set_ylabel('Yaw Euler Rate (deg/s)')
+ax9b.set_title('Yaw Euler Rate (ψ̇)')
+ax9b.legend()
+ax9b.grid(True)
+
 # 5. p Error (full row)
-ax10 = fig.add_subplot(gs[3, :])
+ax10 = fig.add_subplot(gs[6, :])
 ax10_torque = ax10.twinx()
 ax10.plot(t, np.degrees(df['rate_err_p']), 'b-', linewidth=2, label='Roll Rate Error')
 
@@ -245,7 +338,7 @@ ax10_torque.legend(loc='upper right')
 ax10.grid(True)
 
 # 6. q Error (full row)
-ax11 = fig.add_subplot(gs[4, :])
+ax11 = fig.add_subplot(gs[7, :])
 ax11_torque = ax11.twinx()
 ax11.plot(t, np.degrees(df['rate_err_q']), 'r-', linewidth=2, label='Pitch Rate Error')
 
@@ -292,7 +385,7 @@ ax11_torque.legend(loc='upper right')
 ax11.grid(True)
 
 # 7. Attitude Error (full row)
-ax9 = fig.add_subplot(gs[5, :])
+ax9 = fig.add_subplot(gs[8, :])
 ax9.plot(t, np.degrees(df['att_err_roll']), 'b-', label='Roll Error', linewidth=2)
 ax9.plot(t, np.degrees(df['att_err_pitch']), 'r-', label='Pitch Error', linewidth=2)
 # ax9.set_xlabel('Time (s)')
@@ -308,7 +401,7 @@ has_ang_accel = all(col in df.columns for col in ['p_dot_des', 'q_dot_des', 'r_d
 
 if has_ang_accel:
     # 8. p_dot (Roll angular acceleration) with X torque stack
-    ax_pdot = fig.add_subplot(gs[6, :])
+    ax_pdot = fig.add_subplot(gs[9, :])
     ax_pdot_torque = ax_pdot.twinx()
     
     ax_pdot.plot(t, np.degrees(df['p_dot_des']), 'r--', linewidth=0.5, label='Desired p_dot', alpha=0.8)
@@ -374,28 +467,13 @@ if has_ang_accel:
     ax_pdot.grid(True)
     
     # 9. q_dot (Pitch angular acceleration) with Y torque stack
-    ax_qdot = fig.add_subplot(gs[7, :])
+    ax_qdot = fig.add_subplot(gs[10, :])
     ax_qdot_torque = ax_qdot.twinx()
     
     ax_qdot.plot(t, np.degrees(df['q_dot_des']), 'b--', linewidth=0.5, label='Desired q_dot', alpha=0.8)
     ax_qdot.plot(t, np.degrees(df['q_dot_meas']), 'r-', linewidth=0.5, label='Measured q_dot')
-    
-    # # Stacked torque components for Y axis
-    # if all(col in df.columns for col in ['tau_ndi_y', 'tau_indi_y', 'indi_blend_ratio']):
-    #     tau_ndi_weighted_y = df['tau_ndi_y'] * (1.0 - df['indi_blend_ratio'])
-    #     tau_indi_weighted_y = df['tau_indi_y'] * df['indi_blend_ratio']
-    #     tau_fb_y = df['torque_y'] - tau_ndi_weighted_y - tau_indi_weighted_y
-        
-    #     ax_qdot_torque.fill_between(t, 0, tau_ndi_weighted_y, label='NDI', color='purple', alpha=0.4, linewidth=0)
-    #     ax_qdot_torque.fill_between(t, tau_ndi_weighted_y, tau_ndi_weighted_y + tau_indi_weighted_y, 
-    #                                  label='INDI', color='orange', alpha=0.4, linewidth=0)
-    #     ax_qdot_torque.fill_between(t, tau_ndi_weighted_y + tau_indi_weighted_y, df['torque_y'], 
-    #                                  label='Feedback', color='pink', alpha=0.4, linewidth=0)
-    #     ax_qdot_torque.plot(t, df['torque_y'], 'm-', linewidth=0.5, alpha=0.8, label='Total Y Torque')
-    # else:
     ax_qdot_torque.plot(t, df['torque_y'], 'm-', linewidth=0.1, alpha=0.7, label='Y Torque')
     
-    # Add coupling and net torque overlays if available
     if 'coupling_y' in df.columns:
         net_torque_y = df['torque_y'] - df['coupling_y']  # Motors need less when coupling assists
         ax_qdot_torque.plot(t, df['coupling_y'], 'k:', linewidth=1.5, alpha=0.6, label='Coupling Y')
@@ -440,57 +518,57 @@ if has_ang_accel:
     ax_qdot.grid(True)
     
     # 10. r_dot (Yaw angular acceleration) with Z torque stack
-    ax_rdot = fig.add_subplot(gs[8, :])
-    ax_rdot_torque = ax_rdot.twinx()
+    # ax_rdot = fig.add_subplot(gs[9, :])
+    # ax_rdot_torque = ax_rdot.twinx()
     
-    # ax_rdot.plot(t, np.degrees(df['r_dot_des']), 'r--', linewidth=0.5, label='Desired r_dot', alpha=0.8)
-    # ax_rdot.plot(t, np.degrees(df['r_dot_meas']), 'g-', linewidth=0.5, label='Measured r_dot')
+    # # ax_rdot.plot(t, np.degrees(df['r_dot_des']), 'r--', linewidth=0.5, label='Desired r_dot', alpha=0.8)
+    # # ax_rdot.plot(t, np.degrees(df['r_dot_meas']), 'g-', linewidth=0.5, label='Measured r_dot')
     
-    # Stacked torque components for Z axis
-    if all(col in df.columns for col in ['tau_ndi_z', 'tau_indi_z', 'indi_blend_ratio']):
-        tau_ndi_weighted_z = df['tau_ndi_z'] * (1.0 - df['indi_blend_ratio'])
-        tau_indi_weighted_z = df['tau_indi_z'] * df['indi_blend_ratio']
-        tau_fb_z = df['torque_z'] - tau_ndi_weighted_z - tau_indi_weighted_z
+    # # Stacked torque components for Z axis
+    # if all(col in df.columns for col in ['tau_ndi_z', 'tau_indi_z', 'indi_blend_ratio']):
+    #     tau_ndi_weighted_z = df['tau_ndi_z'] * (1.0 - df['indi_blend_ratio'])
+    #     tau_indi_weighted_z = df['tau_indi_z'] * df['indi_blend_ratio']
+    #     tau_fb_z = df['torque_z'] - tau_ndi_weighted_z - tau_indi_weighted_z
         
-        ax_rdot_torque.fill_between(t, 0, tau_ndi_weighted_z, label='NDI', color='purple', alpha=0.4, linewidth=0)
-        ax_rdot_torque.fill_between(t, tau_ndi_weighted_z, tau_ndi_weighted_z + tau_indi_weighted_z, 
-                                     label='INDI', color='yellow', alpha=0.4, linewidth=0)
-        ax_rdot_torque.fill_between(t, tau_ndi_weighted_z + tau_indi_weighted_z, df['torque_z'], 
-                                     label='Feedback', color='lightgreen', alpha=0.4, linewidth=0)
-        # ax_rdot_torque.plot(t, df['torque_z'], 'purple', linewidth=0.01, alpha=0.8, label='Total Z Torque')
-    else:
-        ax_rdot_torque.plot(t, df['torque_z'], 'g-', linewidth=0.1, alpha=0.7, label='Z Torque')
+    #     ax_rdot_torque.fill_between(t, 0, tau_ndi_weighted_z, label='NDI', color='purple', alpha=0.4, linewidth=0)
+    #     ax_rdot_torque.fill_between(t, tau_ndi_weighted_z, tau_ndi_weighted_z + tau_indi_weighted_z, 
+    #                                  label='INDI', color='yellow', alpha=0.4, linewidth=0)
+    #     ax_rdot_torque.fill_between(t, tau_ndi_weighted_z + tau_indi_weighted_z, df['torque_z'], 
+    #                                  label='Feedback', color='lightgreen', alpha=0.4, linewidth=0)
+    #     # ax_rdot_torque.plot(t, df['torque_z'], 'purple', linewidth=0.01, alpha=0.8, label='Total Z Torque')
+    # else:
+    #     ax_rdot_torque.plot(t, df['torque_z'], 'g-', linewidth=0.1, alpha=0.7, label='Z Torque')
     
-    # Align axes
-    if steady_state_mask.any():
-        rdot_max = max(abs(np.degrees(df.loc[steady_state_mask, 'r_dot_des']).max()),
-                       abs(np.degrees(df.loc[steady_state_mask, 'r_dot_des']).min()),
-                       abs(np.degrees(df.loc[steady_state_mask, 'r_dot_meas']).max()),
-                       abs(np.degrees(df.loc[steady_state_mask, 'r_dot_meas']).min()))
-        torque_max = max(abs(df.loc[steady_state_mask, 'torque_z'].min()), 
-                         abs(df.loc[steady_state_mask, 'torque_z'].max()))
-    else:
-        rdot_max = max(abs(np.degrees(df['r_dot_des']).max()), abs(np.degrees(df['r_dot_meas']).max()))
-        torque_max = max(abs(df['torque_z'].min()), abs(df['torque_z'].max()))
+    # # Align axes
+    # if steady_state_mask.any():
+    #     rdot_max = max(abs(np.degrees(df.loc[steady_state_mask, 'r_dot_des']).max()),
+    #                    abs(np.degrees(df.loc[steady_state_mask, 'r_dot_des']).min()),
+    #                    abs(np.degrees(df.loc[steady_state_mask, 'r_dot_meas']).max()),
+    #                    abs(np.degrees(df.loc[steady_state_mask, 'r_dot_meas']).min()))
+    #     torque_max = max(abs(df.loc[steady_state_mask, 'torque_z'].min()), 
+    #                      abs(df.loc[steady_state_mask, 'torque_z'].max()))
+    # else:
+    #     rdot_max = max(abs(np.degrees(df['r_dot_des']).max()), abs(np.degrees(df['r_dot_meas']).max()))
+    #     torque_max = max(abs(df['torque_z'].min()), abs(df['torque_z'].max()))
     
-    ax_rdot.set_ylim(-rdot_max * 1.1, rdot_max * 1.1)
-    ax_rdot_torque.set_ylim(-torque_max * 1.1, torque_max * 1.1)
-    ax_rdot.set_ylabel('Yaw Ang. Accel. (deg/s²)', color='g')
-    ax_rdot_torque.set_ylabel('Z Torque (N·m)', color='darkgreen')
-    ax_rdot.set_title('Yaw Angular Acceleration (r_dot) & Z Torque Command')
-    ax_rdot.tick_params(axis='y', labelcolor='g')
-    ax_rdot_torque.tick_params(axis='y', labelcolor='darkgreen')
-    ax_rdot.legend(loc='upper left')
-    ax_rdot_torque.legend(loc='upper right')
-    ax_rdot.grid(True)
+    # ax_rdot.set_ylim(-rdot_max * 1.1, rdot_max * 1.1)
+    # ax_rdot_torque.set_ylim(-torque_max * 1.1, torque_max * 1.1)
+    # ax_rdot.set_ylabel('Yaw Ang. Accel. (deg/s²)', color='g')
+    # ax_rdot_torque.set_ylabel('Z Torque (N·m)', color='darkgreen')
+    # ax_rdot.set_title('Yaw Angular Acceleration (r_dot) & Z Torque Command')
+    # ax_rdot.tick_params(axis='y', labelcolor='g')
+    # ax_rdot_torque.tick_params(axis='y', labelcolor='darkgreen')
+    # ax_rdot.legend(loc='upper left')
+    # ax_rdot_torque.legend(loc='upper right')
+    # ax_rdot.grid(True)
     
     print('[plots] Angular acceleration plots created successfully')
     
-    # Shift remaining plots down by 3 rows
-    row_offset = 3
+    # Shift remaining plots down by 5 rows: gs[0-5] taken (pos, vel, att-rp, yaw, rates, euler rates), gs[6-8] rate errors + att error, gs[9-10] ang accel
+    row_offset = 5
 else:
     print('[plots] Warning: Angular acceleration columns not found, skipping ang accel plots')
-    row_offset = 0
+    row_offset = 3  # Shift by 3 for yaw plot + attitude error plot + euler rates
 
 # NEW: Coupling terms and net torque plot
 has_coupling = all(col in df.columns for col in ['coupling_x', 'coupling_y', 'coupling_z'])
@@ -547,52 +625,8 @@ if has_coupling:
 else:
     print('[plots] Warning: Coupling columns not found, skipping coupling plot')
 
-# 8. Position errors
-# ax8 = fig.add_subplot(gs[6, 0])
-# ax8.plot(t, df['pos_err_x'], 'b-', label='X Error', linewidth=2)
-# ax8.plot(t, df['pos_err_y'], 'r-', label='Y Error', linewidth=2)
-# ax8.plot(t, df['pos_err_z'], 'g-', label='Z Error', linewidth=2)
-# # Calculate y-limits from steady-state data
-# if steady_state_mask.any():
-#     pos_err_data_ss = pd.concat([df.loc[steady_state_mask, 'pos_err_x'], 
-#                                   df.loc[steady_state_mask, 'pos_err_y'], 
-#                                   df.loc[steady_state_mask, 'pos_err_z']])
-#     pos_err_min, pos_err_max = pos_err_data_ss.min(), pos_err_data_ss.max()
-#     pos_err_margin = (pos_err_max - pos_err_min) * 0.1
-#     ax8.set_ylim(pos_err_min - pos_err_margin, pos_err_max + pos_err_margin)
-# ax8.set_xlabel('Time (s)')
-# ax8.set_ylabel('Position Error (m)')
-# ax8.set_title('Position Errors')
-# ax8.legend()
-# ax8.grid(True)
-
-# 9. r Rate error
-# ax12 = fig.add_subplot(gs[6, 1])
-# ax12.plot(t, np.degrees(df['rate_err_r']), 'g-', linewidth=2)
-# # Calculate y-limits from steady-state data
-# if steady_state_mask.any():
-#     r_err_max = max(abs(np.degrees(df.loc[steady_state_mask, 'rate_err_r']).min()), 
-#                     abs(np.degrees(df.loc[steady_state_mask, 'rate_err_r']).max()))
-#     ax12.set_ylim(-r_err_max * 1.1, r_err_max * 1.1)
-# ax12.set_xlabel('Time (s)')
-# ax12.set_ylabel('Yaw Rate Error (deg/s)')
-# ax12.set_title('Yaw Rate (r) Error')
-# ax12.grid(True)
-
-# 10. Thrust commands (shifted)
-ax13 = fig.add_subplot(gs[6 + row_offset, :]) if row_offset > 0 else fig.add_subplot(gs[6, :])
-ax13.plot(t, df['thrust_x'], 'b-', label='X Thrust', linewidth=2)
-ax13.plot(t, df['thrust_y'], 'r-', label='Y Thrust', linewidth=2)
-ax13.plot(t, df['thrust_z'], 'g-', label='Z Thrust', linewidth=2)
-ax13.set_xlabel('Time (s)')
-ax13.set_ylabel('Thrust Command')
-
-# ax13.set_title('Thrust Commands')
-ax13.legend()
-ax13.grid(True)
-
 # 11. Torque commands - Stacked visualization of components with blend ratio weighting (shifted)
-ax14 = fig.add_subplot(gs[7 + row_offset, 0]) if row_offset > 0 else fig.add_subplot(gs[7, 0])
+ax14 = fig.add_subplot(gs[6 + row_offset, 0]) if row_offset > 0 else fig.add_subplot(gs[8, 0])
 ax14.plot(t, df['torque_x'], 'b-', label='X Torque Cmd', linewidth=2, alpha=0.7)
 ax14.plot(t, df['torque_y'], 'r-', label='Y Torque Cmd', linewidth=2, alpha=0.7)
 ax14.plot(t, df['torque_z'], 'g-', label='Z Torque Cmd', linewidth=2, alpha=0.7)
@@ -614,7 +648,7 @@ ax14.legend(loc='upper left', fontsize=7, ncol=2)
 ax14.grid(True, alpha=0.3)
 
 # 12. Control gains (shifted)
-ax15 = fig.add_subplot(gs[7 + row_offset, 1]) if row_offset > 0 else fig.add_subplot(gs[7, 1])
+ax15 = fig.add_subplot(gs[6 + row_offset, 1]) if row_offset > 0 else fig.add_subplot(gs[8, 1])
 ax15.plot(t, df['kp_att'], 'b-', label = 'Kp Attitude', linewidth=2)
 ax15.plot(t, df['kd_att'], 'r-', label = 'Kd Attitude', linewidth=2)
 ax15.plot(t, df['kp_rate'], 'g-', label= 'Kp Rate', linewidth=2)
@@ -625,7 +659,7 @@ ax15.set_title('Control Gains')
 ax15.legend()
 ax15.grid(True)
 
-ax16a = fig.add_subplot(gs[7 + row_offset, 2]) if row_offset > 0 else fig.add_subplot(gs[7, 2])
+ax16a = fig.add_subplot(gs[6 + row_offset, 2]) if row_offset > 0 else fig.add_subplot(gs[8, 2])
 pos_error_mag = np.sqrt(df['pos_err_x']**2 + df['pos_err_y']**2 + df['pos_err_z']**2)
 ax16a.plot(t, pos_error_mag, 'k-', linewidth=2)
 ax16a.set_xlabel('Time (s)', fontsize=10)
@@ -634,7 +668,7 @@ ax16a.set_title('Position Error Magnitude', fontsize=11)
 ax16a.grid(True)
 
 # 13. XY Trajectory (shifted)
-ax14a = fig.add_subplot(gs[8 + row_offset, 0]) if row_offset > 0 else fig.add_subplot(gs[8, 0])
+ax14a = fig.add_subplot(gs[7 + row_offset, 0]) if row_offset > 0 else fig.add_subplot(gs[9, 0])
 ax14a.plot(df['pos_x'], df['pos_y'], 'b-', label='Actual XY', linewidth=2)
 ax14a.plot(df['pos_des_x'], df['pos_des_y'], 'r--', label='Desired XY', linewidth=2)
 ax14a.scatter(df['pos_x'].iloc[0], df['pos_y'].iloc[0], c='g', s=100, label='Start')
@@ -644,7 +678,7 @@ ax14a.set_ylabel('Y (m)')
 ax14a.set_title('XY Trajectory')
 ax14a.legend()
 ax14a.grid(True)
-ax14b = fig.add_subplot(gs[8 + row_offset, 1:]) if row_offset > 0 else fig.add_subplot(gs[8, 1:])
+ax14b = fig.add_subplot(gs[7 + row_offset, 1:]) if row_offset > 0 else fig.add_subplot(gs[9, 1:])
 ax14b.plot(t, df['pos_z'], 'b-', label='Actual Z', linewidth=2)
 ax14b.plot(t, df['pos_des_z'], 'r--', label='Desired Z', linewidth=2)
 ax14b.set_xlabel('Time (s)')
@@ -654,7 +688,7 @@ ax14b.legend()
 ax14b.grid(True)
 
 # 14. Performance metrics (shifted)
-ax15 = fig.add_subplot(gs[9 + row_offset, 0]) if row_offset > 0 else fig.add_subplot(gs[9, 0])
+ax15 = fig.add_subplot(gs[8 + row_offset, 0]) if row_offset > 0 else fig.add_subplot(gs[10, 0])
 att_error_mag = np.sqrt(df['att_err_roll']**2 + df['att_err_pitch']**2)
 ax15.plot(t, np.degrees(att_error_mag), 'k-', linewidth=2)
 ax15.set_xlabel('Time (s)', fontsize=10)
@@ -662,7 +696,7 @@ ax15.set_ylabel('Attitude Error Magnitude (deg)', fontsize=10)
 ax15.set_title('Attitude Error Magnitude', fontsize=11)
 ax15.grid(True)
 
-ax16 = fig.add_subplot(gs[9 + row_offset, 1]) if row_offset > 0 else fig.add_subplot(gs[9, 1])
+ax16 = fig.add_subplot(gs[8 + row_offset, 1]) if row_offset > 0 else fig.add_subplot(gs[10, 1])
 rate_error_mag = np.sqrt(df['rate_err_p']**2 + df['rate_err_q']**2 + df['rate_err_r']**2)
 ax16.plot(t, np.degrees(rate_error_mag), 'k-', linewidth=2)
 ax16.set_xlabel('Time (s)', fontsize=10)
@@ -671,7 +705,7 @@ ax16.set_title('Rate Error Magnitude', fontsize=11)
 ax16.grid(True)
 
 # 15. Saturation indicators (shifted)
-ax18 = fig.add_subplot(gs[9 + row_offset, 2]) if row_offset > 0 else fig.add_subplot(gs[9, 2])
+ax18 = fig.add_subplot(gs[8 + row_offset, 2]) if row_offset > 0 else fig.add_subplot(gs[10, 2])
 sat_data = df[['rate_sat_p', 'rate_sat_q', 'rate_sat_r', 'acc_sat_x', 'acc_sat_y']].astype(int)
 for i, col in enumerate(sat_data.columns):
     ax18.fill_between(t, i, i+sat_data[col], alpha=0.7, label=col)
@@ -681,13 +715,422 @@ ax18.set_title('Control Saturation Indicators', fontsize=11)
 ax18.legend(fontsize=8)
 ax18.grid(True)
 
+# Place thrust subplot at the last grid row to avoid overlap
+_nrows = gs.get_geometry()[0] 
+ax13 = fig.add_subplot(gs[_nrows - 1, :])
+ax13.plot(t, df['thrust_x'], 'b-', label='X Thrust', linewidth=2)
+ax13.plot(t, df['thrust_y'], 'r-', label='Y Thrust', linewidth=2)
+ax13.plot(t, df['thrust_z'], 'g-', label='Z Thrust', linewidth=2)
+ax13.set_xlabel('Time (s)')
+ax13.set_ylabel('Thrust Command')
+
+ax13.legend()
+ax13.grid(True)
+
+# --- Improved Torque Ratio Plot: Using experiment torque and finite-difference angular acceleration ---
+required_cols_ratio = ['p', 'q', 'r', 'exp_torque_x', 'exp_torque_y', 'torque_x', 'torque_y', 'phase_type']
+if all(col in df.columns for col in required_cols_ratio):
+    # Config inertia values (default fallback if missing)
+    Ix = _get(cfg, ['inertia', 'Ix'], 0.02166666666666667)
+    Iy = _get(cfg, ['inertia', 'Iy'], 0.02166666666666667)
+    # We skip yaw ratio for clarity in this diagnostic
+
+    # Body rates (logged in rad/s) -> ensure numeric
+    p_rate = df['p'].to_numpy()
+    q_rate = df['q'].to_numpy()
+    time_arr = t.to_numpy()
+
+    # Finite-difference angular accelerations (central difference for interior points)
+    def central_diff(y, x):
+        dydt = np.zeros_like(y)
+        # Interior
+        dydt[1:-1] = (y[2:] - y[:-2]) / (x[2:] - x[:-2])
+        # Ends (forward/backward difference)
+        if len(y) > 1:
+            dydt[0] = (y[1] - y[0]) / (x[1] - x[0])
+            dydt[-1] = (y[-1] - y[-2]) / (x[-1] - x[-2])
+        return dydt
+
+    p_dot_est = central_diff(p_rate, time_arr)
+    q_dot_est = central_diff(q_rate, time_arr)
+
+    # Low-pass smoothing (simple moving average) to reduce noise
+    sample_rate = len(df) / time_arr[-1] if time_arr[-1] > 0 else 1000.0
+    window_sec = 0.04  # 40 ms window
+    Nw = max(5, int(sample_rate * window_sec))
+    if Nw % 2 == 0:
+        Nw += 1
+    kernel = np.ones(Nw) / Nw
+    def smooth(a):
+        if len(a) < Nw:
+            return a
+        return np.convolve(a, kernel, mode='same')
+
+    p_dot_f = smooth(p_dot_est)
+    q_dot_f = smooth(q_dot_est)
+
+    # Estimated torque from dynamics: tau = I * omega_dot
+    tau_est_x = Ix * p_dot_f
+    tau_est_y = Iy * q_dot_f
+
+    # Use experiment (injected) torque ONLY for ratio baseline (exclude PD counter-torque)
+    tau_cmd_x_exp = df['exp_torque_x'].to_numpy()
+    tau_cmd_y_exp = df['exp_torque_y'].to_numpy()
+
+    # Mask: only during active experiment phases (phase_type >= 0) and when |exp torque| above threshold
+    phase_active_mask = df['phase_type'].to_numpy() >= 0
+    torque_thresh = 0.01  # Nm threshold to avoid division near zero
+    valid_x_mask = phase_active_mask & (np.abs(tau_cmd_x_exp) > torque_thresh)
+    valid_y_mask = phase_active_mask & (np.abs(tau_cmd_y_exp) > torque_thresh)
+
+    # Ratio: delivered / commanded (experiment component)
+    ratio_x = np.full_like(tau_est_x, np.nan, dtype=float)
+    ratio_y = np.full_like(tau_est_y, np.nan, dtype=float)
+    ratio_x[valid_x_mask] = tau_est_x[valid_x_mask] / tau_cmd_x_exp[valid_x_mask]
+    ratio_y[valid_y_mask] = tau_est_y[valid_y_mask] / tau_cmd_y_exp[valid_y_mask]
+
+    # Optional robust scaling via local window least squares (for continuity)
+    def window_scale(tau_est, tau_cmd, mask, window_samples= int(sample_rate*0.25)):
+        scale = np.full_like(tau_est, np.nan, dtype=float)
+        n = len(tau_est)
+        w = max(10, window_samples)
+        for i in range(n):
+            if not mask[i]:
+                continue
+            a = max(0, i - w//2)
+            b = min(n, i + w//2)
+            sel = mask[a:b]
+            if sel.sum() < 5:
+                continue
+            y = tau_est[a:b][sel]
+            u = tau_cmd[a:b][sel]
+            denom = np.dot(u, u)
+            if denom < 1e-6:
+                continue
+            scale[i] = np.dot(u, y) / denom
+        return smooth(scale)
+
+    scale_x = window_scale(tau_est_x, tau_cmd_x_exp, valid_x_mask)
+    scale_y = window_scale(tau_est_y, tau_cmd_y_exp, valid_y_mask)
+
+    # Plot
+    ax_ratio = fig.add_subplot(gs[9 + row_offset, :]) if row_offset > 0 else fig.add_subplot(gs[9, :])
+    ax_ratio_r = ax_ratio.twinx()
+
+    ln_rx, = ax_ratio.plot(t, ratio_x, 'b.', markersize=2, alpha=0.6, label='Instant Ratio X')
+    ln_ry, = ax_ratio_r.plot(t, ratio_y, 'r.', markersize=2, alpha=0.6, label='Instant Ratio Y')
+    ln_sx, = ax_ratio.plot(t, scale_x, 'b-', linewidth=1.8, alpha=0.9, label='Window Scale X')
+    ln_sy, = ax_ratio_r.plot(t, scale_y, 'r-', linewidth=1.8, alpha=0.9, label='Window Scale Y')
+    ax_ratio.axhline(1.0, color='k', linestyle='--', linewidth=1.5, alpha=0.8, label='Ideal 1.0')
+
+    # Global least squares scaling (overall effective gain)
+    def global_scale(tau_est, tau_cmd, mask):
+        sel_est = tau_est[mask]
+        sel_cmd = tau_cmd[mask]
+        denom = np.dot(sel_cmd, sel_cmd)
+        return np.dot(sel_cmd, sel_est) / denom if denom > 1e-6 else np.nan
+
+    g_scale_x = global_scale(tau_est_x, tau_cmd_x_exp, valid_x_mask)
+    g_scale_y = global_scale(tau_est_y, tau_cmd_y_exp, valid_y_mask)
+    print(f"\n[torque_ratio] Global scale factors (delivered/commanded experiment torque):")
+    print(f"  Roll (X): {g_scale_x:.4f}")
+    print(f"  Pitch (Y): {g_scale_y:.4f}")
+
+    ax_ratio.set_xlabel('Time (s)')
+    ax_ratio.set_ylabel('X Axis Ratio')
+    ax_ratio_r.set_ylabel('Y Axis Ratio')
+    ax_ratio.set_title('Experiment Torque Delivery Ratio (I·ω̇ / τ_exp)')
+
+    # Symmetric axis limits based on percentiles
+    def sym_lim(arr):
+        a = arr[~np.isnan(arr)]
+        if a.size < 10:
+            return (-2, 2)
+        q1, q99 = np.percentile(a, [1, 99])
+        m = max(abs(q1), abs(q99))
+        return (-m*1.1, m*1.1)
+    ax_ratio.set_ylim(*sym_lim(ratio_x))
+    ax_ratio_r.set_ylim(*sym_lim(ratio_y))
+
+    # Legends
+    leg_left = ax_ratio.legend(handles=[ln_rx, ln_sx], loc='upper left', fontsize=8)
+    leg_right = ax_ratio_r.legend(handles=[ln_ry, ln_sy], loc='upper right', fontsize=8)
+    ax_ratio.add_artist(leg_left)
+    ax_ratio.grid(True, alpha=0.3)
+    row_offset += 1;
+    # --- New scatter plot: commanded experiment torque vs delivered (estimated) torque ---
+    # Use same valid masks; downsample for clarity if dense
+    scatter_ds = 5  # take every 5th valid sample
+    cmd_x_valid = tau_cmd_x_exp[valid_x_mask]
+    est_x_valid = tau_est_x[valid_x_mask]
+    cmd_y_valid = tau_cmd_y_exp[valid_y_mask]
+    est_y_valid = tau_est_y[valid_y_mask]
+
+    if cmd_x_valid.size > 0 or cmd_y_valid.size > 0:
+        ax_scatter = fig.add_subplot(gs[9 + row_offset, :]) if row_offset > 0 else fig.add_subplot(gs[9, :])
+        # Roll axis scatter
+        if cmd_x_valid.size > 0:
+            # idx_x = np.arange(cmd_x_valid.size)[::scatter_ds]
+            # ax_scatter.scatter(cmd_x_valid[idx_x], est_x_valid[idx_x], c='b', s=12, alpha=0.6, label='Roll Samples')
+            # Regression through origin (global scale already computed)
+            min_x, max_x = np.min(cmd_x_valid), np.max(cmd_x_valid)
+            x_line = np.linspace(min_x, max_x, 100)
+            ax_scatter.plot(x_line, x_line, 'k--', linewidth=1.0, alpha=0.7, label='Identity (y=x)')
+            ax_scatter.plot(x_line, g_scale_x * x_line, 'b-', linewidth=1.5, alpha=0.9, label=f'Roll Fit (slope={g_scale_x:.3f})')
+        # Pitch axis scatter
+        if cmd_y_valid.size > 0:
+            # idx_y = np.arange(cmd_y_valid.size)[::scatter_ds]
+            # ax_scatter.scatter(cmd_y_valid[idx_y], est_y_valid[idx_y], c='r', s=12, alpha=0.6, label='Pitch Samples')
+            min_y, max_y = np.min(cmd_y_valid), np.max(cmd_y_valid)
+            y_line = np.linspace(min_y, max_y, 100)
+            ax_scatter.plot(y_line, g_scale_y * y_line, 'r-', linewidth=1.5, alpha=0.9, label=f'Pitch Fit (slope={g_scale_y:.3f})')
+
+        ax_scatter.set_xlabel('Commanded Experiment Torque (Nm)')
+        ax_scatter.set_ylabel('Estimated Delivered Torque (Nm)')
+        ax_scatter.set_title('Torque Scaling: Delivered vs Commanded (Roll & Pitch)')
+        ax_scatter.grid(True, alpha=0.3)
+        ax_scatter.legend(loc='best', fontsize=8, ncol=2)
+        print('[plots] Torque scaling scatter plot created')
+    else:
+        print('[plots] Skipping torque scaling scatter (no valid samples)')
+
+    row_offset += 1
+    print('[plots] Improved torque ratio plot created')
+else:
+    print('[plots] Warning: Skipping improved torque ratio plot (missing columns)')
+
+# --- Add new diagnostic plots: Estimated vs Motor Torque, and Coupling comparison ---
+nrows = gs.get_geometry()[0]
+
+# NEW: Estimated torque (from angular acceleration) vs motor torque command
+# tau_est = I * p_dot_meas (what we measure from rate changes)
+# tau_motor = torque_x/y/z (what we command)
+# Comparison shows how well motors deliver what we ask
+
+if all(col in df.columns for col in ['p_dot_meas', 'q_dot_meas', 'r_dot_meas']):
+    # Use inertia values from config if available, else default
+    try:
+        Ix_est = _get(cfg, ['inertia', 'Ix'], 0.02166666666666667)
+        Iy_est = _get(cfg, ['inertia', 'Iy'], 0.02166666666666667)
+        Iz_est = _get(cfg, ['inertia', 'Iz'], 0.04)
+    except:
+        Ix_est, Iy_est, Iz_est = 0.02166666666666667, 0.02166666666666667, 0.04
+    
+    # Estimate torque from measured angular acceleration: tau = I * omega_dot
+    tau_est_x = Ix_est * np.radians(df['p_dot_meas'])
+    tau_est_y = Iy_est * np.radians(df['q_dot_meas'])
+    tau_est_z = Iz_est * np.radians(df['r_dot_meas'])
+    
+    # X axis: Estimated vs Motor Torque
+    ax_est_x = fig.add_subplot(gs[nrows-3, 0])
+    ax_est_x.plot(t, tau_est_x, 'b--', label='Estimated (I·p_dot)', linewidth=2, alpha=0.7)
+    ax_est_x.plot(t, df['torque_x'], 'c-', label='Motor Command', linewidth=1.5, alpha=0.8)
+    if all(col in df.columns for col in ['coupling_x']):
+        ax_est_x.plot(t, df['coupling_x'], 'k:', label='Coupling', linewidth=1, alpha=0.6)
+    ax_est_x.set_ylabel('Torque X (N·m)')
+    ax_est_x.set_title('Roll Axis: Estimated vs Motor Torque')
+    ax_est_x.legend(fontsize=8)
+    ax_est_x.grid(True, alpha=0.3)
+    
+    # Y axis: Estimated vs Motor Torque
+    ax_est_y = fig.add_subplot(gs[nrows-3, 1])
+    ax_est_y.plot(t, tau_est_y, 'r--', label='Estimated (I·q_dot)', linewidth=2, alpha=0.7)
+    ax_est_y.plot(t, df['torque_y'], 'm-', label='Motor Command', linewidth=1.5, alpha=0.8)
+    if all(col in df.columns for col in ['coupling_y']):
+        ax_est_y.plot(t, df['coupling_y'], 'k:', label='Coupling', linewidth=1, alpha=0.6)
+    ax_est_y.set_ylabel('Torque Y (N·m)')
+    ax_est_y.set_title('Pitch Axis: Estimated vs Motor Torque')
+    ax_est_y.legend(fontsize=8)
+    ax_est_y.grid(True, alpha=0.3)
+    
+    # Z axis: Estimated vs Motor Torque
+    ax_est_z = fig.add_subplot(gs[nrows-3, 2])
+    ax_est_z.plot(t, tau_est_z, 'g--', label='Estimated (I·r_dot)', linewidth=2, alpha=0.7)
+    ax_est_z.plot(t, df['torque_z'], 'darkgreen', label='Motor Command', linewidth=1.5, alpha=0.8)
+    if all(col in df.columns for col in ['coupling_z']):
+        ax_est_z.plot(t, df['coupling_z'], 'k:', label='Coupling', linewidth=1, alpha=0.6)
+    ax_est_z.set_ylabel('Torque Z (N·m)')
+    ax_est_z.set_title('Yaw Axis: Estimated vs Motor Torque')
+    ax_est_z.legend(fontsize=8)
+    ax_est_z.grid(True, alpha=0.3)
+    
+    print('[plots] Estimated vs Motor torque plots created')
+else:
+    print('[plots] Warning: Cannot create estimated torque plots (missing angular acceleration or inertia data)')
+
+# NEW: Coupling torque analysis - Expected (omega x Iw) vs Actual coupling effect
+if all(col in df.columns for col in ['coupling_x', 'coupling_y', 'coupling_z', 'p', 'q', 'r']):
+    # Calculate expected coupling torque from body rates
+    # Expected: tau_coupling = omega × (I × omega)
+    # where omega = [p, q, r] in body frame
+    
+    p_rad = np.radians(df['p'])
+    q_rad = np.radians(df['q'])
+    r_rad = np.radians(df['r'])
+    
+    # Inertia matrix diagonal elements
+    try:
+        Ix = _get(cfg, ['inertia', 'Ix'], 0.02166666666666667)
+        Iy = _get(cfg, ['inertia', 'Iy'], 0.02166666666666667)
+        Iz = _get(cfg, ['inertia', 'Iz'], 0.04)
+    except:
+        Ix, Iy, Iz = 0.02166666666666667, 0.02166666666666667, 0.04
+    
+    # Expected coupling (theoretical: omega × (I * omega))
+    # tau_c = [q*r*(Iz-Iy), p*r*(Ix-Iz), p*q*(Iy-Ix)]
+    coupling_theoretical_x = q_rad * r_rad * (Iz - Iy)/Ix
+    coupling_theoretical_y = p_rad * r_rad * (Ix - Iz)/Iy
+    coupling_theoretical_z = p_rad * q_rad * (Iy - Ix)/Iz
+    
+    # Observed coupling: The actual torque applied is: tau_net = tau_commanded + tau_coupling
+    # Therefore: tau_coupling_observed = tau_estimated - tau_commanded
+    # Where tau_estimated = I * omega_dot_meas (from measured acceleration)
+    # This captures all unmodeled effects, delays, saturation, etc.
+    tau_estimated_x = Ix * np.radians(df['p_dot_meas'])
+    tau_estimated_y = Iy * np.radians(df['q_dot_meas'])
+    tau_estimated_z = Iz * np.radians(df['r_dot_meas'])
+    
+    # Residual: what torque actually happened minus what we commanded
+    # If positive: system produced more torque than commanded (coupling helped)
+    # If negative: system produced less torque than commanded (coupling opposed us)
+    coupling_observed_x = tau_estimated_x - df['torque_x']
+    coupling_observed_y = tau_estimated_y - df['torque_y']
+    coupling_observed_z = tau_estimated_z - df['torque_z']
+    
+    # Plot comparison: Theoretical vs Observed coupling
+    ax_coup = fig.add_subplot(gs[nrows-2, :])
+    
+    # Theoretical coupling (solid lines)
+    ax_coup.plot(t, -50*coupling_theoretical_x, 'b-', label='Theoretical Coupling X', linewidth=2, alpha=0.7)
+    ax_coup.plot(t, -50*coupling_theoretical_y, 'r-', label='Theoretical Coupling Y', linewidth=2, alpha=0.7)
+    ax_coup.plot(t, -50*coupling_theoretical_z, 'g-', label='Theoretical Coupling Z', linewidth=2, alpha=0.7)
+    
+    # Observed coupling (dashed lines)
+    ax_coup.plot(t, coupling_observed_x, 'b--', label='Observed Coupling X', linewidth=1.5, alpha=0.8)
+    ax_coup.plot(t, coupling_observed_y, 'r--', label='Observed Coupling Y', linewidth=1.5, alpha=0.8)
+    ax_coup.plot(t, coupling_observed_z, 'g--', label='Observed Coupling Z', linewidth=1.5, alpha=0.8)
+    
+    ax_coup.set_ylabel('Coupling Torque ω×(I·ω) (N·m)')
+    ax_coup.set_xlabel('Time (s)')
+    ax_coup.set_title('Coupling Torque: Theoretical (ω×Iω, solid) vs Observed (τ_est - τ_cmd, dashed)')
+    ax_coup.legend(fontsize=8, loc='upper left', ncol=3)
+    ax_coup.grid(True, alpha=0.3)
+    
+    # Calculate and print coupling estimation error
+    coupling_error_x = np.sqrt(np.mean((coupling_observed_x - coupling_theoretical_x)**2))
+    coupling_error_y = np.sqrt(np.mean((coupling_observed_y - coupling_theoretical_y)**2))
+    coupling_error_z = np.sqrt(np.mean((coupling_observed_z - coupling_theoretical_z)**2))
+    print(f'[plots] Coupling RMSE (Observed - Theoretical):')
+    print(f'  X: {coupling_error_x:.6f} N·m')
+    print(f'  Y: {coupling_error_y:.6f} N·m')
+    print(f'  Z: {coupling_error_z:.6f} N·m')
+    
+    # Additional diagnostics: check correlation and timing offsets
+    print(f'\n[plots] Coupling Correlation Analysis:')
+    # Calculate steady-state stats (after 5 seconds)
+    ss_mask = t >= 5.0
+    if ss_mask.any():
+        corr_x = np.corrcoef(coupling_theoretical_x[ss_mask], coupling_observed_x[ss_mask])[0, 1]
+        corr_y = np.corrcoef(coupling_theoretical_y[ss_mask], coupling_observed_y[ss_mask])[0, 1]
+        corr_z = np.corrcoef(coupling_theoretical_z[ss_mask], coupling_observed_z[ss_mask])[0, 1]
+        print(f'  Correlation (t>=5s): X={corr_x:.3f}, Y={corr_y:.3f}, Z={corr_z:.3f}')
+        
+        # Mean values
+        print(f'  Theoretical coupling mean (N·m):')
+        print(f'    X: {coupling_theoretical_x[ss_mask].mean():.6f}')
+        print(f'    Y: {coupling_theoretical_y[ss_mask].mean():.6f}')
+        print(f'    Z: {coupling_theoretical_z[ss_mask].mean():.6f}')
+        print(f'  Observed coupling mean (N·m):')
+        print(f'    X: {coupling_observed_x[ss_mask].mean():.6f}')
+        print(f'    Y: {coupling_observed_y[ss_mask].mean():.6f}')
+        print(f'    Z: {coupling_observed_z[ss_mask].mean():.6f}')
+    
+else:
+    print('[plots] Warning: Cannot create coupling comparison plot (missing coupling or rate data)')
+
+# NEW: Commanded vs Allocated Torque Plots (from ControlAllocatorStatus)
+# Shows what we asked for vs what PX4 could actually deliver
+has_alloc_data = all(col in df.columns for col in ['unallocated_torque_x', 'unallocated_torque_y', 'unallocated_torque_z',
+                                                     'allocated_torque_x', 'allocated_torque_y', 'allocated_torque_z',
+                                                     'torque_setpoint_achieved'])
+
+if has_alloc_data:
+    # Row 1: Commanded vs Allocated for all axes
+    ax_alloc = fig.add_subplot(gs[nrows-4, :])
+    
+    # X axis (Roll) - Commanded vs Allocated
+    ax_alloc.plot(t, df['torque_x'], 'b-', label='Commanded X', linewidth=2, alpha=0.8)
+    ax_alloc.plot(t, df['allocated_torque_x'], 'b--', label='Allocated X', linewidth=1.5, alpha=0.7)
+    
+    # Y axis (Pitch) - Commanded vs Allocated  
+    ax_alloc.plot(t, df['torque_y'], 'r-', label='Commanded Y', linewidth=2, alpha=0.8)
+    ax_alloc.plot(t, df['allocated_torque_y'], 'r--', label='Allocated Y', linewidth=1.5, alpha=0.7)
+    
+    # Z axis (Yaw) - Commanded vs Allocated
+    ax_alloc.plot(t, df['torque_z'], 'g-', label='Commanded Z', linewidth=2, alpha=0.8)
+    ax_alloc.plot(t, df['allocated_torque_z'], 'g--', label='Allocated Z', linewidth=1.5, alpha=0.7)
+    
+    ax_alloc.set_ylabel('Torque (N·m)')
+    ax_alloc.set_xlabel('Time (s)')
+    ax_alloc.set_title('Commanded (solid) vs Allocated (dashed) Torques - PX4 Control Allocation')
+    ax_alloc.legend(fontsize=9, loc='upper right', ncol=3)
+    ax_alloc.grid(True, alpha=0.3)
+    
+    # Row 2: Unallocated torques (what couldn't be achieved) and setpoint achieved flag
+    ax_unalloc = fig.add_subplot(gs[nrows-5, :])
+    ax_unalloc_flag = ax_unalloc.twinx()
+    
+    # Unallocated torques
+    ax_unalloc.plot(t, df['unallocated_torque_x'], 'b-', label='Unallocated X', linewidth=2, alpha=0.8)
+    ax_unalloc.plot(t, df['unallocated_torque_y'], 'r-', label='Unallocated Y', linewidth=2, alpha=0.8)
+    ax_unalloc.plot(t, df['unallocated_torque_z'], 'g-', label='Unallocated Z', linewidth=2, alpha=0.8)
+    ax_unalloc.axhline(0, color='k', linestyle='--', linewidth=0.5, alpha=0.5)
+    
+    # Torque setpoint achieved flag (binary)
+    ax_unalloc_flag.fill_between(t, 0, df['torque_setpoint_achieved'].astype(int), 
+                                  alpha=0.2, color='purple', label='Setpoint Achieved')
+    ax_unalloc_flag.set_ylim(-0.1, 1.1)
+    ax_unalloc_flag.set_ylabel('Setpoint Achieved', color='purple')
+    ax_unalloc_flag.tick_params(axis='y', labelcolor='purple')
+    
+    ax_unalloc.set_ylabel('Unallocated Torque (N·m)')
+    ax_unalloc.set_xlabel('Time (s)')
+    ax_unalloc.set_title('Unallocated Torque (Commanded - Allocated) & Setpoint Achievement Status')
+    ax_unalloc.legend(fontsize=9, loc='upper left')
+    ax_unalloc_flag.legend(fontsize=9, loc='upper right')
+    ax_unalloc.grid(True, alpha=0.3)
+    
+    # Calculate and print allocation statistics
+    unalloc_mag = np.sqrt(df['unallocated_torque_x']**2 + df['unallocated_torque_y']**2 + df['unallocated_torque_z']**2)
+    pct_achieved = df['torque_setpoint_achieved'].mean() * 100
+    
+    print(f'\n[plots] Torque Allocation Statistics:')
+    print(f'  Setpoint achieved: {pct_achieved:.1f}% of the time')
+    print(f'  Unallocated torque RMS: X={df["unallocated_torque_x"].abs().mean():.4f}, Y={df["unallocated_torque_y"].abs().mean():.4f}, Z={df["unallocated_torque_z"].abs().mean():.4f} N·m')
+    print(f'  Max unallocated: X={df["unallocated_torque_x"].abs().max():.4f}, Y={df["unallocated_torque_y"].abs().max():.4f}, Z={df["unallocated_torque_z"].abs().max():.4f} N·m')
+    print(f'  Unallocated magnitude mean: {unalloc_mag.mean():.4f} N·m')
+    print('[plots] Commanded vs Allocated torque plots created')
+else:
+    print('[plots] Warning: Torque allocation columns not found (unallocated_torque_*, allocated_torque_*, torque_setpoint_achieved)')
+    print('[plots] These are available from ControlAllocatorStatus in newer logs')
+
 # Save plots with unique names per log file
 base_name = os.path.splitext(os.path.basename(latest_log))[0]
-outputs_dir = '/home/pyro/ws_offboard_control/flight_data/outputs'
+
+# Determine output directory - use source-specific subdirectory if specified
+base_outputs_dir = '/home/pyro/ws_offboard_control/flight_data/outputs'
+if args.output_dir:
+    outputs_dir = args.output_dir
+elif args.source:
+    outputs_dir = os.path.join(base_outputs_dir, args.source)
+else:
+    outputs_dir = base_outputs_dir
 os.makedirs(outputs_dir, exist_ok=True)
 pdf_out = os.path.join(outputs_dir, f'{base_name}_analysis.pdf')
 
-plt.suptitle('Comprehensive Flight Data Analysis', fontsize=16, y=0.98)
+# Add source info to title if available
+title_suffix = f' ({args.source})' if args.source else ''
+plt.suptitle(f'Comprehensive Flight Data Analysis{title_suffix}', fontsize=16, y=0.98)
 
 # Add a compact config summary at the bottom of the page
 if cfg is not None:

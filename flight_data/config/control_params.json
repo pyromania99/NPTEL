@@ -1,14 +1,38 @@
 {
+  "eigenvalue_control": {
+    "enabled": false,
+    "lambda1":  -10.0,
+    "lambda2": -10.0,
+    "max_torque_roll": 1000.0,
+    "max_torque_pitch": 1000.0,
+    "m12": 1.0,
+    "m21": 1.0,
+    "theta_max_singularity": 1.5,
+    "A4": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    }
+  },
   "attitude": {
     "kp": 1.5790702610965226,
     "kd": 3.4540515897307804,
     "kp_rate": 1.5790702610965226,
     "kd_rate": 3.4540515897307804,
-    "kp_acc":  0.0,
+    "kp_acc": 0.0,
     "kd_acc": 0.0
   },
+  "PD": {
+    "enabled": true,
+    "zeta_des": 0.10,
+    "wn_des": 1.0,
+    "k1_clamp_max": 50.0,
+    "alpha_val": 0.1,
+    "base_kp": 0.40,
+    "base_kd": 0.20
+  },
   "gain_scheduling": {
-    "enabled": false,
+    "enabled": true,
     "kp_min": 4.690702610965226,
     "kd_max": 2.040515897307804,
     "rate_threshold": 8.0,
@@ -29,6 +53,10 @@
     "alpha_omega_lp": 0.49063282744675796,
     "alpha_acc_lp": 0.7912165471875612
   },
+  "filtering": {
+    "omega_lpf_alpha": 0.8,
+    "_comment": "Low-pass filter cutoff for angular rate measurement (0.1 = ~10Hz at 1kHz)"
+  },
   "position_xy": {
     "kp_x": 0.55,
     "kp_y": 0.55,
@@ -45,6 +73,10 @@
   "limits": {
     "max_horz_acc": 3.0,
     "max_tilt_angle": 0.7
+  },
+  "flight": {
+    "run_duration_sec": 60.0,
+    "_comment": "Total flight duration in seconds before auto-shutdown and log save"
   },
   "_comments": {
     "attitude": "Attitude loop gains - convert attitude errors to desired body rates",
@@ -63,5 +95,36 @@
     "lpf_alpha": 0.0,
     "torque_r_offset_gain": -0.03,
     "rotation_clamp_rate_gain": 0.02
+  },
+  "inertia": {
+    "Ix": 0.02166666666666667,
+    "Iy": 0.02166666666666667,
+    "Iz": 0.04,
+    "_comment": "Quad inertia matrix diagonal elements (kg·m²)"
+  },
+  "geometric": {
+    "Kr": 2.0,
+    "Kw": 1.0,
+    "_comment": "Geometric control law: τ = -Kr·e_R - Kw·e_ω + ω×(J·ω). Kr=attitude gain, Kw=rate damping. Lyapunov stable on SO(3)."
+  },
+  "torque_bonus": {
+    "bonus_torque_gain": 0.15,
+    "residual_lpf_alpha": 0.25,
+    "max_magnitude": 0.0,
+    "omega_dot_lpf_alpha": 0.2,
+    "scaling_X": -0.01,
+    "axis_scale": {
+      "roll": 1.0,
+      "pitch": 0.60,
+      "yaw": 0.0
+    },
+    "_comment": "Additional torque gain to enhance responsiveness"
+  },
+  "feedforward": {
+    "enabled": false,
+    "damping": 0.01,
+    "psi_dot_lpf_alpha": 0.15,
+    "psi_ddot_lpf_alpha": 0.10,
+    "_comment": "Model-based feedforward u_ff = (TB)^+ (-Hs) where s=[0,0,psi_dot]. damping = Tikhonov regularization factor for pseudoinverse, psi_dot/ddot_lpf_alpha = low-pass filter coefficients (lower = smoother, higher lag)."
   }
 }
