@@ -1,0 +1,25 @@
+# Python cache and artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+.env/
+venv/
+
+# Editor/OS files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Colcon/ROS2 build outputs (repo-root)
+build/
+install/
+log/
+
+# Flight data runtime outputs
+flight_data/logs/
+flight_data/outputs/

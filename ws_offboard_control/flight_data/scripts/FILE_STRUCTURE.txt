@@ -1,0 +1,44 @@
+Yaw FF Tuner File Structure
+============================
+
+INPUT:
+------
+/home/pyro/ws_offboard_control/flight_data/config/
+  └── control_params.json  (READ/WRITE - yaw_ff section updated)
+
+OUTPUT:
+-------
+/home/pyro/ws_offboard_control/flight_data/outputs/
+  ├── yaw_ff_tuning_results.json  ← YAW FF TUNER RESULTS (NEW, SEPARATE)
+  └── tuning_results.json         ← MAIN CONTROLLER TUNING RESULTS (UNCHANGED)
+
+LOGS:
+-----
+/home/pyro/ws_offboard_control/flight_data/logs/
+  └── flight_log_YYYYMMDD_HHMMSS.csv  (Generated per trial)
+
+INDEPENDENCE:
+-------------
+┌─────────────────────────┐       ┌──────────────────────────┐
+│  yaw_ff_tuner.py        │       │  auto_tuner.py           │
+│                         │       │                          │
+│  Tunes:                 │       │  Tunes:                  │
+│  - yaw_ff_dt_base       │       │  - Kp_att, Kd_att        │
+│  - yaw_ff_dt_gain       │       │  - Kp_ndi_rate, Kd_ndi   │
+│  - yaw_ff_dt_max        │       │  - Kp_fb_rate, Kd_fb     │
+│  - yaw_rate_lpf_alpha   │       │  - K_indi_scale          │
+│                         │       │                          │
+│  Results →              │       │  Results →               │
+│  yaw_ff_tuning_results  │       │  tuning_results.json     │
+│  ↓                      │       │  ↓                       │
+└─────────────────────────┘       └──────────────────────────┘
+         NO INTERFERENCE                  NO INTERFERENCE
+
+DEFAULT BEHAVIOR:
+-----------------
+History: DISABLED by default
+Results: Separate JSON files
+Config:  Shared (different sections)
+
+To use history (if desired):
+  python3 yaw_ff_tuner.py --use-history --trials 30

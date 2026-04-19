@@ -1,0 +1,30 @@
+{
+  "controller_gains": {
+    "k_n3": 8.0,
+    "k_vz": 1.0,
+    "_comment": "Equation (14) controller gains: k_n3 = attitude error coupling, k_vz = vertical velocity"
+  },
+  "altitude_pd": {
+    "k_pz": 5.0,
+    "k_dz": 0.5,
+    "z_d": -5.0,
+    "_comment": "Altitude PD controller: z_d is in NED frame (negative = up), gains control vz_d"
+  },
+  "desired_states": {
+    "x1_d_0": 0.0,
+    "x1_d_1": 0.0,
+    "_comment": "Desired body z-axis orientation [n3_x_d, n3_y_d]. [0,0] = level hover"
+  },
+  "physical_parameters": {
+    "mass": 2.0,
+    "g": 9.81,
+    "Jx": 0.02166666667,
+    "Jy": 0.02166666667,
+    "Jz": 0.04,
+    "_comment": "Vehicle physical parameters: mass (kg), gravity (m/s^2), inertias (kg*m^2)"
+  },
+  "run_settings": {
+    "run_duration_sec": 25.0,
+    "_comment": "Duration of the flight test in seconds"
+  }
+}
