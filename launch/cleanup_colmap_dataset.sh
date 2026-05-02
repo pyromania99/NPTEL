@@ -23,6 +23,7 @@ Usage: cleanup_colmap_dataset.sh [--dataset-dir PATH] [--full]
 Default cleanup removes generated reconstruction artifacts and preserves:
 - images/
 - sparse/model/ priors
+- sparse/reconstruction/
 - custom_matches.txt
 
 --full additionally removes images/ and sparse/model/.
@@ -46,7 +47,7 @@ mkdir -p "$DATASET_DIR"
 
 rm -f "$DATASET_DIR/db.db" "$DATASET_DIR/db.db-shm" "$DATASET_DIR/db.db-wal"
 rm -rf "$DATASET_DIR/dense"
-rm -rf "$DATASET_DIR/sparse/0" "$DATASET_DIR/sparse/triangulated"
+rm -rf "$DATASET_DIR/sparse/0" "$DATASET_DIR/sparse/triangulated" "$DATASET_DIR/sparse/reconstruction"
 
 if [[ "$FULL_CLEAN" -eq 1 ]]; then
   rm -rf "$DATASET_DIR/images" "$DATASET_DIR/sparse/model"

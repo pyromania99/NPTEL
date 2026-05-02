@@ -218,7 +218,251 @@ def database_match_stats(db_path: str) -> tuple[int, int]:
     return matches_count, two_view_count
 
 
-def run_colmap_matcher(colmap_bin: str, db_path: str, use_gpu: str, matcher: str, image_path: str) -> None:
+def _pair_id_to_image_ids(pair_id: int) -> tuple[int, int]:
+    max_image_id = 2147483647
+    image_id2 = pair_id % max_image_id
+    image_id1 = (pair_id - image_id2) // max_image_id
+    return int(image_id1), int(image_id2)
+
+
+def _draw_feature_sample(image: np.ndarray, keypoints_xy: np.ndarray, sample_count: int = 300) -> np.ndarray:
+    if keypoints_xy.shape[0] == 0:
+        return image
+
+    vis = image.copy()
+    step = max(1, keypoints_xy.shape[0] // max(1, sample_count))
+    sampled = keypoints_xy[::step][:sample_count]
+    for x, y in sampled:
+        cv2.circle(vis, (int(round(x)), int(round(y))), 2, (0, 255, 0), -1, lineType=cv2.LINE_AA)
+    return vis
+
+
+def _draw_match_sample(
+    image1: np.ndarray,
+    image2: np.ndarray,
+    kp1_xy: np.ndarray,
+    kp2_xy: np.ndarray,
+    match_idx: np.ndarray,
+    sample_count: int = 120,
+) -> np.ndarray:
+    h = max(image1.shape[0], image2.shape[0])
+    w = image1.shape[1] + image2.shape[1]
+    canvas = np.zeros((h, w, 3), dtype=np.uint8)
+    canvas[: image1.shape[0], : image1.shape[1]] = image1
+    canvas[: image2.shape[0], image1.shape[1] : image1.shape[1] + image2.shape[1]] = image2
+
+    if match_idx.shape[0] == 0:
+        return canvas
+
+    step = max(1, match_idx.shape[0] // max(1, sample_count))
+    sampled = match_idx[::step][:sample_count]
+    x_offset = image1.shape[1]
+
+    for idx1, idx2 in sampled:
+        i1 = int(idx1)
+        i2 = int(idx2)
+        if i1 < 0 or i2 < 0 or i1 >= kp1_xy.shape[0] or i2 >= kp2_xy.shape[0]:
+            continue
+        x1, y1 = kp1_xy[i1]
+        x2, y2 = kp2_xy[i2]
+        p1 = (int(round(x1)), int(round(y1)))
+        p2 = (int(round(x2)) + x_offset, int(round(y2)))
+        cv2.line(canvas, p1, p2, (255, 200, 0), 1, lineType=cv2.LINE_AA)
+        cv2.circle(canvas, p1, 2, (0, 255, 0), -1, lineType=cv2.LINE_AA)
+        cv2.circle(canvas, p2, 2, (0, 0, 255), -1, lineType=cv2.LINE_AA)
+
+    return canvas
+
+
+def export_feature_and_match_samples(
+    dataset_dir: str,
+    db_path: str,
+    image_dir: str,
+    max_feature_images: int = 6,
+    max_match_pairs: int = 6,
+) -> Optional[str]:
+    """Export small visual samples of features and verified matches from COLMAP DB."""
+    samples_root = os.path.join(dataset_dir, "samples")
+    features_dir = os.path.join(samples_root, "features")
+    matches_dir = os.path.join(samples_root, "matches")
+
+    try:
+        if os.path.isdir(samples_root):
+            shutil.rmtree(samples_root)
+        os.makedirs(features_dir, exist_ok=True)
+        os.makedirs(matches_dir, exist_ok=True)
+
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT image_id, name FROM images")
+        image_rows = cursor.fetchall()
+        name_by_image_id = {int(image_id): name for image_id, name in image_rows}
+
+        cursor.execute(
+            "SELECT image_id, rows, cols, data FROM keypoints WHERE data IS NOT NULL AND rows > 0 ORDER BY rows DESC LIMIT ?",
+            (max_feature_images,),
+        )
+        feature_rows = cursor.fetchall()
+
+        exported_features = 0
+        for image_id, rows, cols, blob in feature_rows:
+            if blob is None:
+                continue
+            rows = int(rows)
+            cols = int(cols)
+            if rows <= 0 or cols <= 0:
+                continue
+
+            kps = np.frombuffer(blob, dtype=np.float32)
+            if kps.size < rows * cols:
+                continue
+            kps = kps.reshape(rows, cols)
+            kps_xy = kps[:, :2]
+
+            image_name = name_by_image_id.get(int(image_id))
+            if not image_name:
+                continue
+            image_path = os.path.join(image_dir, image_name)
+            image = cv2.imread(image_path)
+            if image is None:
+                continue
+
+            vis = _draw_feature_sample(image, kps_xy)
+            out_name = f"{os.path.splitext(image_name)[0]}_features.jpg"
+            cv2.imwrite(os.path.join(features_dir, out_name), vis)
+            exported_features += 1
+
+        cursor.execute(
+            "SELECT pair_id, rows, cols, data FROM two_view_geometries WHERE data IS NOT NULL AND rows > 0 ORDER BY rows DESC LIMIT ?",
+            (max_match_pairs,),
+        )
+        match_rows = cursor.fetchall()
+
+        exported_matches = 0
+        for pair_id, rows, cols, blob in match_rows:
+            if blob is None:
+                continue
+            rows = int(rows)
+            cols = int(cols)
+            if rows <= 0 or cols <= 0:
+                continue
+
+            image_id1, image_id2 = _pair_id_to_image_ids(int(pair_id))
+            name1 = name_by_image_id.get(image_id1)
+            name2 = name_by_image_id.get(image_id2)
+            if not name1 or not name2:
+                continue
+
+            cursor.execute("SELECT rows, cols, data FROM keypoints WHERE image_id=?", (image_id1,))
+            row1 = cursor.fetchone()
+            cursor.execute("SELECT rows, cols, data FROM keypoints WHERE image_id=?", (image_id2,))
+            row2 = cursor.fetchone()
+            if not row1 or not row2 or row1[2] is None or row2[2] is None:
+                continue
+
+            kp1 = np.frombuffer(row1[2], dtype=np.float32).reshape(int(row1[0]), int(row1[1]))
+            kp2 = np.frombuffer(row2[2], dtype=np.float32).reshape(int(row2[0]), int(row2[1]))
+            kp1_xy = kp1[:, :2]
+            kp2_xy = kp2[:, :2]
+
+            matches = np.frombuffer(blob, dtype=np.uint32)
+            if matches.size < rows * cols:
+                continue
+            matches = matches.reshape(rows, cols)
+            if matches.shape[1] < 2:
+                continue
+
+            image1 = cv2.imread(os.path.join(image_dir, name1))
+            image2 = cv2.imread(os.path.join(image_dir, name2))
+            if image1 is None or image2 is None:
+                continue
+
+            vis = _draw_match_sample(image1, image2, kp1_xy, kp2_xy, matches[:, :2])
+            stem1 = os.path.splitext(os.path.basename(name1))[0]
+            stem2 = os.path.splitext(os.path.basename(name2))[0]
+            out_name = f"{stem1}__{stem2}_matches.jpg"
+            cv2.imwrite(os.path.join(matches_dir, out_name), vis)
+            exported_matches += 1
+
+        conn.close()
+
+        summary_path = os.path.join(samples_root, "summary.txt")
+        with open(summary_path, "w") as f:
+            f.write(f"features_exported={exported_features}\n")
+            f.write(f"matches_exported={exported_matches}\n")
+            f.write(f"features_dir={features_dir}\n")
+            f.write(f"matches_dir={matches_dir}\n")
+
+        return samples_root
+    except Exception as e:
+        print(f"⚠️ Failed to export feature/match samples: {e}")
+        return None
+
+
+def read_prior_camera_model(model_dir: str) -> Optional[str]:
+    """Read camera model token from COLMAP cameras.txt (e.g., PINHOLE, SIMPLE_RADIAL)."""
+    cameras_txt = os.path.join(model_dir, "cameras.txt")
+    if not os.path.exists(cameras_txt):
+        return None
+
+    try:
+        with open(cameras_txt, "r") as f:
+            for line in f:
+                stripped = line.strip()
+                if not stripped or stripped.startswith("#"):
+                    continue
+                parts = stripped.split()
+                if len(parts) >= 2:
+                    return parts[1]
+    except OSError:
+        return None
+
+    return None
+
+
+def _colmap_option_supported(colmap_bin: str, command: str, option_name: str) -> bool:
+    """Check whether a COLMAP subcommand advertises a specific option."""
+    try:
+        help_proc = subprocess.run(
+            [colmap_bin, command, "-h"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        help_text = (help_proc.stdout or "") + "\n" + (help_proc.stderr or "")
+        return option_name in help_text
+    except Exception:
+        return False
+
+
+def resolve_colmap_gpu_option_names(colmap_bin: str) -> tuple[str, str]:
+    """Return (feature_extractor_gpu_option, matcher_gpu_option)."""
+    if _colmap_option_supported(colmap_bin, "feature_extractor", "--FeatureExtraction.use_gpu"):
+        feature_gpu_opt = "--FeatureExtraction.use_gpu"
+    elif _colmap_option_supported(colmap_bin, "feature_extractor", "--SiftExtraction.use_gpu"):
+        feature_gpu_opt = "--SiftExtraction.use_gpu"
+    else:
+        feature_gpu_opt = "--FeatureExtraction.use_gpu"
+
+    if _colmap_option_supported(colmap_bin, "exhaustive_matcher", "--FeatureMatching.use_gpu"):
+        matcher_gpu_opt = "--FeatureMatching.use_gpu"
+    elif _colmap_option_supported(colmap_bin, "exhaustive_matcher", "--SiftMatching.use_gpu"):
+        matcher_gpu_opt = "--SiftMatching.use_gpu"
+    else:
+        matcher_gpu_opt = "--FeatureMatching.use_gpu"
+
+    return feature_gpu_opt, matcher_gpu_opt
+
+
+def run_colmap_matcher(
+    colmap_bin: str,
+    db_path: str,
+    use_gpu: str,
+    matcher: str,
+    image_path: str,
+    matcher_gpu_option: str,
+) -> None:
     if matcher == "custom":
         match_list_path = os.path.join(os.path.dirname(db_path), "custom_matches.txt")
         if not os.path.exists(match_list_path):
@@ -230,7 +474,6 @@ def run_colmap_matcher(colmap_bin: str, db_path: str, use_gpu: str, matcher: str
             "--database_path", db_path,
             "--match_list_path", match_list_path,
             "--match_type", "pairs",
-            "--SiftMatching.use_gpu", use_gpu,
         ], check=True)
         return
 
@@ -239,36 +482,22 @@ def run_colmap_matcher(colmap_bin: str, db_path: str, use_gpu: str, matcher: str
         subprocess.run([
             colmap_bin, "exhaustive_matcher",
             "--database_path", db_path,
-            "--SiftMatching.use_gpu", use_gpu,
+            matcher_gpu_option, use_gpu,
         ], check=True)
         return
 
     raise ValueError(f"Unknown matcher: {matcher}")
 
 
-def copy_model_files(src_model: str, dst_model: str) -> bool:
-    if not has_colmap_model(src_model):
-        return False
-
-    os.makedirs(dst_model, exist_ok=True)
-    copied_any = False
-    for name in ["cameras.bin", "images.bin", "points3D.bin", "cameras.txt", "images.txt", "points3D.txt"]:
-        src = os.path.join(src_model, name)
-        if os.path.exists(src):
-            shutil.copy2(src, os.path.join(dst_model, name))
-            copied_any = True
-    return copied_any
-
-
-def canonicalize_model_to_zero(sparse_dir: str) -> Optional[str]:
-    root_model = sparse_dir
-    zero_model = os.path.join(sparse_dir, "0")
+def resolve_colmap_model_dir(model_root: str) -> Optional[str]:
+    """Return the COLMAP model directory without creating duplicate copies."""
+    zero_model = os.path.join(model_root, "0")
 
     if has_colmap_model(zero_model):
         return zero_model
 
-    if has_colmap_model(root_model) and copy_model_files(root_model, zero_model):
-        return zero_model
+    if has_colmap_model(model_root):
+        return model_root
 
     return None
 
@@ -454,48 +683,102 @@ class ColmapCollectorNode(Node):
         return True
 
 
-def run_dense_reconstruction(colmap_bin: str, dataset_dir: str, sparse_model_dir: str) -> Optional[str]:
+def run_dense_reconstruction(
+    colmap_bin: str,
+    dataset_dir: str,
+    sparse_model_dir: str,
+    dense_mode: str = "normal",
+) -> Optional[str]:
+    """Run dense reconstruction with graceful failure and memory-tuned modes.
+    
+    Modes:
+      'normal': standard settings (1600x1600 max, cache=4)
+      'low-memory': aggressive reduction (800x800 max, cache=2)
+    'ultra-low-memory': extreme reduction (400x400 max, cache=1)
+    'fusion-only': run stereo_fusion only on existing dense/stereo outputs
+    """
     dense_dir = os.path.join(dataset_dir, "dense")
+    fusion_only = dense_mode == "fusion-only"
 
-    if os.path.isdir(dense_dir):
-        shutil.rmtree(dense_dir)
-    os.makedirs(dense_dir, exist_ok=True)
+    # Memory tuning by mode
+    config = {
+        "normal": {"patch_max_size": "1600", "fusion_max_size": "2000", "cache_size": "4"},
+        "low-memory": {"patch_max_size": "800", "fusion_max_size": "800", "cache_size": "2"},
+        "ultra-low-memory": {"patch_max_size": "400", "fusion_max_size": "400", "cache_size": "1"},
+        "fusion-only": {"patch_max_size": "800", "fusion_max_size": "800", "cache_size": "2"},
+    }
+    cfg = config.get(dense_mode, config["normal"])
+    print(f">> Dense mode: {dense_mode} | max_size={cfg['patch_max_size']} cache={cfg['cache_size']}")
 
-    print(">> Running Image Undistorter...")
-    subprocess.run([
-        colmap_bin, "image_undistorter",
-        "--image_path", os.path.join(dataset_dir, "images"),
-        "--input_path", sparse_model_dir,
-        "--output_path", dense_dir,
-        "--output_type", "COLMAP",
-    ], check=True)
+    try:
+        if fusion_only:
+            stereo_dir = os.path.join(dense_dir, "stereo")
+            depth_maps_dir = os.path.join(stereo_dir, "depth_maps")
+            normal_maps_dir = os.path.join(stereo_dir, "normal_maps")
+            if not os.path.isdir(stereo_dir):
+                print(f"\n❌ fusion-only mode requires existing dense stereo workspace: {stereo_dir}")
+                print("   Run once with --dense-only --dense-mode low-memory (or normal) to generate stereo maps.")
+                return None
 
-    print(">> Running Patch Match Stereo...")
-    subprocess.run([
-        colmap_bin, "patch_match_stereo",
-        "--workspace_path", dense_dir,
-        "--workspace_format", "COLMAP",
-        "--PatchMatchStereo.geom_consistency", "true",
-        "--PatchMatchStereo.max_image_size", "1600",
-        "--PatchMatchStereo.num_iterations", "3",
-    ], check=True)
+            has_depth = any(name.endswith(".bin") for name in os.listdir(depth_maps_dir)) if os.path.isdir(depth_maps_dir) else False
+            has_normals = any(name.endswith(".bin") for name in os.listdir(normal_maps_dir)) if os.path.isdir(normal_maps_dir) else False
+            if not has_depth or not has_normals:
+                print("\n❌ fusion-only mode found no existing geometric stereo maps to fuse.")
+                print(f"   depth_maps: {depth_maps_dir}")
+                print(f"   normal_maps: {normal_maps_dir}")
+                print("   Run patch_match_stereo first using a non fusion-only dense mode.")
+                return None
 
-    print(">> Running Stereo Fusion...")
-    fused_path = os.path.join(dense_dir, "fused.ply")
-    subprocess.run([
-        colmap_bin, "stereo_fusion",
-        "--workspace_path", dense_dir,
-        "--workspace_format", "COLMAP",
-        "--input_type", "geometric",
-        "--output_path", fused_path,
-        # Memory-safe settings for 8 GB VRAM / limited RAM systems.
-        "--StereoFusion.min_num_pixels", "5",
-        "--StereoFusion.max_image_size", "2000",
-        "--StereoFusion.cache_size", "4",
-    ], check=True)
+            print(">> fusion-only mode: reusing existing stereo depth/normal maps (no undistort, no patch match).")
+        else:
+            if os.path.isdir(dense_dir):
+                shutil.rmtree(dense_dir)
+            os.makedirs(dense_dir, exist_ok=True)
 
-    print(f">> Dense reconstruction saved to {fused_path}")
-    return fused_path
+            print(">> Running Image Undistorter...")
+            subprocess.run([
+                colmap_bin, "image_undistorter",
+                "--image_path", os.path.join(dataset_dir, "images"),
+                "--input_path", sparse_model_dir,
+                "--output_path", dense_dir,
+                "--output_type", "COLMAP",
+            ], check=True)
+
+            print(">> Running Patch Match Stereo...")
+            subprocess.run([
+                colmap_bin, "patch_match_stereo",
+                "--workspace_path", dense_dir,
+                "--workspace_format", "COLMAP",
+                "--PatchMatchStereo.geom_consistency", "true",
+                "--PatchMatchStereo.max_image_size", cfg["patch_max_size"],
+                "--PatchMatchStereo.num_iterations", "3",
+            ], check=True)
+
+        print(">> Running Stereo Fusion...")
+        fused_path = os.path.join(dense_dir, "fused.ply")
+        subprocess.run([
+            colmap_bin, "stereo_fusion",
+            "--workspace_path", dense_dir,
+            "--workspace_format", "COLMAP",
+            "--input_type", "geometric",
+            "--output_path", fused_path,
+            "--StereoFusion.min_num_pixels", "5",
+            "--StereoFusion.max_image_size", cfg["fusion_max_size"],
+            "--StereoFusion.cache_size", cfg["cache_size"],
+        ], check=True)
+
+        print(f">> Dense reconstruction saved to {fused_path}")
+        return fused_path
+    
+    except subprocess.CalledProcessError as e:
+        print(f"\n⚠️  Dense reconstruction failed in {dense_mode} mode: {e}")
+        if dense_mode != "ultra-low-memory":
+            print(f"   Try re-running with --dense-mode ultra-low-memory for more aggressive memory reduction.")
+        print("✅ Sparse model and BA snapshots remain available for visualization.")
+        return None
+    except Exception as e:
+        print(f"\n⚠️  Dense reconstruction error: {e}")
+        return None
 
 def resolve_colmap_binary() -> str:
     """Resolve COLMAP binary in a portable order for host and container runs."""
@@ -533,30 +816,35 @@ def resolve_colmap_binary() -> str:
 
     raise FileNotFoundError("COLMAP binary not found. Set COLMAP_BIN to the executable path.")
 
-def run_colmap(dataset_dir: str):
+def run_colmap(dataset_dir: str, enable_dense: bool = False, dense_mode: str = "normal"):
     print("\n🚀 Starting Automated Colmap Pipeline...\n")
     dataset_dir = os.path.abspath(dataset_dir)
     db_path = os.path.join(dataset_dir, "db.db")
     img_dir = os.path.join(dataset_dir, "images")
     sparse_dir = os.path.join(dataset_dir, "sparse")
     model_dir = os.path.join(sparse_dir, "model")
-    canonical_out_dir = os.path.join(sparse_dir, "0")
-    triangulated_out_dir = os.path.join(sparse_dir, "triangulated")
+    reconstruction_dir = os.path.join(sparse_dir, "reconstruction")
+    snapshot_dir = os.path.join(sparse_dir, "snapshots")
     match_list_path = os.path.join(dataset_dir, "custom_matches.txt")
     colmap_bin = resolve_colmap_binary()
+    prior_camera_model = read_prior_camera_model(model_dir) or "PINHOLE"
+    feature_gpu_option, matcher_gpu_option = resolve_colmap_gpu_option_names(colmap_bin)
     use_gpu = "1"
+    
+    if enable_dense:
+        print(f">> Dense reconstruction: ENABLED ({dense_mode} mode)")
 
     os.makedirs(sparse_dir, exist_ok=True)
 
-    # Keep priors in sparse/model and let mapper use them as the initial model.
-    # Clear old numeric reconstruction folders (e.g. sparse/0) so COLMAP rebuilds from the PX4 seed.
-    for entry in os.listdir(sparse_dir):
-        entry_path = os.path.join(sparse_dir, entry)
-        if entry.isdigit() and os.path.isdir(entry_path):
-            shutil.rmtree(entry_path)
-
-    if os.path.isdir(triangulated_out_dir):
-        shutil.rmtree(triangulated_out_dir)
+    # Keep priors in sparse/model and write the reconstruction into one dedicated folder.
+    # Remove legacy output folders so old runs do not accumulate alongside the new layout.
+    for legacy_dir in [os.path.join(sparse_dir, "0"), os.path.join(sparse_dir, "triangulated"), reconstruction_dir, snapshot_dir]:
+        if os.path.isdir(legacy_dir):
+            shutil.rmtree(legacy_dir)
+        elif os.path.exists(legacy_dir):
+            os.remove(legacy_dir)
+    os.makedirs(reconstruction_dir, exist_ok=True)
+    os.makedirs(snapshot_dir, exist_ok=True)
 
     try:
         # Auto-fallback to CPU when COLMAP is built without CUDA support.
@@ -573,6 +861,10 @@ def run_colmap(dataset_dir: str):
             pass
 
         print(f">> COLMAP GPU mode: {use_gpu}")
+        print(f">> Camera model (from priors): {prior_camera_model}")
+        print(f">> Feature extractor GPU option: {feature_gpu_option}")
+        print(f">> Matcher GPU option: {matcher_gpu_option}")
+        print(f">> Mapper snapshots enabled in: {snapshot_dir}")
 
         # 1. Wipe old DB and recreate
         if os.path.exists(db_path):
@@ -591,8 +883,9 @@ def run_colmap(dataset_dir: str):
             "--database_path", db_path,
             "--image_path", img_dir,
             "--ImageReader.single_camera", "1",
+            "--ImageReader.camera_model", prior_camera_model,
             "--SiftExtraction.max_num_features", "8000",
-            "--SiftExtraction.use_gpu", use_gpu
+            feature_gpu_option, use_gpu
         ], check=True)
 
         # 3. Try custom pair matching first; fall back to exhaustive matching if it did not verify any pairs.
@@ -600,16 +893,21 @@ def run_colmap(dataset_dir: str):
             print(f"\n❌ Missing match list file: {match_list_path}")
             return
 
-        run_colmap_matcher(colmap_bin, db_path, use_gpu, "custom", img_dir)
+        run_colmap_matcher(colmap_bin, db_path, use_gpu, "custom", img_dir, matcher_gpu_option)
 
         matches_count, two_view_count = database_match_stats(db_path)
         print(f">> Match stats after custom matcher: matches={matches_count}, two_view_geometries={two_view_count}")
 
         if two_view_count == 0:
             print(">> Custom matcher produced no verified two-view geometries; falling back to exhaustive matching...")
-            run_colmap_matcher(colmap_bin, db_path, use_gpu, "exhaustive", img_dir)
+            run_colmap_matcher(colmap_bin, db_path, use_gpu, "exhaustive", img_dir, matcher_gpu_option)
             matches_count, two_view_count = database_match_stats(db_path)
             print(f">> Match stats after exhaustive matcher: matches={matches_count}, two_view_geometries={two_view_count}")
+
+        # Export quick visual artifacts for debugging and reporting.
+        samples_dir = export_feature_and_match_samples(dataset_dir, db_path, img_dir)
+        if samples_dir:
+            print(f">> Saved feature/match samples to: {samples_dir}")
 
         # 3b. Ensure prior image IDs match COLMAP DB IDs before loading input model.
         if not remap_prior_image_ids_to_db(model_dir, db_path):
@@ -622,24 +920,17 @@ def run_colmap(dataset_dir: str):
             colmap_bin, "mapper",
             "--database_path", db_path,
             "--image_path", img_dir,
-            # "--input_path", model_dir,
-            "--output_path", sparse_dir,
+            "--input_path", model_dir,
+            "--output_path", reconstruction_dir,
+            "--Mapper.snapshot_path", snapshot_dir,
+            "--Mapper.snapshot_frames_freq", "5",
             "--Mapper.tri_ignore_two_view_tracks", "0",
         ], check=True)
 
-        mapper_out_0 = os.path.join(sparse_dir, "0")
-        mapper_out_root = sparse_dir
-
-        # Depending on COLMAP version and input/output layout, output may be sparse/0
-        # or written directly into sparse/. Canonicalize to sparse/0.
-        if not has_colmap_model(mapper_out_0) and has_colmap_model(mapper_out_root):
-            copy_model_files(mapper_out_root, mapper_out_0)
-
-        if not has_colmap_model(mapper_out_0):
+        model_out = resolve_colmap_model_dir(reconstruction_dir)
+        if model_out is None:
             print("\n❌ Colmap failed to map any models.")
             return
-
-        model_out = mapper_out_0
 
         point_count = points3d_count_from_bin(model_out)
         if point_count == 0:
@@ -649,30 +940,33 @@ def run_colmap(dataset_dir: str):
                 return
 
             print("\n⚠️ Incremental mapper produced 0 points. Running point_triangulator fallback...")
-            os.makedirs(triangulated_out_dir, exist_ok=True)
+            if os.path.isdir(reconstruction_dir):
+                shutil.rmtree(reconstruction_dir)
+            os.makedirs(reconstruction_dir, exist_ok=True)
             subprocess.run([
                 colmap_bin, "point_triangulator",
                 "--database_path", db_path,
                 "--image_path", img_dir,
                 "--input_path", model_out,
-                "--output_path", triangulated_out_dir,
+                "--output_path", reconstruction_dir,
                 "--clear_points", "1",
                 "--Mapper.fix_existing_images", "1",
                 "--Mapper.tri_ignore_two_view_tracks", "0",
             ], check=True)
 
-            if has_colmap_model(triangulated_out_dir):
-                copy_model_files(triangulated_out_dir, model_out)
-                point_count = points3d_count_from_bin(model_out)
+            model_out = resolve_colmap_model_dir(reconstruction_dir) or model_out
+            point_count = points3d_count_from_bin(model_out)
 
         if point_count == 0:
             print(f"\n⚠️ No 3D points were triangulated. Final model (single canonical set) is in:\n  {model_out}")
         else:
             print(f"\n✅ SUCCESS! Colmap sparse reconstruction saved to:\n  {model_out}\n   Points: {point_count}")
-        print("To view it, run: colmap gui and click File -> Import Model")
+        print(f"To view it, run: {shutil.which('colmap') or '/usr/bin/colmap'} gui --database_path {db_path} --image_path {img_dir}")
+        print(f"To view BA snapshots, import models from: {os.path.join(dataset_dir, 'sparse', 'snapshots')}")
 
-        if point_count and point_count > 0:
-            run_dense_reconstruction(colmap_bin, dataset_dir, model_out)
+        if enable_dense and point_count and point_count > 0:
+            print("\n>> Attempting dense reconstruction...")
+            run_dense_reconstruction(colmap_bin, dataset_dir, model_out, dense_mode)
 
     except subprocess.CalledProcessError as e:
         print(f"\n❌ Colmap failed while running: {colmap_bin}\nError: {e}")
@@ -680,7 +974,7 @@ def run_colmap(dataset_dir: str):
         print("\n❌ COLMAP binary not found. Set COLMAP_BIN to the executable path.")
 
 
-def run_existing_colmap(dataset_dir: str):
+def run_existing_colmap(dataset_dir: str, enable_dense: bool = False, dense_mode: str = "normal"):
     dataset_dir = os.path.abspath(dataset_dir)
     prior_model_dir = os.path.join(dataset_dir, "sparse", "model")
 
@@ -692,7 +986,27 @@ def run_existing_colmap(dataset_dir: str):
         print(f"\n❌ Missing prior model directory: {prior_model_dir}")
         return
 
-    run_colmap(dataset_dir)
+    run_colmap(dataset_dir, enable_dense=enable_dense, dense_mode=dense_mode)
+
+
+def run_dense_only(dataset_dir: str, dense_mode: str = "normal"):
+    """Rerun dense reconstruction on existing sparse model (skip mapper)."""
+    dataset_dir = os.path.abspath(dataset_dir)
+    sparse_dir = os.path.join(dataset_dir, "sparse")
+    reconstruction_dir = os.path.join(sparse_dir, "reconstruction")
+    model_dir = os.path.join(sparse_dir, "model")
+    
+    # Check if sparse reconstruction exists
+    model_out = resolve_colmap_model_dir(reconstruction_dir)
+    if model_out is None:
+        print(f"\n❌ No sparse model found in: {reconstruction_dir}")
+        print("   Run with --reconstruct-existing first to generate sparse model.")
+        return
+    
+    colmap_bin = resolve_colmap_binary()
+    print(f"\n✅ Found existing sparse model at: {model_out}")
+    print(f">> Running dense reconstruction only ({dense_mode} mode)...\n")
+    run_dense_reconstruction(colmap_bin, dataset_dir, model_out, dense_mode)
 
 
 def main():
@@ -703,10 +1017,30 @@ def main():
         action="store_true",
         help="Run COLMAP on the existing dataset without starting ROS collection",
     )
+    parser.add_argument(
+        "--dense-only",
+        action="store_true",
+        help="Rerun dense reconstruction on existing sparse model (skip mapper)",
+    )
+    parser.add_argument(
+        "--dense",
+        action="store_true",
+        help="Enable dense reconstruction (stereo fusion) after sparse mapping",
+    )
+    parser.add_argument(
+        "--dense-mode",
+        choices=["normal", "low-memory", "ultra-low-memory", "fusion-only"],
+        default="normal",
+        help="Dense mode: normal/low-memory/ultra-low-memory or fusion-only (reuse existing stereo maps)",
+    )
     args = parser.parse_args()
 
+    if args.dense_only:
+        run_dense_only(args.dataset_dir, dense_mode=args.dense_mode)
+        return
+
     if args.reconstruct_existing:
-        run_existing_colmap(args.dataset_dir)
+        run_existing_colmap(args.dataset_dir, enable_dense=args.dense, dense_mode=args.dense_mode)
         return
 
     if not ROS_AVAILABLE:
@@ -732,7 +1066,7 @@ def main():
             sys.exit(0)
 
         # Kick off colmap
-        run_colmap(args.dataset_dir)
+        run_colmap(args.dataset_dir, enable_dense=args.dense, dense_mode=args.dense_mode)
         sys.exit(0)
 
     signal.signal(signal.SIGINT, handle_shutdown)
