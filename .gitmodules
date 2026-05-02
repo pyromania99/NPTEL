@@ -1,0 +1,4 @@
+[submodule "px4"]
+	path = px4
+	url = https://github.com/pyromania99/PX4-Autopilot.git
+	branch = nptel_module4
