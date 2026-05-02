@@ -44,6 +44,20 @@ Full reset including source images and priors:
 
 For Docker, set `COLMAP_BIN` explicitly to remove ambiguity.
 
+## 6) New features (summary)
+
+This pipeline has been extended to improve robustness and observability when running COLMAP. Highlights:
+
+- **Mapper snapshotting:** periodic mapper snapshots are supported and written to `sparse/snapshots` so you can inspect BA progress and intermediate models.
+- **GPU flags detection:** the script probes COLMAP subcommand help to pick the correct GPU-related flags for feature extraction and matching across different builds.
+- **Camera prior compatibility:** prior camera models from `sparse/model` are applied to image reading to prevent camera-model mismatch crashes.
+- **Memory-tuned dense reconstruction:** select `normal`, `low-memory`, or `ultra-low-memory` dense modes and the pipeline will retry with lower-memory settings on failures.
+- **Rerun controls:** `--dense-only` will re-run only the dense stage; `--reconstruct-existing` avoids re-running mapping when a sparse model already exists.
+- **Fusion-only rerun:** `--dense-only --dense-mode fusion-only` runs only `stereo_fusion` and reuses existing `dense/stereo` depth/normal maps (no undistorter or patch-match rewrite).
+- **Samples export:** small visual exports of features and example matches are written to `samples/` for quick review.
+
+Refer to `launch/colmap_pipeline.py` CLI help for up-to-date flag names and usage.
+
 ## 4) Example Docker run
 
 ```bash
