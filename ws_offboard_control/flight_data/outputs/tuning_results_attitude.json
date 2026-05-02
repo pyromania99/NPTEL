@@ -1,0 +1,23 @@
+{
+  "best_cost": 27.033120013672953,
+  "best_params": {
+    "att_kp_base": 0.7499372895450073,
+    "att_kd_base": 3.296244459829336,
+    "gs_kp_min": 0.8673046389363372,
+    "gs_kd_max": 0.47144018150632894,
+    "gs_rate_threshold": 5.905330837693118
+  },
+  "trials": [
+    {
+      "params": {
+        "att_kp_base": 0.7499372895450073,
+        "att_kd_base": 3.296244459829336,
+        "gs_kp_min": 0.8673046389363372,
+        "gs_kd_max": 0.47144018150632894,
+        "gs_rate_threshold": 5.905330837693118
+      },
+      "cost": 27.033120013672953,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/logs/flight_log_20251016_073314.csv"
+    }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+  "best_cost": 44.266380071345345,
+  "best_params": {
+    "fb_kp": 0.08193990914471237,
+    "fb_kd": 0.0006139377049694651
+  },
+  "trial_history": [
+    {
+      "params": {
+        "fb_kp": 0.1593085973720466,
+        "fb_kd": 0.0036686957973232764
+      },
+      "cost": 195.86384664486047,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_061844_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.15593820005455392,
+        "fb_kd": 0.011937003158929742
+      },
+      "cost": 269.1014838222332,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_061953_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08916655057071826,
+        "fb_kd": 0.001999498316360058
+      },
+      "cost": 59.03234293281068,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062103_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.09184977839317346,
+        "fb_kd": 0.006674172222780438
+      },
+      "cost": 90.21461316624234,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062212_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.028573363584388164,
+        "fb_kd": 0.01301776945897706
+      },
+      "cost": 50.953170731436195,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062322_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.011282315805420055,
+        "fb_kd": 0.014439975445336498
+      },
+      "cost": 218.93066216012275,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062431_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.18771054180315008,
+        "fb_kd": 1.557531682028657e-05
+      },
+      "cost": 188.51648923650617,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062539_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.19844231185824357,
+        "fb_kd": 0.012349630192554334
+      },
+      "cost": 466.5683319922772,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062647_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.12233063209765621,
+        "fb_kd": 0.00014132610439434817
+      },
+      "cost": 182.84087543870888,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062757_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.004612485008283152,
+        "fb_kd": 0.010495493205167785
+      },
+      "cost": 501.05662247068415,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_062905_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.024738170122752152,
+        "fb_kd": 0.014487641030332676
+      },
+      "cost": 74.33187332422948,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_063013_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.02846979413103395,
+        "fb_kd": 0.012308416775594102
+      },
+      "cost": 93.3082349267908,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_063121_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.02818314195250134,
+        "fb_kd": 0.01353566618508912
+      },
+      "cost": 50.9968612190322,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_063231_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.03001606377787241,
+        "fb_kd": 0.01371261776450057
+      },
+      "cost": 87.06894569798206,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_063340_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08690829275987706,
+        "fb_kd": 0.01129907589312286
+      },
+      "cost": 95.6823712008565,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_063450_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.01945680877089145,
+        "fb_kd": 0.015056271698284678
+      },
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
+    },
+    {
+      "params": {
+        "fb_kp": 0.03933192399373523,
+        "fb_kd": 0.01429721412154741
+      },
+      "cost": 66.75693677507014,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_063740_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.04437103891081299,
+        "fb_kd": 0.01328124351898807
+      },
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
+    },
+    {
+      "params": {
+        "fb_kp": 0.0356231387150763,
+        "fb_kd": 0.003606366320101296
+      },
+      "cost": 129.73606784559556,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_064030_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.09810613783520294,
+        "fb_kd": 0.008957567552455836
+      },
+      "cost": 219.8104064292088,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_064137_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.02593928907954007,
+        "fb_kd": 0.015097087689227396
+      },
+      "cost": 49.45386198458437,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_064248_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.038522587395401126,
+        "fb_kd": 0.011517265611036673
+      },
+      "cost": 94.20039706368699,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_064356_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.025969932889534492,
+        "fb_kd": 0.019142010587535993
+      },
+      "cost": 54.515996800089034,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_064506_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.025994279825900374,
+        "fb_kd": 0.001178141187545705
+      },
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
+    },
+    {
+      "params": {
+        "fb_kp": 0.03667827231055692,
+        "fb_kd": 0.01978806672410681
+      },
+      "cost": 148.70892895782822,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_064755_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.0839299021627114,
+        "fb_kd": 0.0002086961817450517
+      },
+      "cost": 65.74867847576442,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_064906_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08085821258407072,
+        "fb_kd": 0.011213389599823296
+      },
+      "cost": 163.06507375021278,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065016_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.028414394184502718,
+        "fb_kd": 0.014768299612291263
+      },
+      "cost": 52.25830248910238,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065126_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.025592225493376416,
+        "fb_kd": 0.015516493417015166
+      },
+      "cost": 62.25686592348326,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065234_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.02828666261477027,
+        "fb_kd": 0.014516089835596086
+      },
+      "cost": 72.0343645299673,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065341_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.038502250077501625,
+        "fb_kd": 0.014398215034784317
+      },
+      "cost": 67.34248268373393,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065534_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.025916920512815828,
+        "fb_kd": 0.016681700005198807
+      },
+      "cost": 58.59769775403768,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065643_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08636058292278466,
+        "fb_kd": 0.002266668152899534
+      },
+      "cost": 63.09295283669317,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065833_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08856316900608803,
+        "fb_kd": 0.005248450450448535
+      },
+      "cost": 60.465929651386034,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_065942_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08781509902592158,
+        "fb_kd": 0.00035020159563341934
+      },
+      "cost": 52.76040284433499,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070132_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08604915537312957,
+        "fb_kd": 0.00024250813561817582
+      },
+      "cost": 145.04029026087122,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070241_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08752763633204148,
+        "fb_kd": 0.0035171525717481973
+      },
+      "cost": 175.8486185554315,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070352_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.0898068392303221,
+        "fb_kd": 0.006835447297092968
+      },
+      "cost": 66.86810920190118,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070504_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08981268098673403,
+        "fb_kd": 0.0008643561918465804
+      },
+      "cost": 166.98659178857721,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070615_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.025829754593088835,
+        "fb_kd": 0.016782144153616122
+      },
+      "cost": 62.160204440905005,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070728_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08528773314112544,
+        "fb_kd": 0.003956648215976274
+      },
+      "cost": 54.44606884202578,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070838_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08821681428440929,
+        "fb_kd": 0.00028454978365403125
+      },
+      "cost": 65.05324401472987,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_070949_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08901735248571359,
+        "fb_kd": 0.004156541778286321
+      },
+      "cost": 187.55724146641305,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071101_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.029042913824521805,
+        "fb_kd": 0.015556149964662291
+      },
+      "cost": 62.94737110746305,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071210_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.09046793082488358,
+        "fb_kd": 0.01050412669458165
+      },
+      "cost": 98.01156004166275,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071319_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08417328148931646,
+        "fb_kd": 0.005109492726159443
+      },
+      "cost": 76.27026753567056,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071429_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.026260730583383768,
+        "fb_kd": 0.016466526462889593
+      },
+      "cost": 75.07068496382648,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071535_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.02820394714147157,
+        "fb_kd": 0.015655274826654592
+      },
+      "cost": 125.3625572342272,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071648_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.025264202183513537,
+        "fb_kd": 0.017783526374227747
+      },
+      "cost": 55.80128360791454,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071754_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.025562488179659833,
+        "fb_kd": 0.017133336507905814
+      },
+      "cost": 90.54640144007772,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_071907_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08193990914471237,
+        "fb_kd": 0.0006139377049694651
+      },
+      "cost": 44.266380071345345,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072018_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08846293438792203,
+        "fb_kd": 0.006537937343556454
+      },
+      "cost": 94.52102099729666,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072128_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08157440605313249,
+        "fb_kd": 0.0002218832173612251
+      },
+      "cost": 52.031425855956456,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072238_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08223958560428019,
+        "fb_kd": 0.00030818035013881147
+      },
+      "cost": 49.91161179477048,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072349_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08214591387060824,
+        "fb_kd": 0.000996357209546357
+      },
+      "cost": 49.14484472924219,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072459_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08215556901942045,
+        "fb_kd": 0.001299975777848841
+      },
+      "cost": 51.11540050922291,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072611_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08016042611973709,
+        "fb_kd": 0.0005712132248468206
+      },
+      "cost": 52.2770654882128,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072720_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08146329344240347,
+        "fb_kd": 0.0005874353056495908
+      },
+      "cost": 46.28546592792528,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072832_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08113113088462164,
+        "fb_kd": 0.0001235958625004985
+      },
+      "cost": 150.69315939619148,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_072944_analysis.pdf"
+    },
+    {
+      "params": {
+        "fb_kp": 0.08264978051745822,
+        "fb_kd": 0.0026383484487629
+      },
+      "cost": 51.50709730111218,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_073055_analysis.pdf"
+    }
+  ]
+}

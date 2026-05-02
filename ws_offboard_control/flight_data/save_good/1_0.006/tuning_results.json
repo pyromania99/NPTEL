@@ -1,0 +1,61 @@
+{
+  "attitude": {
+    "kp": 1.5790702610965226,
+    "kd": 3.4540515897307804
+  },
+  "gain_scheduling": {
+    "enabled": true,
+    "kp_min": 4.690702610965226,
+    "kd_max": 3.040515897307804,
+    "rate_threshold": 8.0,
+    "_comment": "Attitude gain scheduling: decrease P and increase D as yaw rate increases"
+  },
+  "ndi_rate": {
+    "kp": 0.499023847489042,
+    "kd": 0.044572959246103355
+  },
+  "feedback_rate": {
+    "kp": 0.021010698771860223,
+    "kd": 0.00018454307110636896
+  },
+  "indi": {
+    "enabled": true,
+    "scale": 0.8168886881742098,
+    "blend_ratio": 0.18343478986616382,
+    "alpha_omega_lp": 0.01,
+    "alpha_acc_lp": 0.25
+  },
+  "position_xy": {
+    "kp_x": 0.55,
+    "kp_y": 0.55,
+    "kd_x": 1.1,
+    "kd_y": 1.1,
+    "ki_x": 0.03,
+    "ki_y": 0.03
+  },
+  "position_z": {
+    "kp": 20.0,
+    "kd": 20.0,
+    "ki": 1.0
+  },
+  "limits": {
+    "max_horz_acc": 3.0,
+    "max_tilt_angle": 0.7
+  },
+  "_comments": {
+    "attitude": "Attitude loop gains - convert attitude errors to desired body rates",
+    "ndi_rate": "NDI rate controller - main rate control (inverse dynamics)",
+    "feedback_rate": "Feedback correction - residual rate feedback for robustness",
+    "indi": "Incremental NDI - blend_ratio: 0=pure NDI, 1=pure INDI, alpha filters for robustness",
+    "position_xy": "Horizontal position control gains",
+    "position_z": "Vertical position control gains",
+    "limits": "Safety limits for accelerations and tilt angles",
+    "yaw_ff": "Yaw feedforward prediction - dt_base: base horizon, dt_gain: additional per rad/s, dt_max: safety limit, lpf_alpha: gyro LPF"
+  },
+  "yaw_ff": {
+    "dt_base": 0,
+    "dt_gain": 0,
+    "dt_max": 0,
+    "lpf_alpha": 1
+  }
+}

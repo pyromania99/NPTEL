@@ -1,0 +1,177 @@
+{
+  "best_cost": 42.08231541465344,
+  "best_params": {
+    "indi_scale": 1.2151601816043263,
+    "indi_blend": 0.18343478986616382,
+    "indi_alpha_omega": 0.390065809136112,
+    "indi_alpha_acc": 0.4976376184598653
+  },
+  "trial_history": [
+    {
+      "params": {
+        "indi_scale": 1.2151601816043263,
+        "indi_blend": 0.18343478986616382,
+        "indi_alpha_omega": 0.390065809136112,
+        "indi_alpha_acc": 0.4976376184598653
+      },
+      "cost": 42.08231541465344,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_090808_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.7241658539950276,
+        "indi_blend": 0.09997491581800291,
+        "indi_alpha_omega": 0.23016519709096778,
+        "indi_alpha_acc": 0.3002814583542664
+      },
+      "cost": 139.62753491487746,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_090920_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.3000135450907171,
+        "indi_blend": 0.650888472948853,
+        "indi_alpha_omega": 0.029149377934523036,
+        "indi_alpha_acc": 0.5914990792001187
+      },
+      "cost": 193.11201437485934,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091032_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 1.4139737926220506,
+        "indi_blend": 0.0007787658410143285,
+        "indi_alpha_omega": 0.4961135680863176,
+        "indi_alpha_acc": 0.5131111322207875
+      },
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
+    },
+    {
+      "params": {
+        "indi_scale": 0.9563144246835933,
+        "indi_blend": 0.007066305219717408,
+        "indi_alpha_omega": 0.012508150095666463,
+        "indi_alpha_acc": 0.44358099519379196
+      },
+      "cost": 57.144110749671356,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091433_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.6598053604013577,
+        "indi_blend": 0.046665663213615434,
+        "indi_alpha_omega": 0.48690400390188826,
+        "indi_alpha_acc": 0.22457850532272822
+      },
+      "cost": 42.672590449459285,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091545_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.22684900834594915,
+        "indi_blend": 0.6183860093330874,
+        "indi_alpha_omega": 0.19184853364231427,
+        "indi_alpha_acc": 0.7874231643550913
+      },
+      "cost": 170.23745668993217,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091733_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.753468050547172,
+        "indi_blend": 0.8599404067363208,
+        "indi_alpha_omega": 0.34047346175530213,
+        "indi_alpha_acc": 0.3878744389771573
+      },
+      "cost": 304.5720105159263,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_091931_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.11857094562381315,
+        "indi_blend": 0.942201755684853,
+        "indi_alpha_omega": 0.2820808207049242,
+        "indi_alpha_acc": 0.3390623769049372
+      },
+      "cost": 193.12239995700057,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092047_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.12235275310829988,
+        "indi_blend": 0.23089382562214905,
+        "indi_alpha_omega": 0.12127170754697987,
+        "indi_alpha_acc": 0.5624476391190938
+      },
+      "cost": 54.39477439901708,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092234_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 1.2093470855023394,
+        "indi_blend": 0.18271307356328384,
+        "indi_alpha_omega": 0.30118539071318307,
+        "indi_alpha_acc": 0.5838022312990812
+      },
+      "cost": 45.02256253002239,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092343_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 1.2379826357660058,
+        "indi_blend": 0.19394878840191226,
+        "indi_alpha_omega": 0.22527246549995758,
+        "indi_alpha_acc": 0.714483061803955
+      },
+      "cost": 51.644977293824034,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_092534_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 1.2303800154048097,
+        "indi_blend": 0.18533818442708552,
+        "indi_alpha_omega": 0.12850433920069168,
+        "indi_alpha_acc": 0.7749476782285976
+      },
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
+    },
+    {
+      "params": {
+        "indi_scale": 1.3261193868465682,
+        "indi_blend": 0.17568484033909096,
+        "indi_alpha_omega": 0.26247503718486226,
+        "indi_alpha_acc": 0.697657372152211
+      },
+      "cost": 56.24085718343825,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_093032_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.9293355006960979,
+        "indi_blend": 0.23448040383039098,
+        "indi_alpha_omega": 0.2657195121735626,
+        "indi_alpha_acc": 0.5966662132930622
+      },
+      "cost": 42.761706167718344,
+      "log_file": "/home/pyro/ws_offboard_control/flight_data/outputs/flight_log_20251019_093143_analysis.pdf"
+    },
+    {
+      "params": {
+        "indi_scale": 0.12691835651117167,
+        "indi_blend": 0.24927710933205188,
+        "indi_alpha_omega": 0.49063282744675796,
+        "indi_alpha_acc": 0.7912165471875612
+      },
+      "cost": 1000.0,
+      "log_file": null,
+      "failed": true,
+      "error": "No log file generated (timeout waiting for CSV)"
+    }
+  ]
+}
